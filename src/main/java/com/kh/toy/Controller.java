@@ -14,4 +14,7 @@ public class Controller {
 	public String admin() {
 		return "admin/index";
 	}
+	
+	@GetMapping("myapt/parking")
+	public void parking() {};
 }

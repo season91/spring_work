@@ -27,4 +27,12 @@ public class Controller {
 	@GetMapping("mypage/myvehicle")
 	public void myvehicle() {};
 	
+	@GetMapping("work/mgmtfee")
+	public void adminMgmtfee() {};
+	
+	@GetMapping("work/mgmtfeeupload")
+	public void adminMgmtfeeUpload() {};
+	
+	@GetMapping("work/vehicle")
+	public void adminVehicle() {};
 }

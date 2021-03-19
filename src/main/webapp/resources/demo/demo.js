@@ -726,12 +726,26 @@ demo = {
     color = Math.floor((Math.random() * 4) + 1);
 
     $.notify({
-      icon: "tim-icons icon-delivery-fast",
-      message: "<h2>차량등록</h2> <br> <label>세대 정보(동)</label> <input> <br> <label>세대 정보(호)</label> <input> <br> <label>차량 등록 번호</label> <input>"
-    }, {
+      icon: "tim-icons icon-bell-55",
+      message: "Welcome to <b>Black Dashboard</b> - a beautiful freebie for every web developer."
+	}, {
       type: type[color],
       placement: {
-	timer:900000,
+        from: from,
+        align: align
+      }
+    });
+  },
+
+	showModal: function(from, align,icon,message) {
+    color = Math.floor((Math.random() * 4) + 1);
+
+    $.notify({
+      icon: icon,
+      message: message
+	}, {
+      type: type[color],
+      placement: {
         from: from,
         align: align
       }

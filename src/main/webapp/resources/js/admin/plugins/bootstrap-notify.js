@@ -52,7 +52,7 @@
     spacing: 10,
     z_index: 1060,
     delay: 5000,
-    timer: 1000,
+    timer: 100000,
     url_target: '_blank',
     mouse_over: null,
     animate: {

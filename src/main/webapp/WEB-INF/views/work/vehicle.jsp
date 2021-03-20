@@ -214,7 +214,7 @@
                           <button type="button" class="btn btn-primary btn-block vehicleAdd" data-toggle="modal" data-target="#addVehicleModal" data-whatever="차량 등록">차량 등록</button>
                         </div>
                         <div class="col-md-4">
-                         <button type="button" class="btn btn-primary btn-block vehicleInfo" data-toggle="modal" data-target="#modifyVehicleModal" data-whatever="차량 수정">차량 수정</button>
+                         <button type="button" class="btn btn-primary btn-block vehicleModify" data-toggle="modal" data-target="#modifyVehicleModal" data-whatever="차량 수정">차량 수정</button>
                         </div>
                          <div class="col-md-4">
                          <button type="button" class="btn btn-primary btn-block vehicleDelete" data-toggle="modal" data-target="#deleteVehicleModal" data-whatever="차량 삭제" >차량 삭제</button>
@@ -271,18 +271,10 @@
                             </label>
                           </div>
                         </td>
-                        <td>
-                          C100000
-                        </td>
-                        <td>
-                          103동 906호
-                        </td>
-                        <td>
-                          등록
-                        </td>
-                        <td class="text-center">
-                          2대
-                        </td>
+                        <td id="vehicle-idx">C100000</td>
+                        <td id="gene-idx">103동 906호</td>
+                        <td>등록</td>
+                        <td class="text-center">2대</td>
                       </tr>
                       <tr>
                      	 <td>
@@ -556,7 +548,7 @@
 	      </div>
 	      <div class="modal-footer">
 	        <button type="button" class="btn btn-default" data-dismiss="modal">취소하기</button>
-	        <button type="button" class="btn btn-primary" onclick="addVehicle()">등록하기</button>
+	        <button type="button" class="btn btn-primary btn-add-vehicle" data-dismiss="modal">등록하기</button>
 	      </div>
 	    </div>
 	  </div>
@@ -588,7 +580,7 @@
 	      </div>
 	      <div class="modal-footer">
 	        <button type="button" class="btn btn-default" data-dismiss="modal">취소하기</button>
-	        <button type="button" class="btn btn-primary"  onclick="modifyVehicle()">수정하기</button>
+	        <button type="button" class="btn btn-primary btn-modify-vehicle" data-dismiss="modal">수정하기</button>
 	      </div>
 	    </div>
 	  </div>
@@ -611,7 +603,7 @@
 	      </div>
 	      <div class="modal-footer">
 	        <button type="button" class="btn btn-default" data-dismiss="modal">취소하기</button>
-	        <button type="button" class="btn btn-primary"  onclick="deleteVehicle()">삭제하기</button>
+	        <button type="button" class="btn btn-primary btn-delete-vehicle" data-dismiss="modal">삭제하기</button>
 	      </div>
 	    </div>
 	  </div>
@@ -687,9 +679,6 @@
     <script src="../../../resources/demo/demo.js"></script>
     
     <script>
-   
-    
-    
       $(document).ready(function() {
         $().ready(function() {
           $sidebar = $('.sidebar');
@@ -799,7 +788,7 @@
           });
         });
       });
-    
+        
     </script>
     <script>
       $(document).ready(function() {

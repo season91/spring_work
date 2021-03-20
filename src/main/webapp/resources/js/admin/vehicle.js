@@ -8,7 +8,6 @@
       			  cnt++;  
       		  }
       	  })
-      	  console.dir('펑션'+cnt);
 		return cnt;
 	};
 	
@@ -28,25 +27,30 @@
         }
 	});
 	
-	/* 삭제버튼 누를시 체크개수 카운트*/
+	/* 삭제버튼 누를시 체크개수 카운트해 모달창에 건수 넣어주기.*/
 	document.querySelector('.vehicleDelete').addEventListener('click',()=>{
 		let cnt = checkCnt();
    	 	document.getElementById('result').innerText = cnt;
 	});
     
-     /* 수정시 체크한 정보 가져오기 */
-	document.querySelector('.vehicleInfo').addEventListener('click',()=>{
-		let cnt = checkCnt();
-		console.dir(cnt);
-		if(cnt > 1) {
-    		alert('한개만 선택하세요.');
-    	} 
-
+	/* 등록모달청에서 등록하기*/
+	document.querySelector('.btn-add-vehicle').addEventListener('click',()=>{
+		console.dir('여기오나?');
 	});
 	
-
+	/* 수정모달청에서 수정하기*/
+	document.querySelector('.vehicleModify').addEventListener('click',()=>{
+		let checkboxes = document.querySelectorAll('.vehicle');
+		let inpBuilding = document.querySelector('#generation-bulding');
+		console.dir(inpBuilding);
+		 checkboxes.forEach((e)=>{
+      		  if(e.checked == true){
+      			  let pare = e.parentElement.parentElement.parentElement.parentElement;
+					let tdele = pare.children;
+					console.dir(tdele[1].outerText);
+					inpBuilding.value = tdele[1].outerText;
+      		  }
+      	  })
+	});
+	
 })();  
-      
-     
-     
-     

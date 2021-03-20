@@ -9,6 +9,6 @@ public interface MemberService {
 	Member selectMemberById(String userId);
 	
 	// 메일발송 선언
-	void authenicateEmail(Map<String, String> persistInfo);
+	void authenicateEmail(Member persistInfo, String authPath);
 
 }

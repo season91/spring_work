@@ -187,9 +187,7 @@
       </div>
       <!-- End Navbar -->
       
-      
-      
-      
+		
       <div class="content">
       	 
            <div class="row">
@@ -201,7 +199,7 @@
               
               <div class="col-md-12">
                 <div class="places-buttons">
-                  <div class="row col-md-16">
+                  <div class="row col-md-12">
                     <div class="col-md-6 ml-auto mr-auto text-center">
                       <h4 class="card-title">
                        	세대정보 검색
@@ -209,17 +207,23 @@
                       </h4>
                     </div>
                   </div>
-                  <div class="row">
-                    <div class="col-lg-16 ml-auto mr-auto">
+                  <div class="row ">
+                    <div class="col-lg-12 ml-auto mr-auto">
                       <div class="row">
                         <div class="col-md-4">
-                          <button class="btn btn-primary btn-block" onclick="demo.showNotification('top','center')" >차량 등록 하기</button>
+                          <button type="button" class="btn btn-primary btn-block vehicleAdd" data-toggle="modal" data-target="#addVehicleModal" data-whatever="차량 등록">차량 등록</button>
                         </div>
                         <div class="col-md-4">
-                          <button class="btn btn-primary btn-block" id="search-button" data-toggle="modal" data-target="#searchModal">관리번호로 검색</button>
+                         <button type="button" class="btn btn-primary btn-block vehicleInfo" data-toggle="modal" data-target="#modifyVehicleModal" data-whatever="차량 수정">차량 수정</button>
+                        </div>
+                         <div class="col-md-4">
+                         <button type="button" class="btn btn-primary btn-block vehicleDelete" data-toggle="modal" data-target="#deleteVehicleModal" data-whatever="차량 삭제" >차량 삭제</button>
+                        </div>
+                         <div class="col-md-4">
+                         <button type="button" class="btn btn-primary btn-block" data-toggle="modal" data-target="#vehicleNumberModal" data-whatever="차량번호로 검색">차량번호로 검색</button>
                         </div>
                         <div class="col-md-4">
-                          <button class="btn btn-primary btn-block" id="search-button" data-toggle="modal" data-target="#searchModal">세대정보로 검색</button>
+                          <button type="button" class="btn btn-primary btn-block" data-toggle="modal" data-target="#geneIdxModal"  data-whatever="세대정보로 검색">세대정보로 검색</button>
                         </div>
                       </div>
                     </div>
@@ -231,7 +235,18 @@
                 <div class="table-responsive">
                   <table class="table tablesorter " id="">
                     <thead class=" text-primary">
+                    
                       <th>
+                        <div class="form-check checkAll" id="checkAll">
+                            <label class="form-check-label">
+                              <input class="form-check-input allvehicle" type="checkbox" value="">
+                              <span class="form-check-sign">
+                                <span class="check"></span>
+                              </span>
+                            </label>
+                          </div>
+                      </th>
+                       <th>
                         관리번호
                       </th>
                       <th>
@@ -246,6 +261,16 @@
                     </thead>
                     <tbody>
                       <tr>
+                      	<td>
+                          <div class="form-check">
+                            <label class="form-check-label">
+                              <input class="form-check-input vehicle" type="checkbox" value="" name="vehicle">
+                              <span class="form-check-sign">
+                                <span class="check"></span>
+                              </span>
+                            </label>
+                          </div>
+                        </td>
                         <td>
                           C100000
                         </td>
@@ -260,6 +285,16 @@
                         </td>
                       </tr>
                       <tr>
+                     	 <td>
+                          <div class="form-check">
+                            <label class="form-check-label">
+                              <input class="form-check-input vehicle" type="checkbox" value="" name="vehicle">
+                              <span class="form-check-sign">
+                                <span class="check"></span>
+                              </span>
+                            </label>
+                          </div>
+                        </td>
                         <td>
                           C100001
                         </td>
@@ -274,6 +309,16 @@
                         </td>
                       </tr>
                       <tr>
+                      	<td>
+                          <div class="form-check">
+                            <label class="form-check-label">
+                              <input class="form-check-input vehicle" type="checkbox" value="" name="vehicle">
+                              <span class="form-check-sign">
+                                <span class="check"></span>
+                              </span>
+                            </label>
+                          </div>
+                        </td>
                          <td>
                           C100002
                         </td>
@@ -288,6 +333,16 @@
                         </td>
                       </tr>
                       <tr>
+                      	<td>
+                          <div class="form-check">
+                            <label class="form-check-label">
+                              <input class="form-check-input vehicle" type="checkbox" value=""name="vehicle">
+                              <span class="form-check-sign">
+                                <span class="check"></span>
+                              </span>
+                            </label>
+                          </div>
+                        </td>
                          <td>
                           C100003
                         </td>
@@ -302,6 +357,16 @@
                         </td>
                       </tr>
                       <tr>
+                      	<td>
+                          <div class="form-check">
+                            <label class="form-check-label">
+                              <input class="form-check-input vehicle" type="checkbox" value="" name="vehicle">
+                              <span class="form-check-sign">
+                                <span class="check"></span>
+                              </span>
+                            </label>
+                          </div>
+                        </td>
                          <td>
                           C100004
                         </td>
@@ -316,6 +381,16 @@
                         </td>
                       </tr>
                       <tr>
+                      	<td>
+                          <div class="form-check">
+                            <label class="form-check-label">
+                              <input class="form-check-input vehicle" type="checkbox" value="" name="vehicle">
+                              <span class="form-check-sign">
+                                <span class="check"></span>
+                              </span>
+                            </label>
+                          </div>
+                        </td>
                          <td>
                           C100005
                         </td>
@@ -330,6 +405,16 @@
                         </td>
                       </tr>
                       <tr>
+                      	<td>
+                          <div class="form-check">
+                            <label class="form-check-label">
+                              <input class="form-check-input vehicle" type="checkbox" value="" name="vehicle">
+                              <span class="form-check-sign">
+                                <span class="check"></span>
+                              </span>
+                            </label>
+                          </div>
+                        </td>
                          <td>
                           C100006
                         </td>
@@ -369,11 +454,7 @@
         </div>
       </div>
       
-      
-       
-    	
-         
-      
+   
       
       <footer class="footer">
         <div class="container-fluid">
@@ -446,7 +527,150 @@
         </ul>
       </div>
     </div>
+    
+    <!-- 모달 구현 -->
+    <!-- 차량등록 모달 -->
+    
+    <div class="modal fade" id="addVehicleModal" tabindex="-1" role="dialog" aria-labelledby="addVehicleModalLabel" aria-hidden="true">
+	  <div class="modal-dialog">
+	    <div class="modal-content" style="background-image: linear-gradient(to bottom left, #344675, #263148, #344675); color:white;">
+	      <div class="modal-header">
+	       	<h4 class="modal-title" id="addVehicleModalLabel"></h4>
+	        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+	      </div>
+	      <div class="modal-body">
+	        <form>
+	          <div class="form-group">
+	            <label for="recipient-name" class="control-label">세대 정보(동)</label>
+	            <input type="text" class="form-control" id="generation-bulding">
+	          </div>
+	          <div class="form-group">
+	            <label for="recipient-name" class="control-label">세대 정보(호수)</label>
+	            <input type="text" class="form-control" id="generation-number">
+	          </div>
+	          <div class="form-group">
+	            <label for="recipient-name" class="control-label">차량 번호</label>
+	            <input type="text" class="form-control" id="vehicle-number">
+	          </div>
+	        </form>
+	      </div>
+	      <div class="modal-footer">
+	        <button type="button" class="btn btn-default" data-dismiss="modal">취소하기</button>
+	        <button type="button" class="btn btn-primary" onclick="addVehicle()">등록하기</button>
+	      </div>
+	    </div>
+	  </div>
+	</div>
+	
+	<!-- 차량 수정 모달 -->
+	<div class="modal fade" id="modifyVehicleModal" tabindex="-1" role="dialog" aria-labelledby="modifyVehicleModalLabel" aria-hidden="true">
+	  <div class="modal-dialog">
+	    <div class="modal-content" style="background-image: linear-gradient(to bottom left, #344675, #263148, #344675); color:white;">
+	      <div class="modal-header">
+	       	<h4 class="modal-title" id="modifyVehicleModalLabel"></h4>
+	        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+	      </div>
+	      <div class="modal-body">
+	        <form>
+	          <div class="form-group">
+	            <label for="recipient-name" class="control-label">세대 정보(동)</label>
+	            <input type="text" class="form-control" id="generation-bulding">
+	          </div>
+	          <div class="form-group">
+	            <label for="recipient-name" class="control-label">세대 정보(호수)</label>
+	            <input type="text" class="form-control" id="generation-number">
+	          </div>
+	          <div class="form-group">
+	            <label for="recipient-name" class="control-label">차량 번호</label>
+	            <input type="text" class="form-control" id="vehicle-number">
+	          </div>
+	        </form>
+	      </div>
+	      <div class="modal-footer">
+	        <button type="button" class="btn btn-default" data-dismiss="modal">취소하기</button>
+	        <button type="button" class="btn btn-primary"  onclick="modifyVehicle()">수정하기</button>
+	      </div>
+	    </div>
+	  </div>
+	</div>
+	
+	<!-- 차량 삭제 모달 -->
+	<div class="modal fade" id="deleteVehicleModal" tabindex="-1" role="dialog" aria-labelledby="deleteVehicleModalLabel" aria-hidden="true">
+	  <div class="modal-dialog">
+	    <div class="modal-content" style="background-image: linear-gradient(to bottom left, #344675, #263148, #344675); color:white;">
+	      <div class="modal-header">
+	       	<h4 class="modal-title" id="deleteVehicleModalLabel"></h4>
+	        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+	      </div>
+	      <div class="modal-body">
+	        <form>
+	          <div class="form-group">
+	            <label for="recipient-name" class="control-label">총 <span id="result"></span> 건을 정말 삭제하시겠습니까?</label>
+	          </div>
+	        </form>
+	      </div>
+	      <div class="modal-footer">
+	        <button type="button" class="btn btn-default" data-dismiss="modal">취소하기</button>
+	        <button type="button" class="btn btn-primary"  onclick="deleteVehicle()">삭제하기</button>
+	      </div>
+	    </div>
+	  </div>
+	</div>
+	
+	
+	<div class="modal fade" id="vehicleNumberModal" tabindex="-1" role="dialog" aria-labelledby="vehicleNumberModalLabel" aria-hidden="true">
+        <div class="modal-dialog" role="document">
+          <div class="modal-content" style="background-image: linear-gradient(to bottom left, #344675, #263148, #344675); color:white;">
+            <div class="modal-header">
+            	<h4 class="modal-title" id="vehicleNumberModalLabel"></h4>
+             	 <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+	                <i class="tim-icons icon-simple-remove"></i>
+	              </button>
+            </div>
+            <div class="modal-body">
+	        <form>
+	          <div class="form-group">
+	           <input type="text" class="form-control" id="inlineFormInputGroup" placeholder="차량번호로 검색">
+	          </div>
+	        </form>
+	      </div>
+	      
+            <div class="modal-footer">
+            <button type="button" class="btn btn-primary" onclick="vehicleNumberSearch()">검색</button>
+            </div>
+          </div>
+        </div>
+      </div>
+      
+      
+      <div class="modal fade" id="geneIdxModal" tabindex="-1" role="dialog" aria-labelledby="geneIdxModalLabel" aria-hidden="true">
+        <div class="modal-dialog" role="document">
+          <div class="modal-content" style="background-image: linear-gradient(to bottom left, #344675, #263148, #344675); color:white;">
+            <div class="modal-header">
+            	<h4 class="modal-title" id="geneIdxModalLabel"></h4>
+             	 <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+	                <i class="tim-icons icon-simple-remove"></i>
+	              </button>
+            </div>
+            <div class="modal-body">
+	        <form>
+	          <div class="form-group">
+	           <input type="text" class="form-control" id="inlineFormInputGroup" placeholder="세대정보로 검색 (103-906)">
+	          </div>
+	        </form>
+	      </div>
+	      
+            <div class="modal-footer">
+            <button type="button" class="btn btn-primary" onclick="geneIdxSearch()">검색</button>
+            </div>
+          </div>
+        </div>
+      </div>
+      
+      
+    
     <!--   Core JS Files   -->
+    <script src="../../../resources/js/admin/vehicle.js"></script>
     <script src="../../../resources/js/admin/core/jquery.min.js"></script>
     <script src="../../../resources/js/admin/core/popper.min.js"></script>
     <script src="../../../resources/js/admin/core/bootstrap.min.js"></script>
@@ -461,7 +685,11 @@
     <script src="../../../resources/js/admin/black-dashboard.min.js?v=1.0.0" type="text/javascript"></script>
     <!-- Black Dashboard DEMO methods, don't include it in your project! -->
     <script src="../../../resources/demo/demo.js"></script>
+    
     <script>
+   
+    
+    
       $(document).ready(function() {
         $().ready(function() {
           $sidebar = $('.sidebar');
@@ -571,6 +799,7 @@
           });
         });
       });
+    
     </script>
     <script>
       $(document).ready(function() {

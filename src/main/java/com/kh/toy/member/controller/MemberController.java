@@ -3,6 +3,7 @@ package com.kh.toy.member.controller;
 
 
 import java.util.Map;
+import java.util.UUID;
 
 import javax.servlet.http.HttpSession;
 
@@ -10,6 +11,7 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.validation.Errors;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -17,6 +19,7 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 
 import com.kh.toy.member.model.service.MemberService;
+import com.kh.toy.member.model.vo.Member;
 
 //Controller 어노테이션이 하는 일 : 해당 클래스가 Controller임을 스프링에게 알려준다.
 //해당 클래스를 bean으로 등록. 컨트롤러와 관련된 어노테이션을 해당 클래스내에서 사용할 수 있게 해준다.
@@ -68,10 +71,23 @@ public class MemberController {
 	// HTTP session을 가져와야겠지? 
 	// 스프링의 로우단에 직접 접근하는건 좋은 방법은 아님 request, response 만지는 것! 하지만 session은 예외이다.ㅎ
 	@PostMapping("mailauth")
-	public String authenicateEmail(@RequestParam Map<String, String> persistInfo, HttpSession session, Model model) {
-		session.setAttribute("persistUser", persistInfo);
-		memberService.authenicateEmail(persistInfo);
-		return "index/index";
+	public String authenicateEmail(Member persistInfo, Errors errors, HttpSession session, Model model) {
+		
+		if(errors.hasErrors()) {
+			return "member/join";
+		}
+		
+		// 유니크 url만들어 세션에 유저정보 넣어주자
+		String authPath = UUID.randomUUID().toString();
+		session.setAttribute("authPath", authPath);
+		session.setAttribute("persistInfo", persistInfo);
+		
+		// 메일보내기
+		memberService.authenicateEmail(persistInfo, authPath);
+		model.addAttribute("alertMsg", "이메일이 발송되었습니다.");
+		model.addAttribute("url", "/index");
+		
+		return "common/result";
 		
 	}
 }

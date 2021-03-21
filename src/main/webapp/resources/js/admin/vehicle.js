@@ -41,14 +41,14 @@
 	/* 수정모달청에서 수정하기*/
 	document.querySelector('.vehicleModify').addEventListener('click',()=>{
 		let checkboxes = document.querySelectorAll('.vehicle');
-		let inpBuilding = document.querySelector('#generation-bulding');
+		let inpBuilding = document.querySelector('#mo-generation-bulding');
 		console.dir(inpBuilding);
 		 checkboxes.forEach((e)=>{
       		  if(e.checked == true){
       			  let pare = e.parentElement.parentElement.parentElement.parentElement;
 					let tdele = pare.children;
 					console.dir(tdele[1].outerText);
-					inpBuilding.value = tdele[1].outerText;
+					inpBuilding.placeholder = tdele[1].outerText;
       		  }
       	  })
 	});

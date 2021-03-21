@@ -566,7 +566,7 @@
 	        <form>
 	          <div class="form-group">
 	            <label for="recipient-name" class="control-label">세대 정보(동)</label>
-	            <input type="text" class="form-control" id="generation-bulding">
+	            <input type="text" class="form-control" id="mo-generation-bulding">
 	          </div>
 	          <div class="form-group">
 	            <label for="recipient-name" class="control-label">세대 정보(호수)</label>

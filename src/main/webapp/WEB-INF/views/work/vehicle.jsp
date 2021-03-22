@@ -527,22 +527,22 @@
 	  <div class="modal-dialog">
 	    <div class="modal-content" style="background-image: linear-gradient(to bottom left, #344675, #263148, #344675); color:white;">
 	      <div class="modal-header">
-	       	<h4 class="modal-title" id="addVehicleModalLabel"></h4>
+	       	<h4 class="modal-title" id="addVehicleModalLabel">차량 등록</h4>
 	        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
 	      </div>
 	      <div class="modal-body">
 	        <form>
 	          <div class="form-group">
 	            <label for="recipient-name" class="control-label">세대 정보(동)</label>
-	            <input type="text" class="form-control" id="generation-bulding">
+	            <input type="text" class="form-control" id="add-generation-bulding">
 	          </div>
 	          <div class="form-group">
 	            <label for="recipient-name" class="control-label">세대 정보(호수)</label>
-	            <input type="text" class="form-control" id="generation-number">
+	            <input type="text" class="form-control" id="add-generation-number">
 	          </div>
 	          <div class="form-group">
 	            <label for="recipient-name" class="control-label">차량 번호</label>
-	            <input type="text" class="form-control" id="vehicle-number">
+	            <input type="text" class="form-control" id="add-vehicle-number">
 	          </div>
 	        </form>
 	      </div>
@@ -559,22 +559,22 @@
 	  <div class="modal-dialog">
 	    <div class="modal-content" style="background-image: linear-gradient(to bottom left, #344675, #263148, #344675); color:white;">
 	      <div class="modal-header">
-	       	<h4 class="modal-title" id="modifyVehicleModalLabel"></h4>
+	       	<h4 class="modal-title" id="modifyVehicleModalLabel">차량 수정</h4>
 	        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
 	      </div>
 	      <div class="modal-body">
 	        <form>
 	          <div class="form-group">
 	            <label for="recipient-name" class="control-label">세대 정보(동)</label>
-	            <input type="text" class="form-control" id="mo-generation-bulding">
+	            <input type="text" class="form-control" id="modify-generation-bulding">
 	          </div>
 	          <div class="form-group">
 	            <label for="recipient-name" class="control-label">세대 정보(호수)</label>
-	            <input type="text" class="form-control" id="generation-number">
+	            <input type="text" class="form-control" id="modify-generation-number">
 	          </div>
 	          <div class="form-group">
 	            <label for="recipient-name" class="control-label">차량 번호</label>
-	            <input type="text" class="form-control" id="vehicle-number">
+	            <input type="text" class="form-control" id="modify-vehicle-number">
 	          </div>
 	        </form>
 	      </div>
@@ -591,7 +591,7 @@
 	  <div class="modal-dialog">
 	    <div class="modal-content" style="background-image: linear-gradient(to bottom left, #344675, #263148, #344675); color:white;">
 	      <div class="modal-header">
-	       	<h4 class="modal-title" id="deleteVehicleModalLabel"></h4>
+	       	<h4 class="modal-title" id="deleteVehicleModalLabel">차량 삭제</h4>
 	        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
 	      </div>
 	      <div class="modal-body">
@@ -614,7 +614,7 @@
         <div class="modal-dialog" role="document">
           <div class="modal-content" style="background-image: linear-gradient(to bottom left, #344675, #263148, #344675); color:white;">
             <div class="modal-header">
-            	<h4 class="modal-title" id="vehicleNumberModalLabel"></h4>
+            	<h4 class="modal-title" id="vehicleNumberModalLabel">차량번호로 검색</h4>
              	 <button type="button" class="close" data-dismiss="modal" aria-label="Close">
 	                <i class="tim-icons icon-simple-remove"></i>
 	              </button>
@@ -622,13 +622,13 @@
             <div class="modal-body">
 	        <form>
 	          <div class="form-group">
-	           <input type="text" class="form-control" id="inlineFormInputGroup" placeholder="차량번호로 검색">
+	           <input type="text" class="form-control vehicle-keyword" id="inlineFormInputGroup" placeholder="차량번호로 검색">
 	          </div>
 	        </form>
 	      </div>
 	      
             <div class="modal-footer">
-            <button type="button" class="btn btn-primary" onclick="vehicleNumberSearch()">검색</button>
+            <button type="button" class="btn btn-primary btn-search-vehicleNumber" data-dismiss="modal">검색</button>
             </div>
           </div>
         </div>
@@ -639,7 +639,7 @@
         <div class="modal-dialog" role="document">
           <div class="modal-content" style="background-image: linear-gradient(to bottom left, #344675, #263148, #344675); color:white;">
             <div class="modal-header">
-            	<h4 class="modal-title" id="geneIdxModalLabel"></h4>
+            	<h4 class="modal-title" id="geneIdxModalLabel">세대정보로 검색</h4>
              	 <button type="button" class="close" data-dismiss="modal" aria-label="Close">
 	                <i class="tim-icons icon-simple-remove"></i>
 	              </button>
@@ -647,13 +647,13 @@
             <div class="modal-body">
 	        <form>
 	          <div class="form-group">
-	           <input type="text" class="form-control" id="inlineFormInputGroup" placeholder="세대정보로 검색 (103-906)">
+	           <input type="text" class="form-control generation-ketword" id="inlineFormInputGroup" placeholder="세대정보로 검색 (103-906)">
 	          </div>
 	        </form>
 	      </div>
 	      
             <div class="modal-footer">
-            <button type="button" class="btn btn-primary" onclick="geneIdxSearch()">검색</button>
+            <button type="button" class="btn btn-primary btn-search-generationIdx" data-dismiss="modal">검색</button>
             </div>
           </div>
         </div>
@@ -789,6 +789,9 @@
         });
       });
         
+      $('.modal').on('hidden.bs.modal', function (e) {
+    	    $(this).find('form')[0].reset()
+    	});
     </script>
     <script>
       $(document).ready(function() {

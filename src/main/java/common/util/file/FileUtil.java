@@ -70,36 +70,47 @@ public class FileUtil {
 		multipartFile.transferTo(file); 
 	}
 
-	// 엑셀 폼 내보내기?
-	public void formExcel(FileVo fileVo) {
+	//관리비 양식 셋팅
+	public XSSFWorkbook mgmtfeeFormSetting() {
 		// XSSFWorkbook은 엑셀파일 전체 내용을 담고 있는 객체
 		// XSSFWorkbook : workbook에서 작성 write()
 		// XSSFSheet : sheet 에서 row 생성 createRow()
 		// XSSFRow : row에서 cell 생성 createCell()
 		// XSSFCell : cell에서 값 입력 setCellValue()
 		// 워크북, 시트,  행, 셀 생성
+		int rowNo = 0;
+		
 		XSSFWorkbook workbook = new XSSFWorkbook();
-		XSSFSheet sheet = workbook.createSheet();
-		XSSFRow row = sheet.createRow(0);
+		XSSFSheet sheet = workbook.createSheet("세대관리비");
+		XSSFRow row = sheet.createRow(rowNo++);
 		XSSFCell cell;
 		
-		// 엑셀 헤더 정보 구성
-		cell = row.createCell(0);
-		cell.setCellValue("일반관리비");
+		// 엑셀 양식 지정
+		// 들어가야할 항목 15개
+		// 세대정보,일반관리비,청소비,승강기유지비,세대전기료,공동전기료
+		// 세대수도료, 하수도료, 경비비, 세대감면액, 납기내금액, 납기일
+		// 관리시작일, 관리종료일, 관리비작성일
+		String[] writeList = {"세대정보(동)","세대정보(호)","일반관리비","청소비","승강기유지비","세대전기료","공동전기료",
+				"세대수도료","하수도료","경비비","세대감면액","납기내금액","납기일",
+				"관리시작일","관리종료일","관리비작성일"};
+		for (int i = 0; i < writeList.length; i++) {
+			cell = row.createCell(i);
+			cell.setCellValue(writeList[i]);
+		}
 		
-		cell = row.createCell(1);
-		cell.setCellValue("청소비");
+		return workbook;
+	}
+	
+	//셋팅된 양식 excel file로 구성하기.
+	public File mfmtgeeFormExcel() {
+		// excel 양식 셋팅하기
+		XSSFWorkbook workbook = mgmtfeeFormSetting();
 		
-		cell = row.createCell(2);
-		cell.setCellValue("승강기유지비");
+		// 파일 내보내기
+		// 파일 명
+		String fileName = "세대관리비양식.xlsx";
 		
-		cell = row.createCell(3);
-		cell.setCellValue("하수도료");
-		
-		// 리스트 size만큼 row 생성
-		
-		// 파일 쓰기
-		File file = new File(fileVo.getFullPath()+"test.xls");
+		File file = new File(fileName);
 		FileOutputStream fos = null;
 		if(!file.exists()) {
 			try {
@@ -122,7 +133,9 @@ public class FileUtil {
 			}
 			
 		}
+		return file;
 	}
+	
 	
 	// 파일 삭제
 	public void deleteFile(String path, String renameFileName) {

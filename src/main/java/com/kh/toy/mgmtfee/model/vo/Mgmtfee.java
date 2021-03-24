@@ -5,6 +5,7 @@ import java.sql.Date;
 public class Mgmtfee {
 	private String mgmtfeeNo;
 	private String generationIdx; 
+	private String generationInfo; //세대아이디
 	private String gnrlMgmtFee; //일반관리비
 	private String cleanFee; // 청소비
 	private String elvtrMnfee; //승강기 유지비
@@ -23,6 +24,7 @@ public class Mgmtfee {
 	private int isOverdue; //연체여부
 	
 	private Mgmtfee(MgmtBuilder builder) {
+		this.generationInfo = builder.generationInfo;
 		this.gnrlMgmtFee = builder.gnrlMgmtFee;
 		this.cleanFee = builder.cleanFee;
 		this.elvtrMnfee = builder.elvtrMnfee;
@@ -30,7 +32,6 @@ public class Mgmtfee {
 		this.comonElctr = builder.comonElctr;
 		this.genWater = builder.genWater;
 		this.sewer = builder.sewer;
-		this.expenses = builder.expenses;
 		this.expenses = builder.expenses;
 		this.genReduction = builder.genReduction;
 		this.periodPayment = builder.periodPayment;
@@ -47,6 +48,7 @@ public class Mgmtfee {
 	
 	public static class MgmtBuilder{
 		// 엑셀로 입력받을 값
+		private String generationInfo; //세대아이디
 		private String gnrlMgmtFee; //일반관리비
 		private String cleanFee; // 청소비
 		private String elvtrMnfee; //승강기 유지비
@@ -61,6 +63,12 @@ public class Mgmtfee {
 		private Date mgmtStartDate; // 관리시작일
 		private Date mgmtEndDate; // 관리종료일
 		private Date mgmtWriteDate; //관리비 작성일
+		
+		public MgmtBuilder generationInfo(String val) {
+			this.generationInfo = val;
+			return this;
+		}
+		
 		
 		public MgmtBuilder gnrlMgmtFee(String val) {
 			this.gnrlMgmtFee = val;
@@ -138,6 +146,10 @@ public class Mgmtfee {
 	}
 	
 
+	public String getGenerationInfo() {
+		return generationInfo;
+	}
+
 	public String getPeriodPayment() {
 		return periodPayment;
 	}
@@ -191,6 +203,17 @@ public class Mgmtfee {
 	}
 	public int getIsOverdue() {
 		return isOverdue;
+	}
+
+	@Override
+	public String toString() {
+		return "Mgmtfee [mgmtfeeNo=" + mgmtfeeNo + ", generationIdx=" + generationIdx + ", generationInfo="
+				+ generationInfo + ", gnrlMgmtFee=" + gnrlMgmtFee + ", cleanFee=" + cleanFee + ", elvtrMnfee="
+				+ elvtrMnfee + ", genElctr=" + genElctr + ", comonElctr=" + comonElctr + ", genWater=" + genWater
+				+ ", sewer=" + sewer + ", expenses=" + expenses + ", genReduction=" + genReduction + ", periodPayment="
+				+ periodPayment + ", dueDate=" + dueDate + ", mgmtStartDate=" + mgmtStartDate + ", mgmtEndDate="
+				+ mgmtEndDate + ", mgmtWriteDate=" + mgmtWriteDate + ", isPayment=" + isPayment + ", isOverdue="
+				+ isOverdue + "]";
 	}
 	
 	

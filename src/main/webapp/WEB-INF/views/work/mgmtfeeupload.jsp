@@ -198,7 +198,7 @@
                 <p>전송버튼 누를 시 각 세대에게 고지서가 전송됩니다.</p>
               </div>
               <div class="card-body">
-                <form>
+                <form id="form-mgmtfee-upload">
                   <div class="row">
                     <div class="col-md-5 pr-md-1">
                       <div class="form-group">
@@ -239,7 +239,10 @@
                        <label>관리비 파일 선택</label>
                       </div>
                       <div class="form-control">
-                        <input type="file">
+                     	 <form action="/work/mgmtfeeuploadimpl" method="post" enctype="multipart/form-data">
+                        <input type="file" class="form-control file-mgmtfee">
+                        <button type="submit" class="btn btn-primary btn-mgmtfee-upload" vlaue="send"/>
+                        </form>
                       </div>
                     </div>
                   </div>
@@ -255,7 +258,7 @@
                 </form>
               </div>
               <div class="card-footer" style="display: flex; justify-content: center">
-                <button type="submit" class="btn btn-fill btn-primary">전송하기</button>
+                <button type="submit" class="btn btn-fill btn-primary btn-mgmtfee-upload">전송하기</button>
               </div>
             </div>
           </div>
@@ -339,6 +342,7 @@
       </div>
     </div>
     <!--   Core JS Files   -->
+    <script src="../../../resources/js/admin/mgmtfeeupload.js"></script>
     <script src="../../../resources/js/admin/core/jquery.min.js"></script>
     <script src="../../../resources/js/admin/core/popper.min.js"></script>
     <script src="../../../resources/js/admin/core/bootstrap.min.js"></script>

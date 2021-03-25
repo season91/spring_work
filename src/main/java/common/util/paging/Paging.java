@@ -60,7 +60,7 @@ public class Paging {
 	// d.이전, 다음 구현
 	private void calPrevAndNext() {
 		prev = currentPage == 1?currentPage:currentPage-1;
-		next = currentPage == lastPage?lastPage:lastPage+1;
+		next = currentPage == lastPage?lastPage:currentPage+1;
 	}
 	
 	// 2. PagingBuilder를 밖에서 부를수 있게 해줄 클래스 구현
@@ -105,6 +105,7 @@ public class Paging {
 		
 		// 5.
 		public Paging build() {
+			System.out.println("여기오나?"+this);
 			return new Paging(this);
 		}
 	}
@@ -158,5 +159,14 @@ public class Paging {
 	public int getQueryEnd() {
 		return queryEnd;
 	}
+
+	@Override
+	public String toString() {
+		return "Paging [type=" + type + ", currentPage=" + currentPage + ", total=" + total + ", cntPerPage="
+				+ cntPerPage + ", blockCnt=" + blockCnt + ", lastPage=" + lastPage + ", blockStart=" + blockStart
+				+ ", blockEnd=" + blockEnd + ", prev=" + prev + ", next=" + next + ", queryStart=" + queryStart
+				+ ", queryEnd=" + queryEnd + "]";
+	}
+
 	
 }

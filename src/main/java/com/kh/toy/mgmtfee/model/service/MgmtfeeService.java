@@ -11,6 +11,10 @@ public interface MgmtfeeService {
 	
 	Map<String, Object> mgmtfeeRead(MultipartFile file);
 	
-	List<Mgmtfee> addMgmtfee(Map<String,Object> commandMap);
+	List<Mgmtfee> insertMgmtfee(Map<String,Object> commandMap, String apartmentIdx);
+	
+	Map<String, Object> selectGenerationList(String apartmentIdx);
 
+	Map<String, Object> selectMgmtfeeList(int currentPage, String apartmentIdx);
+	
 }

@@ -7,6 +7,7 @@ import java.io.IOException;
 import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.List;
+import java.util.Map;
 import java.util.UUID;
 
 import org.apache.poi.xssf.usermodel.XSSFCell;
@@ -71,7 +72,7 @@ public class FileUtil {
 	}
 
 	//관리비 양식 셋팅
-	public XSSFWorkbook mgmtfeeFormSetting() {
+	public XSSFWorkbook mgmtfeeFormSetting(Map<String, Object> generationList) {
 		// XSSFWorkbook은 엑셀파일 전체 내용을 담고 있는 객체
 		// XSSFWorkbook : workbook에서 작성 write()
 		// XSSFSheet : sheet 에서 row 생성 createRow()
@@ -93,22 +94,35 @@ public class FileUtil {
 		String[] writeList = {"세대정보(동)","세대정보(호)","일반관리비","청소비","승강기유지비","세대전기료","공동전기료",
 				"세대수도료","하수도료","경비비","세대감면액","납기내금액","납기일",
 				"관리시작일","관리종료일","관리비작성일"};
+		List<String> building = (List<String>) generationList.get("building");
+		List<String> num = (List<String>) generationList.get("num");
+		
 		for (int i = 0; i < writeList.length; i++) {
 			cell = row.createCell(i);
 			cell.setCellValue(writeList[i]);
+		}
+
+		for (int i = 0; i < building.size(); i++) {
+			row = sheet.createRow(rowNo++);
+			cell = row.createCell(0);
+			cell.setCellValue(building.get(i));
+			
+			cell = row.createCell(1);
+			cell.setCellValue(num.get(i));
 		}
 		
 		return workbook;
 	}
 	
 	//셋팅된 양식 excel file로 구성하기.
-	public File mfmtgeeFormExcel() {
+	public File mfmtgeeFormExcel(Map<String, Object> generationList) {
 		// excel 양식 셋팅하기
-		XSSFWorkbook workbook = mgmtfeeFormSetting();
+		System.out.println("양식셋팅시작");
+		XSSFWorkbook workbook = mgmtfeeFormSetting(generationList);
 		
 		// 파일 내보내기
 		// 파일 명
-		String fileName = "세대관리비양식.xlsx";
+		String fileName = "test4.xlsx";
 		
 		File file = new File(fileName);
 		FileOutputStream fos = null;

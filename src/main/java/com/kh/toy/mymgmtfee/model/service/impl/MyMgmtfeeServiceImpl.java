@@ -22,8 +22,8 @@ public class MyMgmtfeeServiceImpl implements MyMgmtfeeService{
 	}
 
 	@Override
-	public Mgmtfee selectMgmtfee(String generationIdx) {
-		Mgmtfee mgmtfee = myMgmtfeeRepository.selectMgmtfee(generationIdx);
+	public Mgmtfee selectMgmtfeeByGenerationIdx(String generationIdx) {
+		Mgmtfee mgmtfee = myMgmtfeeRepository.selectMgmtfeeByGenerationIdx(generationIdx);
 		return mgmtfee;
 	}
 
@@ -32,8 +32,8 @@ public class MyMgmtfeeServiceImpl implements MyMgmtfeeService{
 		Paging paging = Paging.builder()
 				.currentPage(currentPage)
 				.blockCnt(5)
-				.cntPerPage(2)
-				.type("board")
+				.cntPerPage(10)
+				.type("mymgmtfee")
 				.total(myMgmtfeeRepository.selectContentCnt(generationIdx))
 				.build();
 		System.out.println(paging.toString());
@@ -53,9 +53,9 @@ public class MyMgmtfeeServiceImpl implements MyMgmtfeeService{
 	}
 
 	@Override
-	public Mgmtfee selectMyMgmtfee(String mgmtfeeIdx) {
+	public Mgmtfee selectMyMgmtfeeByMgmtfeeIdx(String mgmtfeeIdx) {
 		
-		return myMgmtfeeRepository.selectMyMgmtfee(mgmtfeeIdx);
+		return myMgmtfeeRepository.selectMyMgmtfeeByMgmtfeeIdx(mgmtfeeIdx);
 	}
 
 	@Override

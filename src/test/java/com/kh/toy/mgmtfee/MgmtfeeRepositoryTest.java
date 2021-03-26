@@ -47,5 +47,41 @@ public class MgmtfeeRepositoryTest {
 		   System.out.println(test);
 	   }
 	   
+	   @Test
+	   public void procudureUpdatePeriodPayment() {
+		   String fee = "22222";
+		   String mgmtfeeIdx = "100971";
+		   Mgmtfee mgmtfee = new Mgmtfee();
+		   mgmtfee.setMgmtfeeIdx(mgmtfeeIdx);
+		   mgmtfee.setElvtrMnfee(fee);
+		   mgmtfee.setGenElctr(fee);
+		   mgmtfee.setCleanFee(fee);
+		   mgmtfee.setComonElctr(fee);
+		   mgmtfee.setGenWater(fee);
+		   mgmtfee.setSewer(fee);
+		   mgmtfee.setExpenses(fee);
+		   mgmtfee.setGenReduction(fee);
+		   mgmtfee.setGnrlMgmtFee(fee);
+		   mgmtfee.setExpenses(fee);
+		   mgmtfee.setPeriodPayment(fee);
+		   //업데이트문
+		   mgmtfeeRepository.updateMgmtfee(mgmtfee);
+		   
+		   //프로시저부른다.
+		   mgmtfeeRepository.procudureUpdatePeriodPayment(mgmtfeeIdx);
+		   
+		   System.out.println(mgmtfeeRepository.selectMgmtfeeByMgmtfeeIdx(mgmtfeeIdx));
+		   
+	   }
 	   
+	   @Test
+	   public void procedureMgmtOverDue() {
+//		   List<Mgmtfee> list = mgmtfeeRepository.selectMgmtfeeListByAll();
+//		   for (int i = 0; i < list.size(); i++) {
+//			 System.out.println(list.get(i));
+//		}
+		   String mgmtfeeIdx = "100980";
+		   mgmtfeeRepository.procedureMgmtOverDue(mgmtfeeIdx);
+	   }
+
 }

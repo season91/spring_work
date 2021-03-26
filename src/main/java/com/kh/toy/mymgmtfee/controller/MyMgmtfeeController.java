@@ -1,7 +1,5 @@
 package com.kh.toy.mymgmtfee.controller;
 
-
-import java.sql.Date;
 import java.util.Map;
 
 import org.springframework.stereotype.Controller;
@@ -26,12 +24,14 @@ public class MyMgmtfeeController {
 		String generationIdx = "100304";
 		System.out.println("page"+page);
 		model.addAllAttributes(myMgmtfeeService.selectMyMgmtfeeList(page, generationIdx));
+	
+
 	}
 	
 	@GetMapping("mypage/mymgmtfeedetail")
 	public void MyMgmtfeeDetail(@RequestParam String mgmtfeeidx, Model model) {
 		System.out.println("넘어오나?"+mgmtfeeidx);
-		Mgmtfee mgmtfee = myMgmtfeeService.selectMyMgmtfee(mgmtfeeidx);
+		Mgmtfee mgmtfee = myMgmtfeeService.selectMyMgmtfeeByMgmtfeeIdx(mgmtfeeidx);
 		Map<String,Object> mgmtdate = myMgmtfeeService.selectMyMgmtfeeDate(mgmtfeeidx);
 
 		model.addAttribute(mgmtfee);

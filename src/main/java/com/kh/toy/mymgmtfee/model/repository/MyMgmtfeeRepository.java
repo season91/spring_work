@@ -12,7 +12,7 @@ import com.kh.toy.mgmtfee.model.vo.Mgmtfee;
 public interface MyMgmtfeeRepository {
 	
 	@Select("select * from tb_mgmtfee where generation_idx = #{generationIdx}")
-	Mgmtfee selectMgmtfee(String generationIdx);
+	Mgmtfee selectMgmtfeeByGenerationIdx(String generationIdx);
 	
 	@Select("select count(*) from tb_mgmtfee where generation_idx = #{generationIdx}")
 	int selectContentCnt(String generationIdx);
@@ -20,7 +20,7 @@ public interface MyMgmtfeeRepository {
 	List<Mgmtfee> selectMyMgmtfeeList(Map<String, Object> generationMap);
 	
 	@Select("select * from tb_mgmtfee where mgmtfee_idx =  #{mgmtfeeIdx}")
-	Mgmtfee selectMyMgmtfee(String mgmtfeeIdx);
+	Mgmtfee selectMyMgmtfeeByMgmtfeeIdx(String mgmtfeeIdx);
 	
 	@Select("select extract(year from mgmt_start_date) year, extract(month from mgmt_start_date) month from tb_mgmtfee where mgmtfee_idx=#{mgmtfeeIdx}")
 	Map<String,Object> selectMyMgmtfeeDate(String mgmtfeeIdx);

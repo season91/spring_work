@@ -187,7 +187,7 @@
                   
                     <c:forEach items="${mgmtfeeList}" var="mgmtfee" varStatus="status">
                      <tr>
-                        <td><a href="/mypage/mgmtfee/detail?mfmtfeeIdx=${mgmtfee.mgmtfeeIdx }"> ${mgmtfee.mgmtfeeIdx}</a> </td>
+                        <td><a href="/mypage/mymgmtfeedetail?mgmtfeeidx=${mgmtfee.mgmtfeeIdx }"> ${mgmtfee.mgmtfeeIdx}</a> </td>
                         <td> ${generationList[status.index].building }동 ${generationList[status.index].num}호</td>
                         <td> ${mgmtfee.dueDate } </td>
                         <td> ${mgmtfee.periodPayment}</td>
@@ -199,10 +199,9 @@
                         		<td>완료</td>
                         	</c:otherwise>
                         </c:choose>
-                        <td> <a href="/admin/mgmtfee/modify?${mgmtfee.mgmtfeeIdx}">수정/삭제</a></td>
+                        <td> <a href="/admin/mgmtfeemodify?mgmtfeeidx=${mgmtfee.mgmtfeeIdx}">수정/삭제</a></td>
                        </tr>
                     </c:forEach>
-                   		
                     </tbody>
                   </table>
                 </div>

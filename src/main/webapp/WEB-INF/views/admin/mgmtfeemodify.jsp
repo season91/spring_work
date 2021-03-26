@@ -194,72 +194,157 @@
           <div class="col-md-12">
             <div class="card">
               <div class="card-header">
-                <h3 class="title">관리비 업로드</h3>
-                <p>전송버튼 누를 시 각 세대에게 고지서가 전송됩니다.</p>
+                <h3 class="title">관리비 수정</h3>
+                <p>수정시 기존 정보가 전부 변경됩니다. 수정시 유의바랍니다.</p>
               </div>
+                	  
               <div class="card-body">
-                <form id="form-mgmtfee-upload">
-                  <div class="row">
-                    <div class="col-md-5 pr-md-1">
+                  <c:choose>
+                  	<c:when test="${mgmtfee eq null }">
+                  		<div class="col-md-2 pr-md-1">
+	                      <div class="form-group">
+	                        <label>조회내역이 없습니다.</label>
+	                      </div>
+	                    </div>                 	
+                  	</c:when>
+                  	<c:otherwise>
+                  	 <form id="form-mgmtfee-modify" action="${context}/admin/mgmtfeemodifyimpl" method="post">
+                  	<div class="row">
+	                    <div class="col-md-3 pr-md-1">
+	                      <div class="form-group">
+	                        <label>아파트정보</label>
+	                        <input type="text" class="form-control" disabled="" name="apartmentIdx" value="${mgmtfee.apartmentIdx }">
+	                      </div>
+	                    </div>
+	                    <div class="col-md-3 pl-md-1">
+	                      <div class="form-group">
+	                        <label for="exampleInputEmail1">세대정보</label>
+	                        <input type="tel" class="form-control" placeholder="동호수" value="${generation.building}동 ${generation.num}호">
+	                      </div>
+	                    </div>
+	                  </div>
+	                 <div class="row">
+                	 <div class="col-md-3 px-md-1">
                       <div class="form-group">
-                        <label>아파트정보</label>
-                        <input type="text" class="form-control" disabled="" placeholder="Company" value="산이리대주파크빌">
+                        <label>관리비 번호</label>
+                        <input type="text" class="form-control" placeholder="Company" name="mgmtfeeIdx" value="${mgmtfee.mgmtfeeIdx }">
                       </div>
                     </div>
                     <div class="col-md-3 px-md-1">
                       <div class="form-group">
-                        <label>고지서 담당자</label>
-                        <input type="text" class="form-control" placeholder="Username" value="김경비">
+                        <label>세대 번호</label>
+                        <input type="text" class="form-control" placeholder="Company" name="generationIdx" value="${mgmtfee.generationIdx }">
                       </div>
                     </div>
-                    <div class="col-md-4 pl-md-1">
+                  	<div class="col-md-2 pr-md-1">
                       <div class="form-group">
-                        <label for="exampleInputEmail1">연락처</label>
-                        <input type="tel" class="form-control" placeholder="031)777-8888">
+                        <label>일반관리비</label>
+                        <input type="text" class="form-control" placeholder="Company" name="gnrlMgmtFee" value="${mgmtfee.gnrlMgmtFee }">
                       </div>
-                    </div>
-                  </div>
-                  <div class="row">
-                    <div class="col-md-6 pr-md-1">
+                    </div>                 	
+                     <div class="col-md-2 pr-md-1">
                       <div class="form-group">
-                        <label>고지서 발행 건수</label>
-                        <input type="text" class="form-control" placeholder="Company" value="350">
+                        <label>청소비</label>
+                        <input type="text" class="form-control" placeholder="Company" name="cleanFee" value="${mgmtfee.cleanFee }">
                       </div>
-                    </div>
-                    <div class="col-md-6 pl-md-1">
+                    </div>                 	
+                     <div class="col-md-2 pr-md-1">
                       <div class="form-group">
-                        <label>고지서 발행 총 금액</label>
-                        <input type="text" class="form-control" placeholder="Last Name" value="25,000,000">
+                        <label>승강기 유지비</label>
+                        <input type="text" class="form-control" placeholder="Company" name="elvtrMnfee" value="${mgmtfee.elvtrMnfee }">
                       </div>
-                    </div>
-                  </div>
-                  <div class="row">
-                    <div class="col-md-12">
+                    </div>                 	
+                     <div class="col-md-2 pr-md-1">
                       <div class="form-group">
-                       <label>관리비 파일 선택</label>
+                        <label>세대전기료</label>
+                        <input type="text" class="form-control" placeholder="Company" name="genElctr" value="${mgmtfee.genElctr }">
                       </div>
-                      <div class="form-control">
-                     	 <form action="/work/mgmtfeeuploadimpl" method="post" enctype="multipart/form-data">
-                        <input type="file" class="form-control file-mgmtfee">
-                        <button type="submit" class="btn btn-primary btn-mgmtfee-upload" vlaue="send"/>
-                        </form>
+                    </div>                 	
+                     <div class="col-md-2 pr-md-1">
+                      <div class="form-group">
+                        <label>공동전기료</label>
+                        <input type="text" class="form-control" placeholder="Company" name="comonElctr" value="${mgmtfee.comonElctr }">
+                      </div>
+                    </div>                 	
+                     <div class="col-md-2 pr-md-1">
+                      <div class="form-group">
+                        <label>세대수도료</label>
+                        <input type="text" class="form-control" placeholder="Company" name="genWater" value="${mgmtfee.genWater }">
+                      </div>
+                    </div>                 	
+                     <div class="col-md-2 pr-md-1">
+                      <div class="form-group">
+                        <label>하수도료</label>
+                        <input type="text" class="form-control" placeholder="Company" name="sewer" value="${mgmtfee.sewer }">
+                      </div>
+                    </div>    
+                    <div class="col-md-2 pr-md-1">
+                      <div class="form-group">
+                        <label>경비비</label>
+                        <input type="text" class="form-control" placeholder="Company" name="expenses" value="${mgmtfee.expenses }">
+                      </div>
+                    </div>     
+                    <div class="col-md-2 pr-md-1">
+                      <div class="form-group">
+                        <label>세대감면액</label>
+                        <input type="text" class="form-control" placeholder="Company" name="genReduction" value="${mgmtfee.genReduction }">
+                      </div>
+                    </div>     
+                    <div class="col-md-2 pr-md-1">
+                      <div class="form-group">
+                        <label>납기일</label>
+                        <input type="text" class="form-control" placeholder="Company" name="dueDate" value="${mgmtfee.dueDate }">
+                      </div>
+                    </div>     
+                    <div class="col-md-2 pr-md-1">
+                      <div class="form-group">
+                        <label>관리 시작일</label>
+                        <input type="text" class="form-control" placeholder="Company" name="mgmtStartDate" value="${mgmtfee.mgmtStartDate }">
+                      </div>
+                    </div>     
+                    <div class="col-md-2 pr-md-1">
+                      <div class="form-group">
+                        <label>관리 종료일</label>
+                        <input type="text" class="form-control" placeholder="Company" name="mgmtEndDate" value="${mgmtfee.mgmtEndDate }">
+                      </div>
+                    </div>     
+                    <div class="col-md-2 pr-md-1">
+                      <div class="form-group">
+                        <label>관리비 작성일</label>
+                        <input type="text" class="form-control" placeholder="Company" name="mgmtWriteDate" value="${mgmtfee.mgmtWriteDate }">
+                      </div>
+                    </div>     
+                    <div class="col-md-2 pr-md-1">
+                      <div class="form-group">
+                        <label>결제여부</label>
+                        <input type="text" class="form-control" placeholder="Company" name="isPayment" value="${mgmtfee.isPayment }">
+                      </div>
+                    </div>     
+                    <div class="col-md-2 pr-md-1">
+                      <div class="form-group">
+                        <label>연체여부</label>
+                        <input type="text" class="form-control" placeholder="Company" name="isOverdue" value="${mgmtfee.isOverdue }">
                       </div>
                     </div>
-                  </div>
-                  
-                  <div class="row">
+                    </div> 
+                   <div class="row">
                     <div class="col-md-8">
                       <div class="form-group">
                         <label>알림 메시지</label>
-                        <textarea rows="4" cols="80" class="form-control" placeholder="Here can be your description" value="Mike">친애하는 세대원 여러분 이번달도 노고가 많으셨습니다. 행복한 가정 되세요.</textarea>
+                        <textarea rows="4" cols="80" class="form-control" name="mgmtfee-alarm">지난달 세대전기료가 과다 부과되어 당월 금액 조정하였습니다.</textarea>
                       </div>
                     </div>
                   </div>
+                    <div class="card-footer" style="display: flex; justify-content: space-around;">
+	                <button type="submit" class="btn btn-fill btn-primary">전송하기</button>
+	                <button type="button" class="btn btn-fill btn-warning">목록으로</button>
+                	</div>
                 </form>
-              </div>
-              <div class="card-footer" style="display: flex; justify-content: center">
-                <button type="submit" class="btn btn-fill btn-primary btn-mgmtfee-upload">전송하기</button>
-              </div>
+                	
+                </c:otherwise>
+              </c:choose>
+             	
+			</div>
             </div>
           </div>
       </div>

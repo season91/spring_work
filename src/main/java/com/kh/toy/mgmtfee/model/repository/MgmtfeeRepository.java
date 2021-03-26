@@ -5,9 +5,11 @@ import java.util.Map;
 
 import org.apache.ibatis.annotations.Mapper;
 import org.apache.ibatis.annotations.Select;
+import org.apache.ibatis.annotations.Update;
 
 import com.kh.toy.mgmtfee.model.vo.Generation;
 import com.kh.toy.mgmtfee.model.vo.Mgmtfee;
+import com.kh.toy.mgmtfee.model.vo.MgmtfeeOverdue;
 
 import common.util.paging.Paging;
 
@@ -35,9 +37,25 @@ public interface MgmtfeeRepository {
 	// 페이징 화면 구현을 위한 list
 	List<Mgmtfee> selectMgmtfeeList(Map<String,Object> generationMap);
 	
-	// 페이징에 세대정보 넣어야해서 세대번호기준 세대정보 가져온다
+	// 페이징에 세대정보 넣어야해서 세대번호기준 세대정보 가져온다. 관리비 상세조회에서 쓸 세대정보 조회
 	@Select("select * from tb_generation where generation_idx = #{generationIdx}")
 	Generation selectGenerationByGenerationIdx(String generationIdx);
 	
+	//관리비 수정을 위한 관리비조회
+	@Select("select * from tb_mgmtfee where mgmtfee_idx = #{mgmtfeeIdx}")
+	Mgmtfee selectMgmtfeeByMgmtfeeIdx(String mgmtfeeIdx);
+	
+	//관리비 수정
+	int updateMgmtfee(Mgmtfee mgmtfee);
+	
+	//수정된 관리비 납부금액 업데이트
+	void procudureUpdatePeriodPayment(String mgmtfeeIdx);
+	
+	// 납기일이 지난 전체 미납 관리비 내역 조회
+	@Select("select * from tb_mgmtfee where is_payment = 0 and TRUNC(DUE_DATE) < TRUNC(SYSDATE)")
+	List<Mgmtfee> selectMgmtfeeListByAll();
+	
+	void procedureMgmtOverDue(String mgmtfeeIdx);
 
+	
 }

@@ -11,4 +11,21 @@
 	where m.apartment_idx = #{apartmentIdx}
 	</select>
 	
+	<update id="updateMgmtfee">
+		update tb_mgmtfee 
+		set GNRL_MGMT_FEE=#{gnrlMgmtFee}, CLEAN_FEE = #{cleanFee}, ELVTR_MNFEE = #{elvtrMnfee}, GEN_ELCTR = #{genElctr}, 
+		COMON_ELCTR = #{comonElctr}, GEN_WATER =  #{genWater}, SEWER = #{sewer}, EXPENSES = #{expenses}, GEN_REDUCTION = #{genReduction}, 
+		PERIOD_PAYMENT = #{periodPayment} 
+		where MGMTFEE_IDX = #{mgmtfeeIdx}
+	</update>
+	
+	<update id="procudureUpdatePeriodPayment" statementType="CALLABLE">
+		{call pl_mgmtfee_update(#{mgmtfeeIdx, mode=IN})}
+	</update>
+	
+	<insert id="procedureMgmtOverDue" statementType="CALLABLE">
+		{call pl_overdue_return(#{mgmtfeeIdx, mode=IN})}
+	
+	</insert>
+	
 </mapper>

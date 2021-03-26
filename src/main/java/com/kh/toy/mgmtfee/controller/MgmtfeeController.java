@@ -18,7 +18,9 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.multipart.MultipartFile;
@@ -47,6 +49,9 @@ public class MgmtfeeController {
 		// 페이징 처리 해주기
 		System.out.println(page);
 		model.addAllAttributes(mgmtfeeService.selectMgmtfeeList(page, apartmentIdx));
+		
+		// 페이징처리해줄때 연체여부도 확인한다.
+	
 	};
 	
 	// 아영 : 업로드된 엑셀파일 읽기. 비동기통신
@@ -96,12 +101,29 @@ public class MgmtfeeController {
 	
 	// 수정,삭제하기
 	@GetMapping("admin/mgmtfeemodify")
-	public void mgmtfeeModify() {
+	public void mgmtfeeModify(@RequestParam String mgmtfeeidx, Model model) {
+		//관리비번호로 내역조회
+		//조회관리비 기준세대정보 가져오기
 		
+		//로그인한 관리자의 아파트번호와 관리비의 아파트번호가 일치해야만 열람 가능
+		
+		Mgmtfee mgmtfee = mgmtfeeService.selectMgmtfeeByMgmtfeeIdx(mgmtfeeidx);
+		String generationIdx = mgmtfee.getGenerationIdx();
+		
+		model.addAttribute(mgmtfee);
+		model.addAttribute(mgmtfeeService.selectGenerationByGenerationIdx(generationIdx));
 	}
 	
-	@GetMapping("admin/mgmtfeemodifyimpl")
-	public void mgmtfeeModifyImpl() {
+	@PostMapping("admin/mgmtfeemodifyimpl")
+	public String mgmtfeeModifyImpl(Mgmtfee mgmtfee, Model model) {
+		System.out.println("vo찍히나???"+mgmtfee);
 		
+		Mgmtfee updateMgmtefee = mgmtfeeService.updateMgmtfee(mgmtfee);
+		
+		model.addAttribute("alertMsg", "수정이 완로되었습니다.");
+		model.addAttribute("url", "/admin/mgmtfeemodify?mgmtfeeidx="+mgmtfee.getMgmtfeeIdx());
+		model.addAttribute("mgmtfee",updateMgmtefee);
+		
+		return "common/result";
 	}
 }

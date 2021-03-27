@@ -2,9 +2,11 @@ package com.kh.toy;
 
 import org.springframework.web.bind.annotation.GetMapping;
 
+
+
 @org.springframework.stereotype.Controller
 public class Controller {
-
+	
 	@GetMapping("generation")
 	public String index() {
 		return "generation/index";
@@ -35,4 +37,8 @@ public class Controller {
 	
 	@GetMapping("work/vehicle")
 	public void adminVehicle() {};
+	
+	@GetMapping("work/uploadtest")
+	public void testUpload() {};
+	
 }

@@ -222,7 +222,7 @@
 		                  </div>
                         </div>
                         <div class="col-md-3">
-                          <button class="btn btn-primary btn-block" id="search-button" data-toggle="modal" data-target="#searchModal">관리비번호로 검색</button>
+                          <button class="btn btn-primary btn-block" id="search-button" data-toggle="modal" data-target="#mgmtfeeNumberModal">관리비번호로 검색</button>
                         </div>
                         <div class="col-md-3">
                           <button class="btn btn-primary btn-block" id="search-button" data-toggle="modal" data-target="#searchModal">세대정보로 검색</button>
@@ -398,13 +398,7 @@
     	</div>
         </div>
       </div>
-      
-      
-       
-    	
-         
-      
-      
+
       <footer class="footer">
         <div class="container-fluid">
           <nav>
@@ -476,7 +470,34 @@
         </ul>
       </div>
     </div>
+    
+    
+    <div class="modal fade" id="mgmtfeeNumberModal" tabindex="-1" role="dialog" aria-labelledby="mgmtfeeNumberModalLabel" aria-hidden="true">
+       <div class="modal-dialog" role="document">
+         <div class="modal-content" style="background-image: linear-gradient(to bottom left, #344675, #263148, #344675); color:white;">
+           <div class="modal-header">
+           	<h4 class="modal-title" id="mgmtfeeNumberModalLabel">관리비번호로 검색</h4>
+            	 <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                <i class="tim-icons icon-simple-remove"></i>
+              </button>
+           </div>
+           <div class="modal-body">
+        <form>
+          <div class="form-group">
+           <input type="text" class="form-control mgmtfee-keyword" id="inlineFormInputGroup" placeholder="관라비번호로 검색하세요.">
+          </div>
+        </form>
+      </div>
+           <div class="modal-footer">
+           <button type="button" class="btn btn-primary btn-search-vehicleNumber" data-dismiss="modal">검색</button>
+           </div>
+         </div>
+       </div>
+     </div>
+    
+  
     <!--   Core JS Files   -->
+    <script src="../../../resources/js/admin/mgmtfee.js"></script>
     <script src="../../../resources/js/admin/core/jquery.min.js"></script>
     <script src="../../../resources/js/admin/core/popper.min.js"></script>
     <script src="../../../resources/js/admin/core/bootstrap.min.js"></script>
@@ -601,6 +622,10 @@
           });
         });
       });
+      
+     $('.modal').on('hidden.bs.modal', function (e) {
+ 	    $(this).find('form')[0].reset()
+		});
     </script>
     <script>
       $(document).ready(function() {

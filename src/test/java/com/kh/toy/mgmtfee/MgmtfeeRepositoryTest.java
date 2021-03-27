@@ -1,7 +1,9 @@
 package com.kh.toy.mgmtfee;
 
 import java.util.List;
+import java.util.Map;
 
+import org.apache.commons.collections4.map.HashedMap;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -13,6 +15,8 @@ import org.springframework.test.context.web.WebAppConfiguration;
 import com.kh.toy.mgmtfee.model.repository.MgmtfeeRepository;
 import com.kh.toy.mgmtfee.model.vo.Generation;
 import com.kh.toy.mgmtfee.model.vo.Mgmtfee;
+
+import common.util.paging.Paging;
 
 
 @WebAppConfiguration 
@@ -63,7 +67,6 @@ public class MgmtfeeRepositoryTest {
 		   mgmtfee.setGenReduction(fee);
 		   mgmtfee.setGnrlMgmtFee(fee);
 		   mgmtfee.setExpenses(fee);
-		   mgmtfee.setPeriodPayment(fee);
 		   //업데이트문
 		   mgmtfeeRepository.updateMgmtfee(mgmtfee);
 		   
@@ -84,4 +87,27 @@ public class MgmtfeeRepositoryTest {
 		   mgmtfeeRepository.procedureMgmtOverDue(mgmtfeeIdx);
 	   }
 
+	   @Test
+	   public void selectContentCntTest() {
+		   //String[] searchType = {"apartmentIdx"};
+		   Map<String, Object> commandMap = new HashedMap<String, Object>();
+		   commandMap.put("searchType", "apartmentIdx");
+		   commandMap.put("apartmentIdx", "100000");
+		   
+		   Paging paging = Paging.builder()
+					.currentPage(1)
+					.blockCnt(5)
+					.cntPerPage(10)
+					.type("mgmtfee")
+					.total(mgmtfeeRepository.selectContentCntTest(commandMap))
+					.build();
+
+		   commandMap.put("paging", paging);
+		   
+		  // System.out.println(paging.toString());
+		   
+		   
+		   System.out.println(mgmtfeeRepository.selectMgmtfeeListTest(commandMap));
+	   }
+	   
 }

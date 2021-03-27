@@ -25,6 +25,7 @@ import com.kh.toy.mgmtfee.model.repository.MgmtfeeRepository;
 import com.kh.toy.mgmtfee.model.service.MgmtfeeService;
 import com.kh.toy.mgmtfee.model.vo.Generation;
 import com.kh.toy.mgmtfee.model.vo.Mgmtfee;
+import com.kh.toy.mgmtfee.model.vo.MgmtfeeOverdue;
 
 import common.code.ErrorCode;
 import common.exception.ToAlertException;
@@ -177,37 +178,94 @@ public class MgmtfeeServiceImpl implements MgmtfeeService{
 		
 		return commandMap;
 	}
-
-	@Override
-	public Map<String, Object> selectMgmtfeeList(int currentPage, String apartmentIdx) {
+	
+	// 페이징처리하는 중복메서드 빼낸다
+	public Paging paging(int currentPage, int total){
 		Paging paging = Paging.builder()
 				.currentPage(currentPage)
 				.blockCnt(5)
 				.cntPerPage(10)
-				.type("board")
-				.total(mgmtfeeRepository.selectContentCnt(apartmentIdx))
+				.type("mgmtfee")
+				.total(total)
 				.build();
+		return paging;
+	}
+	
+	// 세대정보 가져오는 중복메서드 빼낸다.
+	public List<Generation> generationList(List<Mgmtfee> mgmtfeeList){
 
-		System.out.println(paging.toString());
-		// 반환할 맵
-		Map<String, Object> commandMap = new HashMap<>();
-		
-		// paing 세대조건 정보 넣을 맵
-		Map<String, Object> generationMap = new HashMap<>();
-		generationMap.put("paging", paging);
-		generationMap.put("apartmentIdx", apartmentIdx);
-		
-		List<Mgmtfee> mgmtfeeList = mgmtfeeRepository.selectMgmtfeeList(generationMap);
-		
-		commandMap.put("paging", paging);
-		commandMap.put("mgmtfeeList", mgmtfeeList);
-		
 		// 관리비번호 기준  세대정보 가져오자.
 		List<Generation> generationList = new ArrayList<>();
 		for (int i = 0; i < mgmtfeeList.size(); i++) {
 			String generationIdx = mgmtfeeList.get(i).getGenerationIdx();
 			generationList.add(mgmtfeeRepository.selectGenerationByGenerationIdx(generationIdx));
 		}
+	
+		return generationList;
+	}
+
+
+	@Override
+	public Map<String, Object> selectMgmtfeeList(int currentPage, String apartmentIdx) {
+		Map<String, Object> commandMap1 = new HashMap<>();
+		commandMap1.put("searchType","apartmentIdx");
+		commandMap1.put("apartmentIdx",apartmentIdx);
+		
+		
+		int total = mgmtfeeRepository.selectContentCntTest(commandMap1);
+		//페이징처리
+		Paging paging = paging(currentPage, total);
+		
+		
+		
+		// 반환할 맵
+		Map<String, Object> commandMap = new HashMap<>();
+		
+		// paing 세대조건 정보 넣을 맵
+		Map<String, Object> generationMap = new HashMap<>();
+		generationMap.put("searchType", "apartmentIdx");
+		generationMap.put("paging", paging);
+		generationMap.put("apartmentIdx", apartmentIdx);
+		
+		
+		List<Mgmtfee> mgmtfeeList = mgmtfeeRepository.selectMgmtfeeListTest(generationMap);
+		
+		commandMap.put("paging", paging);
+		commandMap.put("mgmtfeeList", mgmtfeeList);
+		
+		// 관리비번호 기준  세대정보 가져오자.
+		List<Generation> generationList = generationList(mgmtfeeList);
+		
+		commandMap.put("generationList", generationList);
+		
+		return commandMap;
+	}
+	
+	// 검색-관리번호로검색
+	@Override
+	public Map<String, Object> selectMgmtfeeListByMgmtfeeIdx(int currentPage, String mgmtfeeIdx) {
+		Map<String, Object> commandMap1 = new HashMap<>();
+		commandMap1.put("searchType","mgmtfeeIdx");
+		int total = mgmtfeeRepository.selectContentCntTest(commandMap1);
+		Paging paging = paging(currentPage, total);
+		System.out.println(paging.toString());
+		
+		//반환할 맵
+		Map<String, Object> commandMap = new HashMap<>();
+		
+		// paing 세대조건 정보 넣을 맵
+		Map<String, Object> mgmtfeeMap = new HashMap<>();
+		mgmtfeeMap.put("searchType", "mgmtfeeIdx");
+		mgmtfeeMap.put("paging", paging);
+		mgmtfeeMap.put("mgmtfeeIdx", mgmtfeeIdx);
+		
+		List<Mgmtfee> mgmtfeeList = mgmtfeeRepository.selectMgmtfeeListTest(mgmtfeeMap);
+		
+		commandMap.put("paging", paging);
+		commandMap.put("mgmtfeeList", mgmtfeeList);
+		
+		// 관리비번호 기준  세대정보 가져오자.
+		List<Generation> generationList = generationList(mgmtfeeList);
 		
 		commandMap.put("generationList", generationList);
 		
@@ -243,7 +301,7 @@ public class MgmtfeeServiceImpl implements MgmtfeeService{
 	}
 
 	@Override
-	@Scheduled(cron = "10,45 * * * * *")
+	@Scheduled(cron = "0 0 18 * * *")
 	public void procedureMgmtOverDue() {
 		// 연체료 계산하는 배치 메서드, 매일 18시 00분에 돈다.
 		System.out.println("배치시작");
@@ -257,6 +315,25 @@ public class MgmtfeeServiceImpl implements MgmtfeeService{
 			mgmtfeeRepository.procedureMgmtOverDue(mgmtfeeIdx);
 		}
 		
+	}
+
+	@Override
+	public int updateMgmtfeeIsDel(String mgmtfeeIdx) {
+		// TODO Auto-generated method stub
+		return mgmtfeeRepository.updateMgmtfeeIsDel(mgmtfeeIdx);
+
+	}
+
+	@Override
+	public MgmtfeeOverdue selectMgmtfeeOverdue(String mgmtfeeIdx) {
+		// TODO Auto-generated method stub
+		return mgmtfeeRepository.selectMgmtfeeOverdue(mgmtfeeIdx);
+	}
+
+	@Override
+	public int updateMgmtfeeOverdue(MgmtfeeOverdue mgmtfeeOverdue) {
+		// TODO Auto-generated method stub
+		return mgmtfeeRepository.updateMgmtfeeOverdue(mgmtfeeOverdue);
 	}
 
 

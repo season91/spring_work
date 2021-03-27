@@ -195,7 +195,7 @@
             <div class="card">
               <div class="card-header">
                 <h3 class="title">관리비 수정</h3>
-                <p>수정시 기존 정보가 전부 변경됩니다. 수정시 유의바랍니다.</p>
+                <p>수정시 기존 정보가 전부 변경됩니다. 수정시 유의바랍니다. 이미 부과된 연체료는 원복이 어려우니 세대감면액을 이용해주시기 바랍니다.</p>
               </div>
                 	  
               <div class="card-body">
@@ -213,7 +213,7 @@
 	                    <div class="col-md-3 pr-md-1">
 	                      <div class="form-group">
 	                        <label>아파트정보</label>
-	                        <input type="text" class="form-control" disabled="" name="apartmentIdx" value="${mgmtfee.apartmentIdx }">
+	                        <input type="text" class="form-control" readonly="readonly" name="apartmentIdx" value="${mgmtfee.apartmentIdx }">
 	                      </div>
 	                    </div>
 	                    <div class="col-md-3 pl-md-1">
@@ -224,15 +224,16 @@
 	                    </div>
 	                  </div>
 	                 <div class="row">
-                	 <div class="col-md-3 px-md-1">
+                	 <div class="col-md-2 px-md-1">
                       <div class="form-group">
                         <label>관리비 번호</label>
                         <input type="text" class="form-control" placeholder="Company" name="mgmtfeeIdx" value="${mgmtfee.mgmtfeeIdx }">
                       </div>
                     </div>
-                    <div class="col-md-3 px-md-1">
+                   
+                    <div class="col-md-2 px-md-1">
                       <div class="form-group">
-                        <label>세대 번호</label>
+                        <label>세대 관리 번호</label>
                         <input type="text" class="form-control" placeholder="Company" name="generationIdx" value="${mgmtfee.generationIdx }">
                       </div>
                     </div>
@@ -289,7 +290,26 @@
                         <label>세대감면액</label>
                         <input type="text" class="form-control" placeholder="Company" name="genReduction" value="${mgmtfee.genReduction }">
                       </div>
-                    </div>     
+                    </div>
+                    <c:choose>
+                    	<c:when test="${overdue eq null }">
+                    		<div class="col-md-2 pr-md-1">
+		                      <div class="form-group">
+		                        <label>연체료</label>
+		                        <input type="text" class="form-control"  readonly="readonly"  name="overdueFee" value="0">
+		                      </div>
+		                    </div>
+                   		</c:when>
+                   		<c:otherwise>
+                   			<div class="col-md-2 pr-md-1">
+		                      <div class="form-group">
+		                        <label>연체료</label>
+		                        <input type="text" class="form-control" placeholder="Company" name="overdueFee" value="${overdue.overdueFee }">
+		                      </div>
+		                    </div>
+                   		</c:otherwise>
+                    </c:choose>
+                   
                     <div class="col-md-2 pr-md-1">
                       <div class="form-group">
                         <label>납기일</label>
@@ -313,20 +333,26 @@
                         <label>관리비 작성일</label>
                         <input type="text" class="form-control" placeholder="Company" name="mgmtWriteDate" value="${mgmtfee.mgmtWriteDate }">
                       </div>
-                    </div>     
-                    <div class="col-md-2 pr-md-1">
-                      <div class="form-group">
-                        <label>결제여부</label>
-                        <input type="text" class="form-control" placeholder="Company" name="isPayment" value="${mgmtfee.isPayment }">
-                      </div>
-                    </div>     
-                    <div class="col-md-2 pr-md-1">
-                      <div class="form-group">
-                        <label>연체여부</label>
-                        <input type="text" class="form-control" placeholder="Company" name="isOverdue" value="${mgmtfee.isOverdue }">
-                      </div>
                     </div>
-                    </div> 
+                    <c:choose>
+                    	<c:when test="${mgmtfee.isPayment eq 0 }">
+                   		  <div class="col-md-2 pr-md-1">
+		                      <div class="form-group">
+		                        <label>결제여부</label>
+		                        <input type="text" class="form-control" placeholder="Company" name="isPaymentText" value="미납">
+		                      </div>
+		                    </div>
+                    	</c:when>
+                    	<c:otherwise>
+                    	  <div class="col-md-2 pr-md-1">
+		                      <div class="form-group">
+		                        <label>결제여부</label>
+		                        <input type="text" class="form-control" placeholder="Company" name="isPaymentText" value="완료">
+		                      </div>
+		                    </div>
+                    	</c:otherwise>
+                    </c:choose>     
+                   </div>
                    <div class="row">
                     <div class="col-md-8">
                       <div class="form-group">
@@ -337,7 +363,8 @@
                   </div>
                     <div class="card-footer" style="display: flex; justify-content: space-around;">
 	                <button type="submit" class="btn btn-fill btn-primary">전송하기</button>
-	                <button type="button" class="btn btn-fill btn-warning">목록으로</button>
+	                <a href="${context }/admin/mgmtfee"><button type="button" class="btn btn-fill btn-success">목록으로</button></a>
+	                <a href="${context }/admin/mgmtfeedelete?mgmtfeeidx=${mgmtfee.mgmtfeeIdx}"><button type="button" class="btn btn-fill btn-warning">삭제하기</button></a>
                 	</div>
                 </form>
                 	

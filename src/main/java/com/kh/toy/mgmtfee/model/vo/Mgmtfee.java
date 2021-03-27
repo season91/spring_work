@@ -22,6 +22,16 @@ public class Mgmtfee {
 	private Date mgmtWriteDate; //관리비 작성일
 	private int isPayment; //결제여부
 	private int isOverdue; //연체여부
+	private int isDel; // 삭제여부
+	
+
+	public int getIsDel() {
+		return isDel;
+	}
+
+	public void setIsDel(int isDel) {
+		this.isDel = isDel;
+	}
 
 	public void setMgmtfeeIdx(String mgmtfeeIdx) {
 		this.mgmtfeeIdx = mgmtfeeIdx;

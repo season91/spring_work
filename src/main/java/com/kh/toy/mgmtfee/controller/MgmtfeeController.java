@@ -26,8 +26,12 @@ import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.multipart.MultipartFile;
 
 import com.kh.toy.mgmtfee.model.service.MgmtfeeService;
+import com.kh.toy.mgmtfee.model.vo.Generation;
 import com.kh.toy.mgmtfee.model.vo.Mgmtfee;
+import com.kh.toy.mgmtfee.model.vo.MgmtfeeOverdue;
 
+import common.code.ErrorCode;
+import common.exception.ToAlertException;
 import common.util.file.FileUtil;
 
 
@@ -54,7 +58,24 @@ public class MgmtfeeController {
 	
 	};
 	
-	// 아영 : 업로드된 엑셀파일 읽기. 비동기통신
+	// 검색시 페이징처리
+	@GetMapping("admin/mgmtfee/search")
+	public String adminMgmtfee(@RequestParam(defaultValue = "1") int page, @RequestParam String keyword, Model model) {
+		System.out.println("search안오낭??");
+		System.out.println(keyword);
+		if(keyword.contains("동") && keyword.contains("호")) {
+			// 검색어에 동,호가 포함되었다면 세대정보로 검색한것
+			
+		} else {
+			// 아니라면 관리비번호로 검색한것
+			model.addAllAttributes(mgmtfeeService.selectMgmtfeeListByMgmtfeeIdx(page, keyword));
+		}
+		
+		
+		return "/admin/mgmtfee";
+	};
+	
+	// 업로드된 엑셀파일 읽고 DB에 넣어주기. 비동기통신
 	@PostMapping(value="admin/mgmtfee/uploadimpl")
 	@ResponseBody
 	public String mgmtUpload(@RequestParam MultipartFile file, Model model) {
@@ -62,6 +83,7 @@ public class MgmtfeeController {
 		// 업로드할때 관리자의 아파트번호의 아파트세대에게 관리비를 보내야한다.
 		
 		String apartmentIdx = "100000";
+		
 		List<Mgmtfee> mgmtfeeList = mgmtfeeService.insertMgmtfee(commandMap, apartmentIdx);
 		System.out.println(mgmtfeeList.size());
 		
@@ -74,7 +96,7 @@ public class MgmtfeeController {
 
 	}
 	
-	// 아영 : 관리비 엑셀 양식 다운로드 받기
+	// 관리비 엑셀 양식 다운로드 받기
 	@GetMapping("admin/mgmtfeeformdownload")
 	public ResponseEntity<FileSystemResource> mgmtFormDownload() {
 		// 엑셀양식 다운로드하게
@@ -109,21 +131,69 @@ public class MgmtfeeController {
 		
 		Mgmtfee mgmtfee = mgmtfeeService.selectMgmtfeeByMgmtfeeIdx(mgmtfeeidx);
 		String generationIdx = mgmtfee.getGenerationIdx();
+		Generation generation = mgmtfeeService.selectGenerationByGenerationIdx(generationIdx);
 		
-		model.addAttribute(mgmtfee);
-		model.addAttribute(mgmtfeeService.selectGenerationByGenerationIdx(generationIdx));
+		// 둘다 조회가 되었다면 내역 넘기고, 둘중 하나라도 조회내역이없다면 에러 발동한다.
+		if(mgmtfee != null && generation != null) {
+			model.addAttribute(mgmtfee);
+			model.addAttribute(generation);
+			model.addAttribute("overdue",mgmtfeeService.selectMgmtfeeOverdue(mgmtfee.getMgmtfeeIdx()));
+		} else {
+			throw new ToAlertException(ErrorCode.SMGMT01);
+		}
+		
 	}
 	
 	@PostMapping("admin/mgmtfeemodifyimpl")
-	public String mgmtfeeModifyImpl(Mgmtfee mgmtfee, Model model) {
+	public String mgmtfeeModifyImpl(Mgmtfee mgmtfee, @RequestParam String overdueFee, @RequestParam String isPaymentText, Model model) {
 		System.out.println("vo찍히나???"+mgmtfee);
+		System.out.println("연체료"+overdueFee);
 		
+		if(isPaymentText.equals("미납")) {
+			mgmtfee.setIsPayment(0);
+		} else {
+			mgmtfee.setIsPayment(1);
+		}
+		
+		// 연체료가 없다면 안보내주고 있다면 보내준다.
+		if(overdueFee != "0") {
+			MgmtfeeOverdue mgmtfeeOverdue = new MgmtfeeOverdue();
+			mgmtfeeOverdue.setMgmtfeeIdx(mgmtfee.getMgmtfeeIdx());
+			mgmtfeeOverdue.setOverdueFee(overdueFee);
+			int res = mgmtfeeService.updateMgmtfeeOverdue(mgmtfeeOverdue);
+			if(res > 0) {
+				model.addAttribute("overdue",mgmtfeeService.selectMgmtfeeOverdue(mgmtfee.getMgmtfeeIdx()));
+			}
+		} 
+
 		Mgmtfee updateMgmtefee = mgmtfeeService.updateMgmtfee(mgmtfee);
+		// 업데이트내역이 있다면 수정완료, 없다면 실패안내. mgmt update는 프로시저라 int로 판단안함. 
+		if(updateMgmtefee != null) {
+			model.addAttribute("alertMsg", "수정이 완료되었습니다.");
+			model.addAttribute("url", "/admin/mgmtfeemodify?mgmtfeeidx="+mgmtfee.getMgmtfeeIdx());
+			model.addAttribute("mgmtfee",updateMgmtefee);
+		} else {
+			model.addAttribute("alertMsg", "수정이 실패하였습니다.");
+			model.addAttribute("url", "/admin/mgmtfeemodify?mgmtfeeidx="+mgmtfee.getMgmtfeeIdx());
+		}
+		return "common/result";
+	}
+	
+	@GetMapping("admin/mgmtfeedelete")
+	public String mgmtfeeDelete(@RequestParam String mgmtfeeidx, Model model) {
+		System.out.println("삭제할관리비번호 "+mgmtfeeidx);
 		
-		model.addAttribute("alertMsg", "수정이 완로되었습니다.");
-		model.addAttribute("url", "/admin/mgmtfeemodify?mgmtfeeidx="+mgmtfee.getMgmtfeeIdx());
-		model.addAttribute("mgmtfee",updateMgmtefee);
+		int res = mgmtfeeService.updateMgmtfeeIsDel(mgmtfeeidx);
 		
+		// 삭제가 되었다면 완료, 삭제내역이없다면 실패 안내.
+		if(res > 0) {
+			model.addAttribute("alertMsg", "삭제가 완료되었습니다.");
+			model.addAttribute("url", "/admin/mgmtfee");
+		} else {
+			model.addAttribute("alertMsg", "삭제가 실패하였습니다. 다시 확인해주세요.");
+			model.addAttribute("url", "/admin/mgmtfee");
+		}
+
 		return "common/result";
 	}
 }

@@ -275,7 +275,7 @@
            <div class="modal-body">
         <form action="${context }/admin/mgmtfee/search">
           <div class="form-group">
-           <input type="text" class="form-control mgmtfee-keyword" id="inlineFormInputGroup" name="keyword" placeholder="관리비번호로 검색하세요.">
+           <input type="text" class="form-control mgmtfee-keyword" id="inlineFormInputGroup" name="mgmtfeeidx" placeholder="관리비번호로 검색하세요.">
           </div>
           <div class="modal-footer">
            <button type="submit" class="btn btn-primary btn-search-vehicleNumber">검색</button>

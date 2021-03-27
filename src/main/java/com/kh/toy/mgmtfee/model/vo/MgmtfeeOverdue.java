@@ -8,6 +8,14 @@ public class MgmtfeeOverdue {
 	private String overdueFee;
 	private int isPayment;
 	
+	
+	
+	public MgmtfeeOverdue() {
+		super();
+	}
+
+
+
 	public MgmtfeeOverdue(String overdueIdx, String mgmtfeeIdx, String periodPayment, String overdueFee,
 			int isPayment) {
 		super();
@@ -17,6 +25,8 @@ public class MgmtfeeOverdue {
 		this.overdueFee = overdueFee;
 		this.isPayment = isPayment;
 	}
+	
+	
 
 	public String getOverdueIdx() {
 		return overdueIdx;

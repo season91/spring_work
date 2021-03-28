@@ -214,20 +214,20 @@
 	          <div class="col text-center">
 	            <div class="block-27">
 	              <ul>
-	                <li><a href="/admin/${paging.type }">&lt;&lt;</a></li>
-	                <li><a href="/admin/${paging.type }?page=${paging.prev}">&lt;</a></li>
+	                <li><a href="/admin/${paging.type }?standard=isPayment">&lt;&lt;</a></li>
+	                <li><a href="/admin/${paging.type }?page=${paging.prev}&standard=isPayment">&lt;</a></li>
 	                 <c:forEach begin="${paging.blockStart}" end="${paging.blockEnd}" var="page">
                       <c:choose>
                          <c:when test="${paging.currentPage eq page}">
-                            <li class="active"><a href="/admin/${paging.type }?page=${page}">${page}</a></li>
+                            <li class="active"><a href="/admin/${paging.type }?page=${page}&standard=isPayment">${page}</a></li>
                          </c:when>
                          <c:otherwise>
-                            <li><a href="/admin/${paging.type }?page=${page}">${page}</a></li>
+                            <li><a href="/admin/${paging.type }?page=${page}&standard=isPayment">${page}</a></li>
                          </c:otherwise>
                       </c:choose>
                  	 </c:forEach> 
-	                <li><a href="/admin/${paging.type }?page=${paging.next}">&gt;</a></li>
-	                <li><a href="/admin/${paging.type }?page=${paging.lastPage }">&gt;&gt;</a></li>
+	                <li><a href="/admin/${paging.type }?page=${paging.next}&standard=isPayment">&gt;</a></li>
+	                <li><a href="/admin/${paging.type }?page=${paging.lastPage }&standard=isPayment">&gt;&gt;</a></li>
 	              </ul>
 	            </div>
 	          </div>
@@ -506,7 +506,7 @@
         	if(text == "success"){
         		alert('등록 성공했습니다.');
              } else {
-            	console.dir(text);
+            	alert('등록할 내용이 없습니다.');
              }
         })
          .catch(error=>{

@@ -73,7 +73,7 @@
 					apartment_idx = #{apartmentIdx} and generation_idx = #{generationIdx}
 				</when>
 				<when test="searchType == 'isPayment'">
-					apartment_idx = #{apartmentIdx} and is_payment = 0
+					apartment_idx = #{apartmentIdx} and is_payment = 0 
 				</when>
 				<when test="searchType == 'dueDate'">
 					apartment_idx = #{apartmentIdx} and due_date = #{dueDate}

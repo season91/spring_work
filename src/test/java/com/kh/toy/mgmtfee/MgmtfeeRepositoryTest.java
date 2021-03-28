@@ -1,5 +1,7 @@
 package com.kh.toy.mgmtfee;
 
+import java.sql.Date;
+import java.text.SimpleDateFormat;
 import java.util.List;
 import java.util.Map;
 
@@ -36,6 +38,38 @@ public class MgmtfeeRepositoryTest {
 			System.out.println(test.get(i)+"동");
 			System.out.println(test2.get(i)+"호");
 		   }
+	   }
+	   
+	   @Test
+	   public void insertMgmtfee() {
+		   String fee = "10000";
+		   
+		   SimpleDateFormat beforFormat = new SimpleDateFormat("yyyy-mm-dd");
+			SimpleDateFormat afterFormat = new SimpleDateFormat("yyyy-mm-dd");
+		   String transDate = afterFormat.format("2021-03-31");
+		   Date date = Date.valueOf(transDate);
+		   
+		   Mgmtfee mgmtfee = new Mgmtfee();
+		   mgmtfee.setElvtrMnfee(fee);
+		   mgmtfee.setGenElctr(fee);
+		   mgmtfee.setCleanFee(fee);
+		   mgmtfee.setComonElctr(fee);
+		   mgmtfee.setGenWater(fee);
+		   mgmtfee.setSewer(fee);
+		   mgmtfee.setExpenses(fee);
+		   mgmtfee.setGenReduction(fee);
+		   mgmtfee.setGnrlMgmtFee(fee);
+		   mgmtfee.setExpenses(fee);
+		   mgmtfee.setPeriodPayment("20000");
+		   mgmtfee.setApartmentIdx("100000");
+		   mgmtfee.setDueDate(date);
+		   mgmtfee.setMgmtStartDate(date);
+		   mgmtfee.setMgmtWriteDate(date);
+		   mgmtfee.setMgmtEndDate(date);
+		   mgmtfee.setGenerationIdx("100970");
+		   
+		   System.out.println(mgmtfeeRepository.insertMgmtfee(mgmtfee));
+		   
 	   }
 	   
 	   @Test
@@ -91,8 +125,11 @@ public class MgmtfeeRepositoryTest {
 	   public void selectMgmtfeeList() {
 		   //String[] searchType = {"apartmentIdx"};
 		   Map<String, Object> commandMap = new HashedMap<String, Object>();
-		   commandMap.put("searchType", "dueDate");
-		   commandMap.put("dueDate", "21/03/10");
+		   String inDate = "21-03-10";
+		   inDate.replace("-", "/");
+		   System.out.println("변경되나? 안되는데 치환이되나보다."+inDate);
+		   commandMap.put("searchType", "isPayment");
+		   commandMap.put("apartmentIdx", "100000");
 		   
 		   Paging paging = Paging.builder()
 					.currentPage(1)

@@ -5,6 +5,14 @@
     
     <mapper namespace="com.kh.toy.mgmtfee.model.repository.MgmtfeeRepository">
 
+	<insert id="insertMgmtfee">
+		insert into tb_mgmtfee (MGMTFEE_IDX, APARTMENT_IDX, GENERATION_IDX, GNRL_MGMT_FEE, CLEAN_FEE, ELVTR_MNFEE, GEN_ELCTR, COMON_ELCTR, GEN_WATER,
+		SEWER, EXPENSES, GEN_REDUCTION, PERIOD_PAYMENT, DUE_DATE, MGMT_START_DATE, MGMT_END_DATE, MGMT_WRITE_DATE) 
+		values (sc_mgmtfee_idx.nextval, #{apartmentIdx}, #{generationIdx}, #{gnrlMgmtFee},
+		#{cleanFee}, #{elvtrMnfee}, #{genElctr}, #{comonElctr}, #{genWater}, #{sewer}, #{expenses}, #{genReduction}, #{periodPayment},
+		#{dueDate}, #{mgmtStartDate}, #{mgmtEndDate}, #{mgmtWriteDate})
+	</insert>
+	
 	<select id="selectMgmtfeeList" resultType="mgmtfee">
 	select m.*, g.id as generation_info 
 	from tb_mgmtfee m JOIN tb_generation g on (m.generation_idx = g.generation_idx) 
@@ -44,7 +52,7 @@
 							m.generation_idx = #{generationIdx} 
 						</when>
 						<when test="searchType == 'isPayment'">
-							m.apartment_idx = #{apartmentIdx} and m.is_payment = 0 
+							m.apartment_idx = #{apartmentIdx} and m.is_payment = 1 
 						</when>
 						<when test="searchType == 'dueDate'">
 							m.due_date = #{dueDate}
@@ -63,16 +71,16 @@
 					apartment_idx = #{apartmentIdx} and is_del = 0
 				</when>
 				<when test="searchType == 'mgmtfeeIdx'">
-					mgmtfee_idx = #{mgmtfeeIdx}
+					apartment_idx = #{apartmentIdx} and mgmtfee_idx = #{mgmtfeeIdx}
 				</when>
 				<when test="searchType == 'generationIdx'">
-					generation_idx = #{generationIdx}
+					apartment_idx = #{apartmentIdx} and generation_idx = #{generationIdx}
 				</when>
 				<when test="searchType == 'isPayment'">
-					is_payment = 0
+					apartment_idx = #{apartmentIdx} and is_payment = 1 
 				</when>
 				<when test="searchType == 'dueDate'">
-					due_date = #{dueDate}
+					apartment_idx = #{apartmentIdx} and due_date = #{dueDate}
 				</when>
 			</choose>
 		</where>

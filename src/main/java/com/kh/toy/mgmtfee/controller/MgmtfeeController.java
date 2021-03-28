@@ -48,9 +48,10 @@ public class MgmtfeeController {
 	
 	// 페이징처리
 	@GetMapping("admin/mgmtfee")
-	public void adminMgmtfee(@RequestParam(defaultValue = "1") int page, @RequestParam(defaultValue = "apartmentIdx") String keyword, Model model) {
+	public String adminMgmtfee(@RequestParam(defaultValue = "1") int page,@RequestParam(defaultValue = "apartmentIdx") String standard, @RequestParam(defaultValue = "apartmentIdx") String keyword, Model model) {
 		String apartmentIdx = "100000";
-		System.out.println(keyword.getClass());
+		System.out.println("검색기준:"+standard);
+		System.out.println("키워드"+keyword);
 		// 페이징 처리 타입 3개
 		// 아파트정보는 어차피 로그인유저꺼로 가져오니깐 처리타입을 3개로나눠 맵에담아보내자, 뭐
 		// 1. 키워드없는 경우
@@ -58,34 +59,49 @@ public class MgmtfeeController {
 		// 3. 키워드가 세대정보인경우
 		// 4. 키워드가 미납인경우 
 		Map<String, Object> searchMap = new HashMap<String, Object>();
-		
-		if(keyword.equals("apartmentIdx")) {
+		searchMap.put("apartmentIdx", apartmentIdx);
+
+		String link = "";
+		switch (standard) {
+		case "apartmentIdx":
 			// 기본 페이징
 			searchMap.put("searchType", "apartmentIdx");
-			searchMap.put("apartmentIdx", apartmentIdx);
-		} else if(keyword.contains("-")){
+			break;
+		case "mgmtfeeIdx":
+			// 관리비번호로 조회 
+			searchMap.put("searchType", "mgmtfeeIdx");
+			searchMap.put("mgmtfeeIdx", keyword);
+			break;
+		case "generationInfo":
 			// 세대정보로 조회 
-			// keyword로 세대정보 가져온다.
 			Generation generation = new Generation();
 			String[] generationInfo = keyword.split("-");
 			generation.setApartmentIdx(apartmentIdx);
 			generation.setBuilding(generationInfo[0]);
 			generation.setNum(generationInfo[1]);
 			System.out.println(generation);
+			
+			// 조회된 세대관리번호를 map에 담아준다.
 			String generationIdx = mgmtfeeService.selectGenerationByBuildingAndNum(generation).getGenerationIdx();
 			searchMap.put("searchType", "generationIdx");
 			searchMap.put("generationIdx", generationIdx);
-		} else if(keyword.contains("nopayment")) {
+			break;
+		case "dueDate" :
+			// 납기일로 조회
+			searchMap.put("searchType", "dueDate");
+			searchMap.put("dueDate", keyword); 
+			link = "duedate";
+			model.addAttribute("keyword", keyword);
+			break;
+		case "isPayment" :
+			// 미납 조회
 			searchMap.put("searchType", "isPayment");
-			searchMap.put("apartmentIdx", apartmentIdx);
-		} else if(keyword.equals("")){
-			
-		} else {
-			// 관리비번호로 조회 
-			searchMap.put("searchType", "mgmtfeeIdx");
-			searchMap.put("mgmtfeeIdx", keyword);
+			link = "nopayment";
+			break;
 		}
+		
 		model.addAllAttributes(mgmtfeeService.selectMgmtfeeList(page, searchMap));
+		return "admin/mgmtfee"+link;
 		// 관리자의 아파트정보 기준으로 관리비 리스트 가져오기
 		// 페이징 처리 해주기
 		//System.out.println(mgmtfeeService.selectMgmtfeeList(page, apartmentIdx));

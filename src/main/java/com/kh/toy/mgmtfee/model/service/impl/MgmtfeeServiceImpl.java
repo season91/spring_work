@@ -2,6 +2,8 @@ package com.kh.toy.mgmtfee.model.service.impl;
 
 import java.io.IOException;
 import java.sql.Date;
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
@@ -129,14 +131,14 @@ public class MgmtfeeServiceImpl implements MgmtfeeService{
 			String building = list.get(0);
 			String num = list.get(1);
 			
-			System.out.println(building+"동");
 			Generation generationInfo = new Generation();
 			generationInfo.setApartmentIdx(apartmentIdx);;
 			generationInfo.setBuilding(building);
 			generationInfo.setNum(num);
 			
+			
 			Generation generation = mgmtfeeRepository.selectGenerationIdx(generationInfo);
-
+			
 			mgmtfee.setApartmentIdx(apartmentIdx);
 			mgmtfee.setGenerationIdx(generation.getGenerationIdx());
 			mgmtfee.setGnrlMgmtFee(list.get(2));
@@ -157,8 +159,14 @@ public class MgmtfeeServiceImpl implements MgmtfeeService{
 
 			System.out.println(mgmtfee.toString());
 
+			// 납부일 기준 이미 삽입한 내역이 있다면 이미 등록된 고지월임을 알려준다.
+			int res = mgmtfeeRepository.selectMgmtfeeByGenerationIdxAndDueDate(mgmtfee);
+			if (res == 0) {
+				mgmtfeeRepository.insertMgmtfee(mgmtfee);
+			} else {
+				throw new ToAlertException(ErrorCode.SMGMT02);
+			}
 			
-			mgmtfeeRepository.insertMgmtfee(mgmtfee);
 			mgmtfeeList.add(mgmtfee);
 		}
 		

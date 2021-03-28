@@ -25,6 +25,10 @@ public interface MgmtfeeRepository {
 	// 1. 관리비 DB에 넣기
 	int insertMgmtfee(Mgmtfee mgmtfee);
 	
+	// 1-1. 삽입 전 중복되었는지 확인하기 위한 cnt 확인 문
+	@Select("select count(*) from tb_mgmtfee where generation_idx = #{generationIdx} and due_date = #{dueDate} and is_del = 0")
+	int selectMgmtfeeByGenerationIdxAndDueDate(Mgmtfee mgmtfee);
+	
 	// 1-1. 세대번호 가져오기. 아파트번호로 세대정보(동,호) 받아오기
 	@Select("select building from tb_generation where apartment_idx = #{apartmentIdx} and is_del = 0 order by building asc")
 	List<String> selectBuildingByApartmentIdx(String apartmentIdx);
@@ -44,7 +48,7 @@ public interface MgmtfeeRepository {
 	@Select("select * from tb_generation where apartment_idx = #{apartmentIdx} and building = #{building} and num = #{num}")
 	Generation selectGenerationByBuildingAndNum(Generation generation);
 	
-	// text
+	// test
 	List<Mgmtfee> selectMgmtfeeListTest(Map<String,Object> searchMap);
 	
 	int selectContentCntTest(Map<String,Object> searchMap);

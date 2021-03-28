@@ -11,11 +11,12 @@ public enum ErrorCode {
 	IF01("파일 업로드 중 에러가 발생하였습니다."),
 	AUTH01("해당 페이지에 접근하실 수 없습니다.","/member/login.do"),
 	AUTH02("이미 인증이 만료된 링크입니다."),
-	MAIL01("메일 발송 중 에러가 발생했습ㅂ니다."),
+	MAIL01("메일 발송 중 에러가 발생했습니다."),
 	API01("API통신 도중 에러가 발생하였습니다."),
 	UMGMT01("관리비 수정 중 에러가 발생했습니다","/admin/mgmtfee"),
 	UMGMT02("관리비 삭제 중 에러가 발생했습니다","/admin/mgmtfee"),
 	SMGMT01("관리비 내역 조회중 에러가 발생했습니다.","/admin/mgmtfee"),
+	SMGMT02("이미 등록된 고지월입니다. 다시 확인해주세요","/admin/mgmtfee"),
 	CD_404("존재하지 않는 경로입니다.");
 	
 	//result.jsp를 사용해 띄울 안내문구 

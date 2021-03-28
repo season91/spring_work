@@ -179,99 +179,38 @@ public class MgmtfeeServiceImpl implements MgmtfeeService{
 		return commandMap;
 	}
 	
-	// 페이징처리하는 중복메서드 빼낸다
-	public Paging paging(int currentPage, int total){
+
+	@Override
+	public Map<String, Object> selectMgmtfeeList(int currentPage, Map<String, Object> searchMap) {
+		//페이징처리
 		Paging paging = Paging.builder()
 				.currentPage(currentPage)
 				.blockCnt(5)
 				.cntPerPage(10)
 				.type("mgmtfee")
-				.total(total)
+				.total(mgmtfeeRepository.selectContentCntTest(searchMap))
 				.build();
-		return paging;
-	}
-	
-	// 세대정보 가져오는 중복메서드 빼낸다.
-	public List<Generation> generationList(List<Mgmtfee> mgmtfeeList){
+		System.out.println(paging.toString());
+		// paing 세대조건 정보 넣을 맵
+		searchMap.put("paging", paging);
 
+		// 페이징정보 포함해서 페이징에 뿌려줄 리스트 받아온다.
+		List<Mgmtfee> mgmtfeeList = mgmtfeeRepository.selectMgmtfeeListTest(searchMap);
+		searchMap.put("mgmtfeeList", mgmtfeeList);
+		System.out.println("mgmtfeeList"+mgmtfeeList);
+		
 		// 관리비번호 기준  세대정보 가져오자.
 		List<Generation> generationList = new ArrayList<>();
 		for (int i = 0; i < mgmtfeeList.size(); i++) {
 			String generationIdx = mgmtfeeList.get(i).getGenerationIdx();
 			generationList.add(mgmtfeeRepository.selectGenerationByGenerationIdx(generationIdx));
 		}
-	
-		return generationList;
-	}
-
-
-	@Override
-	public Map<String, Object> selectMgmtfeeList(int currentPage, String apartmentIdx) {
-		Map<String, Object> commandMap1 = new HashMap<>();
-		commandMap1.put("searchType","apartmentIdx");
-		commandMap1.put("apartmentIdx",apartmentIdx);
 		
-		
-		int total = mgmtfeeRepository.selectContentCntTest(commandMap1);
-		//페이징처리
-		Paging paging = paging(currentPage, total);
-		
-		
-		
-		// 반환할 맵
-		Map<String, Object> commandMap = new HashMap<>();
-		
-		// paing 세대조건 정보 넣을 맵
-		Map<String, Object> generationMap = new HashMap<>();
-		generationMap.put("searchType", "apartmentIdx");
-		generationMap.put("paging", paging);
-		generationMap.put("apartmentIdx", apartmentIdx);
-		
-		
-		List<Mgmtfee> mgmtfeeList = mgmtfeeRepository.selectMgmtfeeListTest(generationMap);
-		
-		commandMap.put("paging", paging);
-		commandMap.put("mgmtfeeList", mgmtfeeList);
-		
-		// 관리비번호 기준  세대정보 가져오자.
-		List<Generation> generationList = generationList(mgmtfeeList);
-		
-		commandMap.put("generationList", generationList);
-		
-		return commandMap;
+		searchMap.put("generationList", generationList);
+		System.out.println("searchMap"+searchMap);
+		return searchMap;
 	}
 	
-	// 검색-관리번호로검색
-	@Override
-	public Map<String, Object> selectMgmtfeeListByMgmtfeeIdx(int currentPage, String mgmtfeeIdx) {
-		Map<String, Object> commandMap1 = new HashMap<>();
-		commandMap1.put("searchType","mgmtfeeIdx");
-		int total = mgmtfeeRepository.selectContentCntTest(commandMap1);
-		Paging paging = paging(currentPage, total);
-		System.out.println(paging.toString());
-		
-		//반환할 맵
-		Map<String, Object> commandMap = new HashMap<>();
-		
-		// paing 세대조건 정보 넣을 맵
-		Map<String, Object> mgmtfeeMap = new HashMap<>();
-		mgmtfeeMap.put("searchType", "mgmtfeeIdx");
-		mgmtfeeMap.put("paging", paging);
-		mgmtfeeMap.put("mgmtfeeIdx", mgmtfeeIdx);
-		
-		List<Mgmtfee> mgmtfeeList = mgmtfeeRepository.selectMgmtfeeListTest(mgmtfeeMap);
-		
-		commandMap.put("paging", paging);
-		commandMap.put("mgmtfeeList", mgmtfeeList);
-		
-		// 관리비번호 기준  세대정보 가져오자.
-		List<Generation> generationList = generationList(mgmtfeeList);
-		
-		commandMap.put("generationList", generationList);
-		
-		return commandMap;
-	}
-
 	@Override
 	public Mgmtfee selectMgmtfeeByMgmtfeeIdx(String mgmtfeeIdx) {
 		
@@ -334,6 +273,12 @@ public class MgmtfeeServiceImpl implements MgmtfeeService{
 	public int updateMgmtfeeOverdue(MgmtfeeOverdue mgmtfeeOverdue) {
 		// TODO Auto-generated method stub
 		return mgmtfeeRepository.updateMgmtfeeOverdue(mgmtfeeOverdue);
+	}
+
+	@Override
+	public Generation selectGenerationByBuildingAndNum(Generation generation) {
+		// TODO Auto-generated method stub
+		return mgmtfeeRepository.selectGenerationByBuildingAndNum(generation);
 	}
 
 

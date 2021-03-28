@@ -19,10 +19,10 @@ public interface MgmtfeeService {
 	Map<String, Object> selectGenerationList(String apartmentIdx);
 
 	// [관리자페이지 페이징]
-	Map<String, Object> selectMgmtfeeList(int currentPage, String apartmentIdx);
+	Map<String, Object> selectMgmtfeeList(int currentPage, Map<String, Object> searchMap);
 
-	// [관리자페이지 - 관리비번호검색]
-	Map<String, Object> selectMgmtfeeListByMgmtfeeIdx(int currentPage, String mgmtfeeIdx);
+	// 동,호수로 세대정보가져온다.
+	Generation selectGenerationByBuildingAndNum(Generation generation);
 	
 	Mgmtfee selectMgmtfeeByMgmtfeeIdx(String mgmtfeeIdx);
 	

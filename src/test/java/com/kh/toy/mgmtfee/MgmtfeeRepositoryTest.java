@@ -88,11 +88,11 @@ public class MgmtfeeRepositoryTest {
 	   }
 
 	   @Test
-	   public void selectContentCntTest() {
+	   public void selectMgmtfeeList() {
 		   //String[] searchType = {"apartmentIdx"};
 		   Map<String, Object> commandMap = new HashedMap<String, Object>();
-		   commandMap.put("searchType", "apartmentIdx");
-		   commandMap.put("apartmentIdx", "100000");
+		   commandMap.put("searchType", "dueDate");
+		   commandMap.put("dueDate", "21/03/10");
 		   
 		   Paging paging = Paging.builder()
 					.currentPage(1)
@@ -104,10 +104,19 @@ public class MgmtfeeRepositoryTest {
 
 		   commandMap.put("paging", paging);
 		   
-		  // System.out.println(paging.toString());
-		   
+		   System.out.println(paging.toString());
 		   
 		   System.out.println(mgmtfeeRepository.selectMgmtfeeListTest(commandMap));
 	   }
-	   
+
+	   @Test
+	   public void selectGenerationByBuildingAndNum() {
+		   Generation generation = new Generation();
+		   generation.setApartmentIdx("100000");
+		   generation.setBuilding("101");
+		   generation.setNum("103");
+		   
+		   System.out.println(mgmtfeeRepository.selectGenerationByBuildingAndNum(generation));
+	   }
+
 }

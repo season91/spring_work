@@ -28,7 +28,7 @@
 	
 	</insert>
 	
-	<select id="selectMgmtfeeListTest" resultType="map">
+	<select id="selectMgmtfeeListTest" resultType="mgmtfee">
 		select * from (
 			select rownum rnum, b.* from (
 				select * from tb_mgmtfee m JOIN tb_generation g on (m.generation_idx = g.generation_idx) 
@@ -42,6 +42,12 @@
 						</when>
 						<when test="searchType == 'generationIdx'">
 							m.generation_idx = #{generationIdx} 
+						</when>
+						<when test="searchType == 'isPayment'">
+							m.apartment_idx = #{apartmentIdx} and m.is_payment = 0 
+						</when>
+						<when test="searchType == 'dueDate'">
+							m.due_date = #{dueDate}
 						</when>
 					</choose>
 				</where>
@@ -61,6 +67,12 @@
 				</when>
 				<when test="searchType == 'generationIdx'">
 					generation_idx = #{generationIdx}
+				</when>
+				<when test="searchType == 'isPayment'">
+					is_payment = 0
+				</when>
+				<when test="searchType == 'dueDate'">
+					due_date = #{dueDate}
 				</when>
 			</choose>
 		</where>

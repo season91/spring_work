@@ -150,19 +150,16 @@
                     <div class="col-lg-16 ml-auto mr-auto">
                       <div class="row">
                         <div class="col-md-3">
-                          <button class="btn btn-primary btn-block btn-nopayment">미납상태만 보기</button>
+                          <button class="btn btn-primary btn-block btn-nopayment" id="isPayment" onclick="isPayment()">미납상태만 보기</button>
                         </div>
                         <div class="col-md-3 dropdown">
-                          <button class="btn btn-primary btn-block" data-toggle="dropdown">고지월별 보기</button>
-                          <div class="dropdown-menu dropdown-menu-right" aria-labelledby="dropdownMenuLink">
-		                    <input type="month">
-		                  </div>
+                          <button class="btn btn-primary btn-block" id="search-button" data-toggle="modal" data-target="#mgmtfeeDueDateModal">고지 월별 보기</button>
                         </div>
                         <div class="col-md-3">
                           <button class="btn btn-primary btn-block" id="search-button" data-toggle="modal" data-target="#mgmtfeeNumberModal">관리비번호로 검색</button>
                         </div>
                         <div class="col-md-3">
-                          <button class="btn btn-primary btn-block" id="search-button" data-toggle="modal" data-target="#searchModal">세대정보로 검색</button>
+                          <button class="btn btn-primary btn-block" id="search-button" data-toggle="modal" data-target="#generationInfoModal">세대정보로 검색</button>
                         </div>
                          <div class="col-md-3">
                           <button class="btn btn-primary btn-block" id="mgmtfee-upload" data-toggle="modal" data-target="#mgmtfeeUploadrModal">관리비 업로드</button>
@@ -263,6 +260,29 @@
       </div>
     </div>
     
+    <div class="modal fade" id="mgmtfeeDueDateModal" tabindex="-1" role="dialog" aria-labelledby="mgmtfeeDueDateModalLabel" aria-hidden="true">
+       <div class="modal-dialog" role="document">
+         <div class="modal-content" style="background-image: linear-gradient(to bottom left, #344675, #263148, #344675); color:white;">
+           <div class="modal-header">
+           	<h4 class="modal-title" id="mgmtfeeDueDateModalLabel">납부일로 검색</h4>
+            	 <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                <i class="tim-icons icon-simple-remove"></i>
+              </button>
+           </div>
+           <div class="modal-body">
+        <form action="${context }/admin/mgmtfee">
+          <div class="form-group">
+           <input type="date" class="form-control mgmtfee-keyword" id="inlineFormInputGroup" name="keyword">
+          </div>
+          <div class="modal-footer">
+           <button type="submit" class="btn btn-primary">검색</button>
+           </div>
+        </form>
+      </div>
+         </div>
+       </div>
+     </div>
+     
     <div class="modal fade" id="mgmtfeeNumberModal" tabindex="-1" role="dialog" aria-labelledby="mgmtfeeNumberModalLabel" aria-hidden="true">
        <div class="modal-dialog" role="document">
          <div class="modal-content" style="background-image: linear-gradient(to bottom left, #344675, #263148, #344675); color:white;">
@@ -273,16 +293,38 @@
               </button>
            </div>
            <div class="modal-body">
-        <form action="${context }/admin/mgmtfee/search">
+        <form action="${context }/admin/mgmtfee">
           <div class="form-group">
            <input type="text" class="form-control mgmtfee-keyword" id="inlineFormInputGroup" name="keyword" placeholder="관리비번호로 검색하세요.">
           </div>
           <div class="modal-footer">
-           <button type="submit" class="btn btn-primary btn-search-vehicleNumber">검색</button>
+           <button type="submit" class="btn btn-primary">검색</button>
            </div>
         </form>
       </div>
-           
+         </div>
+       </div>
+     </div>
+     
+      <div class="modal fade" id="generationInfoModal" tabindex="-1" role="dialog" aria-labelledby="generationInfoModalLabel" aria-hidden="true">
+       <div class="modal-dialog" role="document">
+         <div class="modal-content" style="background-image: linear-gradient(to bottom left, #344675, #263148, #344675); color:white;">
+           <div class="modal-header">
+           	<h4 class="modal-title" id="generationInfoModalModalLabel">세대정보로 검색</h4>
+            	 <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                <i class="tim-icons icon-simple-remove"></i>
+              </button>
+           </div>
+           <div class="modal-body">
+        <form action="${context }/admin/mgmtfee">
+          <div class="form-group">
+           <input type="text" class="form-control mgmtfee-keyword" id="inlineFormInputGroup" name="keyword" placeholder="세대정보로 검색하세요.(예 : 101-101)">
+          </div>
+          <div class="modal-footer">
+           <button type="submit" class="btn btn-primary">검색</button>
+           </div>
+        </form>
+      </div>
          </div>
        </div>
      </div>
@@ -470,6 +512,9 @@
  	      location.href = '${context}' + "/admin/mgmtfeeformdownload";
  	   }
  	
+ 	function isPayment(){
+ 		location.href = '${context}' + "/admin/mgmtfee?keyword=nopayment";
+ 	}
 
     </script>
     <script>

@@ -40,10 +40,14 @@ public interface MgmtfeeRepository {
 	// 2. 페이징 화면 구현을 위한 list
 	List<Mgmtfee> selectMgmtfeeList(Map<String,Object> generationMap);
 	
-	// text
-	List<Mgmtfee> selectMgmtfeeListTest(Map<String,Object> commandMap);
+	// 3. 3번경우로 인한 동.호수로 세대정보가져오기
+	@Select("select * from tb_generation where apartment_idx = #{apartmentIdx} and building = #{building} and num = #{num}")
+	Generation selectGenerationByBuildingAndNum(Generation generation);
 	
-	int selectContentCntTest(Map<String,Object> commandMap);
+	// text
+	List<Mgmtfee> selectMgmtfeeListTest(Map<String,Object> searchMap);
+	
+	int selectContentCntTest(Map<String,Object> searchMap);
 	
 	// 3. 페이징에 세대정보 넣어야해서 세대번호기준 세대정보 가져온다. 관리비 상세조회에서 쓸 세대정보 조회
 	@Select("select * from tb_generation where generation_idx = #{generationIdx} and is_del = 0")

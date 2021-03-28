@@ -8,6 +8,7 @@ import java.nio.charset.Charset;
 import java.sql.Date;
 import java.util.ArrayList;
 import java.util.Arrays;
+import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
@@ -47,33 +48,50 @@ public class MgmtfeeController {
 	
 	// 페이징처리
 	@GetMapping("admin/mgmtfee")
-	public void adminMgmtfee(@RequestParam(defaultValue = "1") int page, Model model) {
+	public void adminMgmtfee(@RequestParam(defaultValue = "1") int page, @RequestParam(defaultValue = "apartmentIdx") String keyword, Model model) {
 		String apartmentIdx = "100000";
-		// 관리자의 아파트정보 기준으로 관리비 리스트 가져오기
-		// 페이징 처리 해주기
-		System.out.println(page);
-		model.addAllAttributes(mgmtfeeService.selectMgmtfeeList(page, apartmentIdx));
+		System.out.println(keyword.getClass());
+		// 페이징 처리 타입 3개
+		// 아파트정보는 어차피 로그인유저꺼로 가져오니깐 처리타입을 3개로나눠 맵에담아보내자, 뭐
+		// 1. 키워드없는 경우
+		// 2. 키워드가 관리비인경우
+		// 3. 키워드가 세대정보인경우
+		// 4. 키워드가 미납인경우 
+		Map<String, Object> searchMap = new HashMap<String, Object>();
 		
-		// 페이징처리해줄때 연체여부도 확인한다.
-	
-	};
-	
-	// 검색시 페이징처리
-	@GetMapping("admin/mgmtfee/search")
-	public String adminMgmtfee(@RequestParam(defaultValue = "1") int page, @RequestParam String keyword, Model model) {
-		System.out.println("search안오낭??");
-		System.out.println(keyword);
-		if(keyword.contains("동") && keyword.contains("호")) {
-			// 검색어에 동,호가 포함되었다면 세대정보로 검색한것
+		if(keyword.equals("apartmentIdx")) {
+			// 기본 페이징
+			searchMap.put("searchType", "apartmentIdx");
+			searchMap.put("apartmentIdx", apartmentIdx);
+		} else if(keyword.contains("-")){
+			// 세대정보로 조회 
+			// keyword로 세대정보 가져온다.
+			Generation generation = new Generation();
+			String[] generationInfo = keyword.split("-");
+			generation.setApartmentIdx(apartmentIdx);
+			generation.setBuilding(generationInfo[0]);
+			generation.setNum(generationInfo[1]);
+			System.out.println(generation);
+			String generationIdx = mgmtfeeService.selectGenerationByBuildingAndNum(generation).getGenerationIdx();
+			searchMap.put("searchType", "generationIdx");
+			searchMap.put("generationIdx", generationIdx);
+		} else if(keyword.contains("nopayment")) {
+			searchMap.put("searchType", "isPayment");
+			searchMap.put("apartmentIdx", apartmentIdx);
+		} else if(keyword.equals("")){
 			
 		} else {
-			// 아니라면 관리비번호로 검색한것
-			model.addAllAttributes(mgmtfeeService.selectMgmtfeeListByMgmtfeeIdx(page, keyword));
+			// 관리비번호로 조회 
+			searchMap.put("searchType", "mgmtfeeIdx");
+			searchMap.put("mgmtfeeIdx", keyword);
 		}
+		model.addAllAttributes(mgmtfeeService.selectMgmtfeeList(page, searchMap));
+		// 관리자의 아파트정보 기준으로 관리비 리스트 가져오기
+		// 페이징 처리 해주기
+		//System.out.println(mgmtfeeService.selectMgmtfeeList(page, apartmentIdx));
 		
-		
-		return "/admin/mgmtfee";
 	};
+	
 	
 	// 업로드된 엑셀파일 읽고 DB에 넣어주기. 비동기통신
 	@PostMapping(value="admin/mgmtfee/uploadimpl")

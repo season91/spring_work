@@ -219,7 +219,7 @@
 	                    <div class="col-md-3 pl-md-1">
 	                      <div class="form-group">
 	                        <label for="exampleInputEmail1">세대정보</label>
-	                        <input type="tel" class="form-control" placeholder="동호수" value="${generation.building}동 ${generation.num}호">
+	                        <input type="tel" class="form-control" readonly="readonly" placeholder="동호수" value="${generation.building}동 ${generation.num}호">
 	                      </div>
 	                    </div>
 	                  </div>
@@ -227,14 +227,14 @@
                 	 <div class="col-md-2 px-md-1">
                       <div class="form-group">
                         <label>관리비 번호</label>
-                        <input type="text" class="form-control" placeholder="Company" name="mgmtfeeIdx" value="${mgmtfee.mgmtfeeIdx }">
+                        <input type="text" class="form-control" readonly="readonly" placeholder="Company" name="mgmtfeeIdx" value="${mgmtfee.mgmtfeeIdx }">
                       </div>
                     </div>
                    
                     <div class="col-md-2 px-md-1">
                       <div class="form-group">
                         <label>세대 관리 번호</label>
-                        <input type="text" class="form-control" placeholder="Company" name="generationIdx" value="${mgmtfee.generationIdx }">
+                        <input type="text" class="form-control" readonly="readonly" placeholder="Company" name="generationIdx" value="${mgmtfee.generationIdx }">
                       </div>
                     </div>
                   	<div class="col-md-2 pr-md-1">
@@ -313,7 +313,7 @@
                     <div class="col-md-2 pr-md-1">
                       <div class="form-group">
                         <label>납기일</label>
-                        <input type="text" class="form-control" placeholder="Company" name="dueDate" value="${mgmtfee.dueDate }">
+                        <input type="text" class="form-control" readonly="readonly" placeholder="Company" name="dueDate" value="${mgmtfee.dueDate }">
                       </div>
                     </div>     
                     <div class="col-md-2 pr-md-1">

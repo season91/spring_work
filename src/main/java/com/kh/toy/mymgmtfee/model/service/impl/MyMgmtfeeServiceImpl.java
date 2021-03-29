@@ -1,5 +1,6 @@
 package com.kh.toy.mymgmtfee.model.service.impl;
 
+import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -7,6 +8,7 @@ import java.util.Map;
 import org.springframework.stereotype.Service;
 
 import com.kh.toy.mgmtfee.model.vo.Mgmtfee;
+import com.kh.toy.mgmtfee.model.vo.MgmtfeeOverdue;
 import com.kh.toy.mymgmtfee.model.repository.MyMgmtfeeRepository;
 import com.kh.toy.mymgmtfee.model.service.MyMgmtfeeService;
 
@@ -39,15 +41,21 @@ public class MyMgmtfeeServiceImpl implements MyMgmtfeeService{
 		System.out.println(paging.toString());
 		
 		Map<String, Object> commandMap = new HashMap<>();
-		Map<String, Object> generationMap = new HashMap<>();
-		generationMap.put("paging", paging);
-		generationMap.put("generationIdx", generationIdx);
-		
-		List<Mgmtfee> myMgmtfeeList = myMgmtfeeRepository.selectMyMgmtfeeList(generationMap);
-		
-		System.out.println("서비수"+myMgmtfeeList);
 		commandMap.put("paging", paging);
+		commandMap.put("generationIdx", generationIdx);
+		
+		//나의 관리비 리스트 넣어주기
+		List<Mgmtfee> myMgmtfeeList = myMgmtfeeRepository.selectMyMgmtfeeList(commandMap);
 		commandMap.put("myMgmtfeeList", myMgmtfeeList);
+		
+		// 나의 관리비리스트-연체료 정보 넣어주기.
+		List<MgmtfeeOverdue> myMgmtfeeOverdueList = new ArrayList<MgmtfeeOverdue>();
+		MgmtfeeOverdue mgmtfeeOverdue = new MgmtfeeOverdue();
+		for (int i = 0; i < myMgmtfeeList.size(); i++) {
+			mgmtfeeOverdue = myMgmtfeeRepository.selectMyMgmtfeeOverdue(myMgmtfeeList.get(i).getMgmtfeeIdx());
+			myMgmtfeeOverdueList.add(mgmtfeeOverdue);
+		}
+		commandMap.put("myMgmtfeeOverdueList", myMgmtfeeOverdueList);
 
 		return commandMap;
 	}
@@ -63,6 +71,12 @@ public class MyMgmtfeeServiceImpl implements MyMgmtfeeService{
 		// TODO Auto-generated method stub
 		return myMgmtfeeRepository.selectMyMgmtfeeDate(mgmtfeeIdx);
 	}
-	
 
+	@Override
+	public MgmtfeeOverdue selectMyMgmtfeeOverdue(String mgmtfeeIdx) {
+		// TODO Auto-generated method stub
+		return myMgmtfeeRepository.selectMyMgmtfeeOverdue(mgmtfeeIdx);
+	}
+
+	
 }

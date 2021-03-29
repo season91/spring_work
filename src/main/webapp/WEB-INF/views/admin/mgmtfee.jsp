@@ -168,6 +168,9 @@
                          <div class="col-md-3">
                           <button class="btn btn-primary btn-block" id="mgmtfee-upload" data-toggle="modal" data-target="#mgmtfeeUploadrModal">관리비 업로드</button>
                         </div>
+                         <div class="col-md-3">
+                         <button class="btn btn-primary btn-block mgmtfeeDelete" data-toggle="modal" data-target="#mgmtfeeDeleteModal" >관리비 삭제</button>
+                        </div>
                       </div>
                     </div>
                   </div>
@@ -178,6 +181,16 @@
                 <div class="table-responsive">
                   <table class="table tablesorter " id="">
                     <thead class=" text-primary">
+                      <th>
+                        <div class="form-check checkAll" id="checkAll">
+                            <label class="form-check-label">
+                              <input class="form-check-input allmgmtfee" type="checkbox" value="">
+                              <span class="form-check-sign">
+                                <span class="check"></span>
+                              </span>
+                            </label>
+                          </div>
+                      </th>
                       <th>관리비번호</th>
                       <th>세대정보</th>
                       <th>관리비 고지월 </th>
@@ -189,7 +202,17 @@
                   
                     <c:forEach items="${mgmtfeeList}" var="mgmtfee" varStatus="status">
                      <tr>
-                        <td><a href="/mypage/mymgmtfeedetail?mgmtfeeidx=${mgmtfee.mgmtfeeIdx }"> ${mgmtfee.mgmtfeeIdx}</a> </td>
+                       <td>
+                          <div class="form-check">
+                            <label class="form-check-label">
+                              <input class="form-check-input mgmtfee" type="checkbox" value="" name="mgmtfee">
+                              <span class="form-check-sign">
+                                <span class="check"></span>
+                              </span>
+                            </label>
+                          </div>
+                        </td>
+                        <td><a class="mgmtfeeIdx" href="/mypage/mymgmtfeedetail?mgmtfeeidx=${mgmtfee.mgmtfeeIdx }"> ${mgmtfee.mgmtfeeIdx}</a> </td>
                         <td> ${generationList[status.index].building }동 ${generationList[status.index].num}호</td>
                         <td> ${mgmtfee.dueDate } </td>
                         <td><fmt:formatNumber type="number" maxFractionDigits="3" value="${mgmtfee.periodPayment}"/> </td>
@@ -360,6 +383,29 @@
          </div>
        </div>
      </div>
+     
+     <!-- 차량 삭제 모달 -->
+	<div class="modal fade" id="mgmtfeeDeleteModal" tabindex="-1" role="dialog" aria-labelledby="mgmtfeeDeleteModalLabel" aria-hidden="true">
+	  <div class="modal-dialog">
+	    <div class="modal-content" style="background-image: linear-gradient(to bottom left, #344675, #263148, #344675); color:white;">
+	      <div class="modal-header">
+	       	<h4 class="modal-title" id="mgmtfeeDeleteModalLabel">차량 삭제</h4>
+	        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+	      </div>
+	      <div class="modal-body">
+	        <form>
+	          <div class="form-group">
+	            <label for="recipient-name" class="control-label">총 <span id="result"></span> 건을 정말 삭제하시겠습니까?</label>
+	          </div>
+	        </form>
+	      </div>
+	      <div class="modal-footer">
+	        <button type="button" class="btn btn-default" data-dismiss="modal">취소하기</button>
+	        <button type="button" class="btn btn-primary btn-delete-mgmtfee" data-dismiss="modal">삭제하기</button>
+	      </div>
+	    </div>
+	  </div>
+	</div>
   
     <!--   Core JS Files   -->
     <script src="../../../resources/js/admin/mgmtfee.js"></script>

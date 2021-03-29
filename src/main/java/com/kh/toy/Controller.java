@@ -20,11 +20,6 @@ public class Controller {
 	@GetMapping("myapt/parking")
 	public void parking() {};
 	
-	@GetMapping("mypage/mgmtfee")
-	public void mgmtfee() {};
-	
-	@GetMapping("mypage/mgmtfeedetail")
-	public void mgmtfeedetail() {};
 	
 	@GetMapping("mypage/myvehicle")
 	public void myvehicle() {};

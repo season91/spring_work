@@ -46,7 +46,7 @@
     	<div class="container">
     		<div class="row justify-content-center mb-5">
           <div class="col-md-7 text-center heading-section ftco-animate">
-            <h2 class="mb-4">103동 906호 관리비 내역</h2>
+            <h2 class="mb-4">${generation.building }동 ${generation.num }호 관리비 내역</h2>
             <p>월별 관리비 고지 현황입니다.</p>
             <p>미납시 고지월 납부상태를 통해 결제페이지로 이동하실 수 있습니다.</p>
             <p>상세내역은 고지월을 통해 조회하실 수 있습니다.</p>
@@ -62,7 +62,7 @@
 						        <th>납부상태</th>
 						        <th>납부금액</th>
 						        <th>연체금액</th>
-						        <th>납부일</th>
+						        <th>납부일(임시)</th>
 						      </tr>
 						    </thead>
 						    <tbody>
@@ -77,9 +77,16 @@
 		                        		<td>완료</td>
 		                        	</c:otherwise>
 		                        </c:choose>
-						        <td>${mymgmtfee.periodPayment }</td>
-						        <td>연체금액</td>
-						        <td>납부일자</td>
+						        <td><fmt:formatNumber type="number" maxFractionDigits="3" value="${mymgmtfee.periodPayment }"/> </td>
+						        <c:choose>
+						        	<c:when test="${myMgmtfeeOverdueList[status.index].overdueFee eq null}">
+						        		<td>0</td>
+						        	</c:when>
+						        	<c:otherwise>
+						        		<td><fmt:formatNumber type="number" maxFractionDigits="3" value="${myMgmtfeeOverdueList[status.index].overdueFee }"/></td>
+						        	</c:otherwise>
+						        </c:choose>
+						         <td>${mymgmtfee.dueDate}</td>
 						      </tr>
 						    </c:forEach>
 						    </tbody>

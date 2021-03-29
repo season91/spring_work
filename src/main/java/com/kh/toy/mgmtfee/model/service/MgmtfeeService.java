@@ -38,4 +38,5 @@ public interface MgmtfeeService {
 	void procedureMgmtOverDue();
 	
 	int updateMgmtfeeIsDel(String mgmtfeeIdx);
+
 }

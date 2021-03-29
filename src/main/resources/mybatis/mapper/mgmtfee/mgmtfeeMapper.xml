@@ -86,7 +86,7 @@
 		update tb_mgmtfee 
 		set GNRL_MGMT_FEE=#{gnrlMgmtFee}, CLEAN_FEE = #{cleanFee}, ELVTR_MNFEE = #{elvtrMnfee}, GEN_ELCTR = #{genElctr}, 
 		COMON_ELCTR = #{comonElctr}, GEN_WATER =  #{genWater}, SEWER = #{sewer}, EXPENSES = #{expenses}, GEN_REDUCTION = #{genReduction}, 
-		DUE_DATE = #{dueDate}, MGMT_START_DATE = #{mgmtStartDate}, MGMT_END_DATE =  #{mgmtEndDate},
+		MGMT_START_DATE = #{mgmtStartDate}, MGMT_END_DATE =  #{mgmtEndDate},
 		MGMT_WRITE_DATE =  #{mgmtWriteDate}, is_payment = #{isPayment} 
 		where MGMTFEE_IDX = #{mgmtfeeIdx} and GENERATION_IDX = #{generationIdx} and is_del = 0
 	</update>

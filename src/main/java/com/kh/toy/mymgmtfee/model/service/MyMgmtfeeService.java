@@ -4,6 +4,7 @@ import java.util.List;
 import java.util.Map;
 
 import com.kh.toy.mgmtfee.model.vo.Mgmtfee;
+import com.kh.toy.mgmtfee.model.vo.MgmtfeeOverdue;
 
 public interface MyMgmtfeeService {
 	
@@ -14,4 +15,6 @@ public interface MyMgmtfeeService {
 	Mgmtfee selectMyMgmtfeeByMgmtfeeIdx(String mgmtfeeIdx);
 	
 	Map<String,Object> selectMyMgmtfeeDate(String mgmtfeeIdx);
+	
+	MgmtfeeOverdue selectMyMgmtfeeOverdue(String mgmtfeeIdx);
 }

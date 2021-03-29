@@ -112,7 +112,7 @@ public class MgmtfeeController {
 	// 업로드된 엑셀파일 읽고 DB에 넣어주기. 비동기통신
 	@PostMapping(value="admin/mgmtfee/uploadimpl")
 	@ResponseBody
-	public String mgmtUpload(@RequestParam MultipartFile file, Model model) {
+	public String mgmtUpload(@RequestParam MultipartFile file) {
 		Map<String, Object> commandMap = mgmtfeeService.mgmtfeeRead(file);
 		// 업로드할때 관리자의 아파트번호의 아파트세대에게 관리비를 보내야한다.
 		

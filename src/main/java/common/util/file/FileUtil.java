@@ -149,8 +149,7 @@ public class FileUtil {
 		}
 		return file;
 	}
-	
-	
+
 	// 파일 삭제
 	public void deleteFile(String path, String renameFileName) {
 		// 기초 저장경로 + 날짜 저장경로 + 파일이름

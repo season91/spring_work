@@ -19,20 +19,13 @@ public class Controller {
 	
 	@GetMapping("myapt/parking")
 	public void parking() {};
-	
-	
-	@GetMapping("mypage/myvehicle")
-	public void myvehicle() {};
-	
+
 	@GetMapping("work/mgmtfee")
 	public void adminMgmtfee() {};
 	
 	@GetMapping("work/mgmtfeeupload")
 	public void adminMgmtfeeUpload() {};
-	
-	@GetMapping("work/vehicle")
-	public void adminVehicle() {};
-	
+
 	@GetMapping("work/uploadtest")
 	public void testUpload() {};
 	

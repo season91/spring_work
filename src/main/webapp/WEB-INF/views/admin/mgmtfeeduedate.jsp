@@ -178,6 +178,16 @@
                 <div class="table-responsive">
                   <table class="table tablesorter " id="">
                     <thead class=" text-primary">
+                     <th>
+                     <div class="form-check checkAll" id="checkAll">
+                         <label class="form-check-label">
+                           <input class="form-check-input allmgmtfee" type="checkbox" value="">
+                           <span class="form-check-sign">
+                             <span class="check"></span>
+                           </span>
+                         </label>
+                       </div>
+                   	</th>
                       <th>관리비번호</th>
                       <th>세대정보</th>
                       <th>관리비 고지월 </th>
@@ -189,6 +199,16 @@
                   
                     <c:forEach items="${mgmtfeeList}" var="mgmtfee" varStatus="status">
                      <tr>
+                   	  <td>
+                         <div class="form-check">
+                           <label class="form-check-label">
+                             <input class="form-check-input mgmtfee" type="checkbox" value="" name="mgmtfee">
+                             <span class="form-check-sign">
+                               <span class="check"></span>
+                             </span>
+                           </label>
+                         </div>
+                       </td>
                         <td><a href="/mypage/mymgmtfeedetail?mgmtfeeidx=${mgmtfee.mgmtfeeIdx }"> ${mgmtfee.mgmtfeeIdx}</a> </td>
                         <td> ${generationList[status.index].building }동 ${generationList[status.index].num}호</td>
                         <td> ${mgmtfee.dueDate } </td>
@@ -216,6 +236,11 @@
 	              <ul>
 	                <li><a href="/admin/${paging.type }?standard=dueDate&keyword=${keyword}">&lt;&lt;</a></li>
 	                <li><a href="/admin/${paging.type }?page=${paging.prev}&standard=dueDate&keyword=${keyword}">&lt;</a></li>
+              	  <c:choose>
+                	<c:when test="${paging.lastPage eq 0 }">
+                		<li><a href="/admin/${paging.type }"><span>1</span></a></li>
+                	</c:when>
+                	<c:otherwise>
 	                 <c:forEach begin="${paging.blockStart}" end="${paging.blockEnd}" var="page">
                       <c:choose>
                          <c:when test="${paging.currentPage eq page}">
@@ -226,6 +251,8 @@
                          </c:otherwise>
                       </c:choose>
                  	 </c:forEach> 
+                 	 </c:otherwise>
+	                </c:choose>
 	                <li><a href="/admin/${paging.type }?page=${paging.next}&standard=dueDate&keyword=${keyword}">&gt;</a></li>
 	                <li><a href="/admin/${paging.type }?page=${paging.lastPage }&standard=dueDate&keyword=${keyword}">&gt;&gt;</a></li>
 	              </ul>

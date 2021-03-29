@@ -33,11 +33,7 @@
 		console.dir(checkboxes.length);
    	 	document.getElementById('result').innerText = checkboxes.length;
 	});
-    
-	/* 등록모달청에서 등록하기*/
-	document.querySelector('.btn-add-vehicle').addEventListener('click',()=>{
-		console.dir('여기오나?');
-	});
+
 	
 	/* 수정모달청에서 수정하기*/
 	document.querySelector('.vehicleModify').addEventListener('click',()=>{

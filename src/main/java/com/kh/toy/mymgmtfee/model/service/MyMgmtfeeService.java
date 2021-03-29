@@ -7,7 +7,7 @@ import com.kh.toy.mgmtfee.model.vo.Mgmtfee;
 import com.kh.toy.mgmtfee.model.vo.MgmtfeeOverdue;
 
 public interface MyMgmtfeeService {
-	
+	//안쓰는거같은데
 	Mgmtfee selectMgmtfeeByGenerationIdx(String generationIdx);
 	
 	Map<String, Object> selectMyMgmtfeeList(int currentPage, String generationIdx);

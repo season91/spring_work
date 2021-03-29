@@ -17,6 +17,8 @@ public enum ErrorCode {
 	UMGMT02("관리비 삭제 중 에러가 발생했습니다","/admin/mgmtfee"),
 	SMGMT01("관리비 내역 조회중 에러가 발생했습니다.","/admin/mgmtfee"),
 	SMGMT02("이미 등록된 고지월입니다. 다시 확인해주세요","/admin/mgmtfee"),
+	IQR01("QR코드 생성중 에러가 발생하였습니다.","/admin/vehicle"),
+	IQR02("2건 다 등록된 세대입니다.","/admin/vehicle"),
 	CD_404("존재하지 않는 경로입니다.");
 	
 	//result.jsp를 사용해 띄울 안내문구 

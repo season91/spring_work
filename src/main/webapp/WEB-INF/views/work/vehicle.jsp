@@ -230,12 +230,10 @@
                   </div>
                 </div>
           </div>
-              
               <div class="card-body">
                 <div class="table-responsive">
                   <table class="table tablesorter " id="">
                     <thead class=" text-primary">
-                    
                       <th>
                         <div class="form-check checkAll" id="checkAll">
                             <label class="form-check-label">
@@ -246,22 +244,14 @@
                             </label>
                           </div>
                       </th>
-                       <th>
-                        관리번호
-                      </th>
-                      <th>
-                        세대정보
-                      </th>
-                      <th>
-                        등록 여부
-                      </th>
-                      <th class="text-center">
-                        등록 차량 대수
-                      </th>
+                       <th>관리번호</th>
+                      <th>세대정보</th>
+                      <th class="text-center">등록 차량 대수</th>
                     </thead>
                     <tbody>
-                      <tr>
-                      	<td>
+                     <c:forEach items="${vehicleList}" var="vehicle" varStatus="status">
+                     <tr>
+                       <td>
                           <div class="form-check">
                             <label class="form-check-label">
                               <input class="form-check-input vehicle" type="checkbox" value="" name="vehicle">
@@ -271,155 +261,11 @@
                             </label>
                           </div>
                         </td>
-                        <td id="vehicle-idx">C100000</td>
-                        <td id="gene-idx">103동 906호</td>
-                        <td>등록</td>
-                        <td class="text-center">2대</td>
-                      </tr>
-                      <tr>
-                     	 <td>
-                          <div class="form-check">
-                            <label class="form-check-label">
-                              <input class="form-check-input vehicle" type="checkbox" value="" name="vehicle">
-                              <span class="form-check-sign">
-                                <span class="check"></span>
-                              </span>
-                            </label>
-                          </div>
-                        </td>
-                        <td>
-                          C100001
-                        </td>
-                        <td>
-                          103동 905호
-                        </td>
-                        <td>
-                          미등록
-                        </td>
-                        <td class="text-center">
-                          -
-                        </td>
-                      </tr>
-                      <tr>
-                      	<td>
-                          <div class="form-check">
-                            <label class="form-check-label">
-                              <input class="form-check-input vehicle" type="checkbox" value="" name="vehicle">
-                              <span class="form-check-sign">
-                                <span class="check"></span>
-                              </span>
-                            </label>
-                          </div>
-                        </td>
-                         <td>
-                          C100002
-                        </td>
-                        <td>
-                          103동 904호
-                        </td>
-                        <td>
-                          등록
-                        </td>
-                        <td class="text-center">
-                          1대
-                        </td>
-                      </tr>
-                      <tr>
-                      	<td>
-                          <div class="form-check">
-                            <label class="form-check-label">
-                              <input class="form-check-input vehicle" type="checkbox" value=""name="vehicle">
-                              <span class="form-check-sign">
-                                <span class="check"></span>
-                              </span>
-                            </label>
-                          </div>
-                        </td>
-                         <td>
-                          C100003
-                        </td>
-                        <td>
-                          103동 905호
-                        </td>
-                        <td>
-                          등록
-                        </td>
-                        <td class="text-center">
-                          1대
-                        </td>
-                      </tr>
-                      <tr>
-                      	<td>
-                          <div class="form-check">
-                            <label class="form-check-label">
-                              <input class="form-check-input vehicle" type="checkbox" value="" name="vehicle">
-                              <span class="form-check-sign">
-                                <span class="check"></span>
-                              </span>
-                            </label>
-                          </div>
-                        </td>
-                         <td>
-                          C100004
-                        </td>
-                        <td>
-                          103동 903호
-                        </td>
-                        <td>
-                          등록
-                        </td>
-                        <td class="text-center">
-                          1대
-                        </td>
-                      </tr>
-                      <tr>
-                      	<td>
-                          <div class="form-check">
-                            <label class="form-check-label">
-                              <input class="form-check-input vehicle" type="checkbox" value="" name="vehicle">
-                              <span class="form-check-sign">
-                                <span class="check"></span>
-                              </span>
-                            </label>
-                          </div>
-                        </td>
-                         <td>
-                          C100005
-                        </td>
-                        <td>
-                          103동 902호
-                        </td>
-                        <td>
-                          미등록
-                        </td>
-                        <td class="text-center">
-                          -
-                        </td>
-                      </tr>
-                      <tr>
-                      	<td>
-                          <div class="form-check">
-                            <label class="form-check-label">
-                              <input class="form-check-input vehicle" type="checkbox" value="" name="vehicle">
-                              <span class="form-check-sign">
-                                <span class="check"></span>
-                              </span>
-                            </label>
-                          </div>
-                        </td>
-                         <td>
-                          C100006
-                        </td>
-                        <td>
-                          103동 901호
-                        </td>
-                        <td>
-                          미등록
-                        </td>
-                        <td class="text-center">
-                          -
-                        </td>
-                      </tr>
+                        <td> ${vehicle.vehicleIdx} </td>
+                        <td> ${generationList[status.index].building }동 ${generationList[status.index].num}호</td>
+                        <td> 등록차량대수,,??</td>
+                       </tr>
+                    </c:forEach>
                     </tbody>
                   </table>
                 </div>
@@ -430,13 +276,20 @@
 	          <div class="col text-center">
 	            <div class="block-27">
 	              <ul>
-	                <li><a href="#">&lt;</a></li>
-	                <li class="active"><span>1</span></li>
-	                <li><a href="#">2</a></li>
-	                <li><a href="#">3</a></li>
-	                <li><a href="#">4</a></li>
-	                <li><a href="#">5</a></li>
-	                <li><a href="#">&gt;</a></li>
+	                <li><a href="/admin/${paging.type }">&lt;&lt;</a></li>
+	                <li><a href="/admin/${paging.type }?page=${paging.prev}">&lt;</a></li>
+	                 <c:forEach begin="${paging.blockStart}" end="${paging.blockEnd}" var="page">
+                      <c:choose>
+                         <c:when test="${paging.currentPage eq page}">
+                            <li class="active"><a href="/admin/${paging.type }?page=${page}">${page}</a></li>
+                         </c:when>
+                         <c:otherwise>
+                            <li><a href="/admin/${paging.type }?page=${page}">${page}</a></li>
+                         </c:otherwise>
+                      </c:choose>
+                 	 </c:forEach> 
+	                <li><a href="/admin/${paging.type }?page=${paging.next}">&gt;</a></li>
+	                <li><a href="/admin/${paging.type }?page=${paging.lastPage }">&gt;&gt;</a></li>
 	              </ul>
 	            </div>
 	          </div>
@@ -531,24 +384,24 @@
 	        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
 	      </div>
 	      <div class="modal-body">
-	        <form>
+	        <form action="${context }/admin/vehicleadd">
 	          <div class="form-group">
 	            <label for="recipient-name" class="control-label">세대 정보(동)</label>
-	            <input type="text" class="form-control" id="add-generation-bulding">
+	            <input type="text" class="form-control" id="add-generation-bulding" name="bulding">
 	          </div>
 	          <div class="form-group">
 	            <label for="recipient-name" class="control-label">세대 정보(호수)</label>
-	            <input type="text" class="form-control" id="add-generation-number">
+	            <input type="text" class="form-control" id="add-generation-number" name="num">
 	          </div>
 	          <div class="form-group">
 	            <label for="recipient-name" class="control-label">차량 번호</label>
-	            <input type="text" class="form-control" id="add-vehicle-number">
+	            <input type="text" class="form-control" id="add-vehicle-number" name="vehicleNumber">
 	          </div>
+	          <div class="modal-footer">
+		        <button type="button" class="btn btn-default" data-dismiss="modal">취소하기</button>
+		        <button type="submit" class="btn btn-primary" data-dismiss="modal">등록하기</button>
+		      </div>
 	        </form>
-	      </div>
-	      <div class="modal-footer">
-	        <button type="button" class="btn btn-default" data-dismiss="modal">취소하기</button>
-	        <button type="button" class="btn btn-primary btn-add-vehicle" data-dismiss="modal">등록하기</button>
 	      </div>
 	    </div>
 	  </div>
@@ -622,6 +475,7 @@
             <div class="modal-body">
 	        <form>
 	          <div class="form-group">
+	          <input type="hidden" name="standard" value="vehicleNumber">
 	           <input type="text" class="form-control vehicle-keyword" id="inlineFormInputGroup" placeholder="차량번호로 검색">
 	          </div>
 	        </form>
@@ -647,6 +501,7 @@
             <div class="modal-body">
 	        <form>
 	          <div class="form-group">
+	          <input type="hidden" name="standard" value="generationInfo">
 	           <input type="text" class="form-control generation-ketword" id="inlineFormInputGroup" placeholder="세대정보로 검색 (103-906)">
 	          </div>
 	        </form>
@@ -662,7 +517,7 @@
       
     
     <!--   Core JS Files   -->
-    <script src="../../../resources/js/admin/vehicle.js"></script>
+    <script src="../../../resources/js/admi/vehicle.js"></script>
     <script src="../../../resources/js/admin/core/jquery.min.js"></script>
     <script src="../../../resources/js/admin/core/popper.min.js"></script>
     <script src="../../../resources/js/admin/core/bootstrap.min.js"></script>

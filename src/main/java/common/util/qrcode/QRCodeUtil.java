@@ -17,9 +17,9 @@ public class QRCodeUtil {
 		
 		// url링크를 일단 mypage/myvehicle로 보내보자
 		QRCodeWriter writer = new QRCodeWriter();
-		
+		System.out.println("qr제목"+title);
 		try {
-			BitMatrix bm = writer.encode(url, BarcodeFormat.QR_CODE, 200, 200);
+			BitMatrix bm = writer.encode(url, BarcodeFormat.QR_CODE, 300, 300);
 			// ck에디터 경로에 저장한다.
 			String filePath = "C:\\CODE\\06_Spring\\.metadata\\.plugins\\org.eclipse.wst.server.core\\tmp2\\wtpwebapps\\Spring_abooTest\\resources\\vehicle\\";
 			File path = new File(filePath);

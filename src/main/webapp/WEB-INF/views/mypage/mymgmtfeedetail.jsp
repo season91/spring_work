@@ -31,7 +31,6 @@
         <div class="overlay"></div>
         <div class="container-fluid">
           <div class="row slider-text align-items-center justify-content-center" data-scrollax-parent="true">
-
             <div class="col-md-8 mt-5 text-center col-sm-12 ftco-animate" data-scrollax=" properties: { translateY: '70%' }">
               <p class="breadcrumbs" data-scrollax="properties: { translateY: '30%', opacity: 1.6 }"><span class="mr-2"><a href="index.html">Home</a></span> <span>마이페이지</span></p>
 	            <h1 class="mb-3 bread" data-scrollax="properties: { translateY: '30%', opacity: 1.6 }">관리비 상세 내역</h1>
@@ -58,10 +57,10 @@
 	            		<span class="price"><span class="number"><strong>관리비 고지서</strong></span></span>
 	            		<c:choose>
 	            			<c:when test="${mgmtfeeOverdue != null }">
-	            				<span class="price"><span class="number period-payment"><fmt:formatNumber type="number" maxFractionDigits="3" value="${mgmtfee.periodPayment + mgmtfeeOverdue.overdueFee}"/> </span></span>
+	            				<span class="price"><span class="number total-payment"><fmt:formatNumber type="number" maxFractionDigits="3" value="${mgmtfee.periodPayment + mgmtfeeOverdue.overdueFee}"/> </span></span>
 	            			</c:when>
 	            			<c:otherwise>
-	            				<span class="price"><span class="number period-payment"><fmt:formatNumber type="number" maxFractionDigits="3" value="${mgmtfee.periodPayment}"/></span></span>
+	            				<span class="price"><span class="number total-payment"><fmt:formatNumber type="number" maxFractionDigits="3" value="${mgmtfee.periodPayment}"/></span></span>
 	            			</c:otherwise>
 	            		</c:choose>
 			            <span class="excerpt d-block"><strong>관리비 작성일 </strong> ${mgmtfee.mgmtWriteDate }</span>
@@ -278,11 +277,10 @@
   <script type="text/javascript">
   
   	function payment() {
-		let test = $('.period-payment');
-		let test2 = $('.overdue-fee');
+		let test = $('.total-payment'); 
 		console.dir(test);
-		console.dir(test2);
 	}
+  	
   </script>
     
 </body>

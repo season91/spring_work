@@ -150,8 +150,9 @@
                       <div class="row">
                         <div class="col-md-3">
                         <form action="${context }/admin/mgmtfee">
+                        	<input type="hidden" name="standard" value="isPayment">
                           <button type="submit" class="btn btn-primary btn-block btn-nopayment" id="isPayment">미납상태만 보기
-                          <input type="hidden" name="standard" value="isPayment">
+                          
                           </button>
                           </form>
                         </div>
@@ -369,7 +370,7 @@
               </button>
            </div>
            <div class="modal-body">
-        <form action="/work/mgmtfeeuploadimpl" id="form-mgmtfee" method="post" enctype="multipart/form-data">
+        <form>
           <div class="">
            <input type="file" name="file" class="form-control col-xs-2 " id="inlineFormInputGroup" value="파일을 업로드 하세요">
           </div>

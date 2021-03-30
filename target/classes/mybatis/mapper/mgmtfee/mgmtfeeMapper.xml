@@ -13,8 +13,6 @@
 		#{dueDate}, #{mgmtStartDate}, #{mgmtEndDate}, #{mgmtWriteDate})
 	</insert>
 
-	
-	
 	<select id="selectMgmtfeeListByMgmtfeeIdx" resultType="mgmtfee">
 		select * from (
 			select rownum rnum, b.* from (

@@ -384,7 +384,7 @@
 	        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
 	      </div>
 	      <div class="modal-body">
-	        <form action="${context }/admin/vehicleadd">
+	        <form action="${context }/admin/vehicleadd" method="post">
 	          <div class="form-group">
 	            <label for="recipient-name" class="control-label">세대 정보(동)</label>
 	            <input type="text" class="form-control" id="add-generation-bulding" name="bulding">
@@ -398,10 +398,11 @@
 	            <input type="text" class="form-control" id="add-vehicle-number" name="vehicleNumber">
 	          </div>
 	          <div class="modal-footer">
-		        <button type="button" class="btn btn-default" data-dismiss="modal">취소하기</button>
 		        <button type="submit" class="btn btn-primary" data-dismiss="modal">등록하기</button>
-		      </div>
+		        <button type="button" class="btn btn-default" data-dismiss="modal">취소하기</button>
+	        </div>
 	        </form>
+	       
 	      </div>
 	    </div>
 	  </div>

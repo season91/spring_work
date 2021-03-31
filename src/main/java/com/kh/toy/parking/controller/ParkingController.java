@@ -31,8 +31,8 @@ public class ParkingController {
 	}
 	
 	// 차량신청
-	@GetMapping("/myapt/carapplication")
-	public void carApplication(Model model){
+	@GetMapping("/myapt/parking/application")
+	public String carApplication(Model model){
 		String generationIdx= "100296";
 		// 신청한 내역이 있는지 확인한다.
 		System.out.println("왜못오는겨?");
@@ -41,10 +41,10 @@ public class ParkingController {
 		if(carApplicationCheck != null && carApplicationCheck.size() > 0) {
 			model.addAttribute("carApplicationList",carApplicationCheck);
 		}
-		
+		return "myapt/carapplication";
 	}
 
-	@GetMapping("/myapt/carapplicationimpl")
+	@GetMapping("/myapt/parking/applicationimpl")
 	public String carApplicationImpl(@RequestParam String aplctCarNumber, Model model){
 		String generationIdx= "100296";
 		CarApplication carApplication = new CarApplication();
@@ -63,7 +63,7 @@ public class ParkingController {
 			model.addAttribute("alertMsg", "차량 등록 신청이 실패하였습니다. 관리인에게 문의해주세요.");
 		}
 
-		model.addAttribute("url", "/myapt/carapplication");
+		model.addAttribute("url", "/myapt/parking/application");
 		return "common/result";
 	}
 }

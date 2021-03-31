@@ -56,7 +56,7 @@
     		<div class="row">
 	          	<div class="col-md-12 nav-link-wrap mb-5 pb-md-5 pb-sm-1 ftco-animate">
 		            <div class="nav ftco-animate nav-pills justify-content-center text-center" id="v-pills-tab" role="tablist" aria-orientation="vertical">
-		              <a class="nav-link active" id="v-pills-nextgen-tab"  href="${context }/myapt/carapplication" >차량 등록 신청</a>
+		              <a class="nav-link active" id="v-pills-nextgen-tab"  href="${context }/myapt/parking/application" >차량 등록 신청</a>
 		              <a class="nav-link" id="v-pills-performance-tab" data-toggle="pill" href="#v-pills-performance" role="tab" aria-controls="v-pills-performance" aria-selected="false">관리자 문의</a>
 		              <a class="nav-link" id="v-pills-effect-tab" data-toggle="pill" href="#v-pills-effect" role="tab" aria-controls="v-pills-effect" aria-selected="false">내 등록 차량</a>
 		            </div>

@@ -147,7 +147,7 @@
           <div class="col-md-12">
             <div class="card ">
               <div class="card-header">
-                <h3 class="title">차량 권한 등록</h3>
+                <h3 class="title">차량 등록 신청 확인</h3>
               </div>
               
               <div class="col-md-12">
@@ -155,7 +155,7 @@
                   <div class="row col-md-12">
                     <div class="col-md-6 ml-auto mr-auto text-center">
                       <h4 class="card-title">
-                       	세대정보 검색
+                       	차량 등록 신청 검색
                         <p class="category">조회 조건을 선택하세요.</p>
                       </h4>
                     </div>
@@ -163,22 +163,19 @@
                   <div class="row ">
                     <div class="col-lg-12 ml-auto mr-auto">
                       <div class="row">
-                        <div class="col-md-4">
-                          <button type="button" class="btn btn-primary btn-block carAdd" data-toggle="modal" data-target="#addcarModal" >차량 등록</button>
+                        <div class="col-md-3">
+                         <form action="${context }/admin/car/application">
+                           <input type="hidden" name="standard" value="wait">
+                           <button type="submit" class="btn btn-success btn-block waitCnt" data-toggle="modal" >대기 상태만 보기</button>
+                         </form>
                         </div>
-                        <div class="col-md-4">
+                        <div class="col-md-3">
                          <button type="button" class="btn btn-success btn-block approvalCnt" data-toggle="modal" data-target="#approvalcarModal">차량 등록 신청 승인</button>
                         </div>
-                         <div class="col-md-4">
-                         <button type="button" class="btn btn-primary btn-block rejectCnt" data-toggle="modal" data-target="#rejectcarModal">차량 등록 신청 반려</button>
+                         <div class="col-md-">
+                         <button type="button" class="btn btn-success btn-block rejectCnt" data-toggle="modal" data-target="#rejectcarModal">차량 등록 신청 반려</button>
                         </div>
-                         <div class="col-md-4">
-                         <button type="button" class="btn btn-primary btn-block" data-toggle="modal" data-target="#carNumberModal">차량번호로 검색</button>
-                        </div>
-                        <div class="col-md-4">
-                          <button type="button" class="btn btn-primary btn-block" data-toggle="modal" data-target="#geneIdxModal" >세대정보로 검색</button>
-                        </div>
-                         <div class="col-md-4">
+                         <div class="col-md-3">
                          <form action="${context }/admin/car">
                           <button type="submit" class="btn btn-success btn-block" data-toggle="modal">차량 등록 현황 보기</button>
                          </form>

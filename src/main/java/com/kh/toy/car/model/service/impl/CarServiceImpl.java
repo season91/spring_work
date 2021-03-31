@@ -44,13 +44,15 @@ public class CarServiceImpl implements CarService{
 	}
 
 	@Override
-	public String insertAndQRWrite(String generationIdx, Car car) {
+	public String insertAndQRWrite(Car car) {
 		// QR코드 생성한 후 baseURL 경로에 저장한다.
 		// 1. DB에 저장한다 (시퀀스번호때문에 어쩔수없다.)
-		int resCnt = carRepository.selectCarCnt(generationIdx);
+		int resCnt = carRepository.selectCarCnt(car.getGenerationIdx());
 		// 2건이상 등록된 세대라면 등록하지 않는다. 차량번호가 중복되면 등록하지 않는다.
 		Car vehicleCheck = carRepository.selectCarByGenerationIdxAndCarNumber(car);
 		System.out.println("등록건수" + resCnt);
+		System.out.println(resCnt < 2 );
+		System.out.println(vehicleCheck == null);
 		int insertRes = 0;
 		if(resCnt < 2 && vehicleCheck == null) {
 			insertRes = carRepository.insertCar(car);
@@ -59,7 +61,7 @@ public class CarServiceImpl implements CarService{
 		}
 
 		// insert한 차량정보 가져오기. 차량번호와 세대번호로
-		Car newVehicle = carRepository.selectCarByGenerationIdxAndCarNumber(car);
+		Car newCar = carRepository.selectCarByGenerationIdxAndCarNumber(car);
 		// 조회결과가 없다면 QR생성하지 않는다. 예외처리해준다.
 		if(insertRes == 0) {
 			throw new ToAlertException(ErrorCode.IQR01);
@@ -67,9 +69,9 @@ public class CarServiceImpl implements CarService{
 		// 2. QR코드 생성한다.
 		// url 링크는 localhost:8888/admin/vehicleread?generationidx=값&vehicleidx=값
 		// 파일명은 v시퀀스번호로 한다.
-		String domain = Configcode.DOMAIN.desc +"/admin/carread?generationidx="+generationIdx+"&caridx="+newVehicle.getCarIdx();
+		String domain = Configcode.DOMAIN.desc +"/admin/carread?generationidx="+newCar.getGenerationIdx()+"&caridx="+newCar.getCarIdx();
 		QRCodeUtil qr = new QRCodeUtil();
-		qr.makeQR(domain, "c"+newVehicle.getCarIdx());
+		qr.makeQR(domain, "c"+newCar.getCarIdx());
 		
 		return "등록되었습니다.";
 	}
@@ -179,15 +181,11 @@ public class CarServiceImpl implements CarService{
 		return msg;
 	}
 
-
-
 	@Override
 	public List<String> selectCarNumberByGenerationIdx(String generationIdx) {
 		// TODO Auto-generated method stub
 		return carRepository.selectCarNumberByGenerationIdx(generationIdx);
 	}
-
-
 
 	@Override
 	public int updateCarApplicationApproval(String applicationIdx) {
@@ -195,22 +193,17 @@ public class CarServiceImpl implements CarService{
 		return carRepository.updateCarApplicationApproval(applicationIdx);
 	}
 
-
-
-	@Override
-	public CarApplication selectCarApplication(String applicationIdx) {
-		// TODO Auto-generated method stub
-		return carRepository.selectCarApplication(applicationIdx);
-	}
-
-
 	@Override
 	public int updateCarApplicationReject(String applicationIdx) {
 		// TODO Auto-generated method stub
 		return carRepository.updateCarApplicationReject(applicationIdx);
 	}
 
-
+	@Override
+	public CarApplication selectCarApplication(String applicationIdx) {
+		// TODO Auto-generated method stub
+		return carRepository.selectCarApplication(applicationIdx);
+	}
 
 
 }

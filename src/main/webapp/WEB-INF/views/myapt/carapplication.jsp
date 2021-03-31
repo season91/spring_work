@@ -50,7 +50,7 @@
     				<p>세대당 2대만 신청 가능합니다.</p>
     			</div>
     			<div class="col-lg-7 ftco-wrap ftco-animate">
-    		<form action="${context }/myapt/carapplicationimpl" class="domain-form d-flex">
+    		<form action="${context }/myapt/parking/applicationimpl" class="domain-form d-flex">
               <div class="form-group domain-name">
                 <input type="text" class="form-control name px-4" name="aplctCarNumber" placeholder="차량번호를 입력해주세요. (예 : 123가4567)" maxlength="8">
               </div>

@@ -20,7 +20,11 @@ public enum ErrorCode {
 	IQR01("QR코드 생성중 에러가 발생하였습니다.","/admin/car"),
 	IQR02("2건 다 등록되었거나 중복된 차량번호입니다.","/admin/car"),
 	IVEH01("이미 해당 세대에 등록된 차량번호입니다.", "/admin/car"),
-	SVEH01("등록여부를 확인하세요.", "/admin/vehicle"),
+	IAC01("승인 처리 중 에러 발생","/admin/car/application"),
+	DAC01("삭제 처리 중 에러 발생","/admin/car/application"),
+	UAC01("처리 상태 업데이트 중 에러 발생","/admin/car/application"),
+	SAC01("이미 처리된 신청건 입니다.", "/admin/car/application"),
+	SVEH01("등록여부를 확인하세요.", "/admin/car"),
 	CD_404("존재하지 않는 경로입니다.");
 	
 	//result.jsp를 사용해 띄울 안내문구 

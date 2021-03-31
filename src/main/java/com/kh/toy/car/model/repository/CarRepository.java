@@ -16,11 +16,11 @@ import com.kh.toy.parking.model.vo.CarApplication;
 public interface CarRepository {
 
 	// test qr확인
-	@Select("select * from tb_car where car_idx = #{carIdx}")
+	@Select("select * from tb_car where car_idx = #{carIdx} and is_del = 0")
 	Car selectCar(String carIdx);
 	
 	// test qr제목확인
-	@Select("select * from tb_car where generation_idx = #{generationIdx} and car_number = #{carNumber} and apartment_idx = #{apartmentIdx}")
+	@Select("select * from tb_car where generation_idx = #{generationIdx} and car_number = #{carNumber} and apartment_idx = #{apartmentIdx} and is_del = 0")
 	Car selectCarByGenerationIdxAndCarNumber(Car car);
 	
 	// [QR코드]
@@ -60,16 +60,17 @@ public interface CarRepository {
 	List<CarApplication> selectCarApplicationList(Map<String,Object> applicationMap);
 	
 	// [차량 등록 신청 승인]
+
 	// 1. 차량 승인시 처리상태 바꿔준다.
-	@Update("update tb_car_application set is_process = 1 where application_idx = #{applicationIdx}")
+	@Update("update tb_car_application set is_process = 1 where application_idx = #{applicationIdx} and is_process = 0")
 	int updateCarApplicationApproval(String applicationIdx);
 	
 	// 2. 차량신청 번호로 객체불러온다
-	@Select("select * from tb_car_application where application_idx = #{applicationIdx}")
+	@Select("select * from tb_car_application where application_idx = #{applicationIdx} and is_process = 0")
 	CarApplication selectCarApplication(String applicationIdx);
 	
 	// 3. 차량 반려시 처리상태 바꿔준다.
-	@Update("update tb_car_application set is_process = 2 where application_idx = #{applicationIdx}")
+	@Update("update tb_car_application set is_process = 2 where application_idx = #{applicationIdx} and is_process = 0")
 	int updateCarApplicationReject(String applicationIdx);
 	
 	// [차량수정]
@@ -78,7 +79,7 @@ public interface CarRepository {
 	int updateCar(Car car);
 	
 	// [차량삭제]
-	@Update("update tb_car set is_del = 1 where car_idx = #{carIdx}")
+	@Update("update tb_car set is_del = 1 where car_idx = #{carIdx} and is_del = 0")
 	int deleteCar(String carIdx);
 	
 	// [차량 입차, 출차 확인 후 상태값 변경해주기.]

@@ -16,6 +16,9 @@
 		<typeAlias type="com.kh.toy.mgmtfee.model.vo.Mgmtfee" alias="mgmtfee"/>
 		<typeAlias type="com.kh.toy.car.model.vo.Car" alias="car"/>
 		<typeAlias type="com.kh.toy.parking.model.vo.CarApplication" alias="carApplication"/>
+		<typeAlias type="com.kh.toy.generation.model.vo.Generation" alias="generation"/>
+		<typeAlias type="com.kh.toy.generation.model.vo.GenerationWon" alias="generationWon"/>
+
 	</typeAliases>
 <!-- 3. 작성쿼리 root등록을 위한 경로 설정. 맨아래에 있어야 한다.-->
 	<mappers>
@@ -23,6 +26,8 @@
 		<mapper resource="mybatis/mapper/mymgmtfee/mymgmtfeeMapper.xml"/>
 		<mapper resource="mybatis/mapper/car/carMapper.xml"/>
 		<mapper resource="mybatis/mapper/mycar/mycarMapper.xml"/>
+		<mapper resource="mybatis/mapper/generation/generationMapper.xml"/>
+
 	</mappers>
 
 

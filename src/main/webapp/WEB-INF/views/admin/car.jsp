@@ -171,7 +171,7 @@
                          <button type="button" class="btn btn-primary btn-block carDelete" data-toggle="modal" data-target="#deletecarModal">차량 삭제</button>
                         </div>
                          <div class="col-md-4">
-                         <button type="button" class="btn btn-primary btn-block" data-toggle="modal" data-target="#carNumberModal"">차량번호로 검색</button>
+                         <button type="button" class="btn btn-primary btn-block" data-toggle="modal" data-target="#carNumberModal">차량번호로 검색</button>
                         </div>
                         <div class="col-md-4">
                           <button type="button" class="btn btn-primary btn-block" data-toggle="modal" data-target="#geneIdxModal" >세대정보로 검색</button>
@@ -191,7 +191,6 @@
                 <div class="table-responsive">
                   <table class="table tablesorter " id="">
                     <thead class=" text-primary">
-                    
                       <th>
                         <div class="form-check checkAll" id="checkAll">
                             <label class="form-check-label">
@@ -294,8 +293,7 @@
     </div>
     
     <!-- 모달 구현 -->
-    <!-- 차량등록 모달 -->
-    
+    <!-- 차량등록 모달 --> 
     <div class="modal fade" id="addcarModal" tabindex="-1" role="dialog" aria-labelledby="addcarModalModalLabel" aria-hidden="true">
        <div class="modal-dialog" role="document">
          <div class="modal-content" style="background-image: linear-gradient(to bottom left, #344675, #263148, #344675); color:white;">

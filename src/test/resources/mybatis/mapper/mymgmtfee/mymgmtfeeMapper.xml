@@ -13,4 +13,8 @@
 				) 
 			b ) where rnum between #{paging.queryStart} and #{paging.queryEnd}
 	</select>
+	
+	<insert id="procedurePaymentInsert" statementType="CALLABLE">
+		{call PL_PAYMENT_UPDATE(#{mgmtfeeIdx, mode=IN},#{paymentMethod, mode=IN},#{paymentAmount, mode=IN})}
+	</insert>	
 </mapper>

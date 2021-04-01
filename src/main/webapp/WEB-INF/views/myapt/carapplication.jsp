@@ -44,21 +44,22 @@
     <section class="ftco-domain">
     	<div class="container">
     		<div class="row d-flex">
-    			<div class="col-lg-5 heading-white mb-4 mb-sm-4 mb-lg-0 ftco-animate">
+    			<div class="col-lg-4 heading-white mb-4 mb-sm-4 mb-lg-0 ftco-animate">
     				<h2>차량 등록 신청</h2>
     				<p>오른쪽에 차량번호를 입력해주세요.</p>
     				<p>세대당 2대만 신청 가능합니다.</p>
     			</div>
-    			<div class="col-lg-7 ftco-wrap ftco-animate">
-    		<form action="${context }/myapt/parking/applicationimpl" class="domain-form d-flex">
+    		<div class="col-lg-7 ftco-wrap ftco-animate">
+    		<form:form modelAttribute="carApplication" action="${context }/myapt/parking/applicationimpl" method="post" class="domain-form d-flex">
               <div class="form-group domain-name">
-                <input type="text" class="form-control name px-4" name="aplctCarNumber" placeholder="차량번호를 입력해주세요. (예 : 123가4567)" maxlength="8">
+                <input type="text" class="form-control name px-4" name="aplctCarNumber" placeholder="예 : 123가4567" maxlength="8">
               </div>
               <div class="form-group domain-select d-flex">
-                <button type="submit" class="search-domain btn btn-primary text-center" >신청하기</button>
-	            </div>
-            </form>
-    			</div>
+                <button type="submit" class="search-domain btn btn-primary text-center">신청하기</button>
+	          </div>
+			 <form:errors path="aplctCarNumber" cssClass="heading-white"></form:errors>
+	          </form:form>
+	          </div>
     		</div>
     	</div>
     </section>
@@ -171,6 +172,6 @@
   <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBVWaKrjvy3MaE7SQ74_uJiULgl1JY0H2s&sensor=false"></script>
   <script src="../../../resources/js/generation/google-map.js"></script>
   <script src="../../../resources/js/generation/main.js"></script>
-    
+
 </body>
 </html>

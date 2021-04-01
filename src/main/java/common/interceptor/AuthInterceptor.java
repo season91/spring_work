@@ -20,12 +20,12 @@ public class AuthInterceptor implements HandlerInterceptor{
 		System.out.println(session);
 		if(uriArr.length > 0) {
 			switch (uriArr[1]) {
-			case "member":
+			case "member": //aboo 관리자
 				switch (uriArr[2]) {
-				case "mypage":
-					throw new ToAlertException(ErrorCode.AUTH01);
-					
-				case "joinimpl":
+				case "apartment": //
+					if(session.getAttribute("bdmin") == null)
+					throw new ToAlertException(ErrorCode.AUTH01);			
+				case "cont":
 					/*
 					 * if(session.getAttribute("persistinfo") == null) {
 					 * request.setAttribute("alertMsg","이미 만료된 인증입니다."); request.setAttribute("url",
@@ -33,7 +33,8 @@ public class AuthInterceptor implements HandlerInterceptor{
 					 * request.getRequestDispatcher("/WEB-INF/views/common/result.jsp");
 					 * rd.forward(request, response); return false; }
 					 */
-					throw new ToAlertException(ErrorCode.AUTH02);
+					if(session.getAttribute("bdmin") == null)
+					throw new ToAlertException(ErrorCode.AUTH01);
 				}
 				break;
 			}

@@ -13,6 +13,7 @@ import org.springframework.test.context.web.WebAppConfiguration;
 
 import com.kh.toy.mgmtfee.model.vo.Mgmtfee;
 import com.kh.toy.mymgmtfee.model.repository.MyMgmtfeeRepository;
+import com.kh.toy.mymgmtfee.model.vo.MgmtfeePayment;
 
 import common.util.paging.Paging;
 
@@ -41,5 +42,17 @@ public class MyMgmtfeeRepositoryTest {
 		
 		List<Mgmtfee> myMgmtfeeList = myMgmtfeeRepository.selectMyMgmtfeeList(generationMap);
 		System.out.println(myMgmtfeeList);
+	}
+	
+	@Test
+	public void procedurePaymentInsert() {
+		MgmtfeePayment mgmtfeePayment = new MgmtfeePayment();
+		
+		mgmtfeePayment.setMgmtfeeIdx("100973");
+		mgmtfeePayment.setPaymentMethod("test1");
+		mgmtfeePayment.setPaymentAmount("2000");
+		
+		myMgmtfeeRepository.procedurePaymentInsert(mgmtfeePayment);
+				
 	}
 }

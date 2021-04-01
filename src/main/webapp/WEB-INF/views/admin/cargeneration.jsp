@@ -196,7 +196,7 @@
                       <th>
                         <div class="form-check checkAll" id="checkAll">
                             <label class="form-check-label">
-                              <input class="form-check-input allvehicle" type="checkbox" value="">
+                              <input class="form-check-input allcar" type="checkbox" value="">
                               <span class="form-check-sign">
                                 <span class="check"></span>
                               </span>
@@ -206,6 +206,8 @@
                        <th>관리번호</th>
                       <th>세대정보</th>
                       <th>차량번호</th>
+                      <th>세대연락처</th>
+                      <th>주차상태</th>
                     </thead>
                     <tbody>
                       <c:forEach items="${carList}" var="car" varStatus="status">
@@ -223,6 +225,15 @@
                         <td>${car.carIdx}</td>
                         <td> ${generationList[status.index].building }-${generationList[status.index].num}</td>
                         <td> ${car.carNumber } </td>
+                        <td>${generationList[status.index].tell }</td>
+                        <c:choose>
+                        	<c:when test="${car.isInCar eq 0 }">
+                        		<td>출차 중</td>
+                        	</c:when>
+                        	<c:otherwise>
+                        		<td>입차 중</td>
+                        	</c:otherwise>
+                        </c:choose>
                        </tr>
                     </c:forEach>
                     </tbody>

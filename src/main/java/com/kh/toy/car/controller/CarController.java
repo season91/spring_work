@@ -83,7 +83,7 @@ public class CarController {
 	
 	// 2. 입주자 차량등록 신청건 페이징 처리하기
 	@GetMapping("admin/car/application")
-	public String carApplication(@RequestParam(defaultValue = "1") int page,  @RequestParam(defaultValue = "apartmentIdx") String standard, Model model) {
+	public String carApplication(@RequestParam(defaultValue = "1") int page,  @RequestParam(defaultValue = "apartmentIdx") String standard, @RequestParam(defaultValue = "apartmentIdx") String keyword, Model model) {
 		String apartmentIdx = "100000";
 		String link ="";
 		Map<String, Object> applicationMap = new HashMap<String, Object>();
@@ -98,6 +98,29 @@ public class CarController {
 			// 미납 조회
 			applicationMap.put("searchType", "wait");
 			link = "wait";
+			break;
+		case "carNumber":
+			// 차량번호 검색
+			applicationMap.put("searchType", "carNumber");
+			applicationMap.put("carNumber", keyword);
+			link = "number";
+			model.addAttribute("keyword",keyword);
+			break;
+		case "generationInfo":
+			// 세대정보로 검색
+			Generation generation = new Generation();
+			String[] generationInfo = keyword.split("-");
+			generation.setApartmentIdx(apartmentIdx);
+			generation.setBuilding(generationInfo[0]);
+			generation.setNum(generationInfo[1]);
+			System.out.println(generation);
+			// 조회된 세대관리번호를 map에 담아준다.
+			
+			String generationIdx = carService.selectGenerationByBuildingAndNum(generation).getGenerationIdx();
+			applicationMap.put("searchType", "generationIdx");
+			applicationMap.put("generationIdx", generationIdx);
+			link = "generation";
+			model.addAttribute("keyword",keyword);
 			break;
 		}
 		model.addAllAttributes(carService.selectCarApplicationList(page, applicationMap));

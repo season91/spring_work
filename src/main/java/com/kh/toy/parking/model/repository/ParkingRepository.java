@@ -6,6 +6,7 @@ import org.apache.ibatis.annotations.Insert;
 import org.apache.ibatis.annotations.Mapper;
 import org.apache.ibatis.annotations.Select;
 
+import com.kh.toy.car.model.vo.Car;
 import com.kh.toy.parking.model.vo.CarApplication;
 
 @Mapper
@@ -27,9 +28,15 @@ public interface ParkingRepository {
 	@Insert("insert into tb_car_application(application_idx, apartment_idx, generation_idx, aplct_car_number) values (sc_application_idx.nextval, #{apartmentIdx}, #{generationIdx}, #{aplctCarNumber})")
 	int insertCarApplication(CarApplication carApplication);
 
-	// 2. 신청한 내역이 있는지 확인.
+	// 2. 페이지에 보여주기 위한 신청한 내역이 있는지 확인.
 	@Select("select * from tb_car_application where generation_idx = #{generationIdx} and is_process = 0")
 	List<CarApplication> selectCarApplicationByGenerationIdx(String generationIdx);
 	
-
+	// 3. 신청전 신청가능상태를 확인하기위해 등록차량이있는지 확인한다.
+	@Select("select * from tb_car where generation_idx = #{generationIdx} and car_number = #{aplctCarNumber} and is_del = 0")
+	Car selectCarByApplicationInfo(CarApplication carApplication);
+	
+	// 4. 신청 전 신청한내역이 있는지 확인한다
+	@Select("select * from tb_car_application where generation_idx = #{generationIdx} and aplct_car_number =  #{aplctCarNumber} and is_process = 0")
+	List<CarApplication> selectCarApplication(CarApplication carApplication);
 }

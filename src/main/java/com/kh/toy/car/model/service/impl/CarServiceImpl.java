@@ -9,6 +9,7 @@ import org.springframework.stereotype.Service;
 import com.kh.toy.car.model.repository.CarRepository;
 import com.kh.toy.car.model.service.CarService;
 import com.kh.toy.car.model.vo.Car;
+import com.kh.toy.generation.model.vo.GenerationWon;
 import com.kh.toy.mgmtfee.model.vo.Generation;
 import com.kh.toy.mgmtfee.model.vo.Mgmtfee;
 import com.kh.toy.parking.model.vo.CarApplication;
@@ -78,7 +79,7 @@ public class CarServiceImpl implements CarService{
 
 	@Override
 	public Map<String, Object> selectCarList(int currentPage, Map<String, Object> searchMap) {
-		//페이징처리
+		// 페이징처리
 		Paging paging = Paging.builder()
 				.currentPage(currentPage)
 				.blockCnt(5)
@@ -87,24 +88,24 @@ public class CarServiceImpl implements CarService{
 				.total(carRepository.selectContentCnt(searchMap))
 				.build();
 		System.out.println(paging.toString());
-		
-		// paing 세대조건 정보 넣을 맵
+
+		// 1. paing 세대조건 정보 넣을 맵
 		searchMap.put("paging", paging);
 		
-		// 페이징정보 포함해서 페이징에 뿌려줄 리스트 받아온다.
+		// 2. 페이징정보 포함해서 페이징에 뿌려줄 차량 리스트 받아온다.
 		List<Car> carList = carRepository.selectCarList(searchMap);
 		searchMap.put("carList", carList);
 		System.out.println("carList"+carList);
 		
-		// 차량리스트 기준 세대정보 가져오자.
+		// 3. 차량리스트 기준 세대정보와 연락처를 가져오자.
 		List<Generation> generationList = new ArrayList<>();
+		
 		for (int i = 0; i < carList.size(); i++) {
 			String generationIdx = carList.get(i).getGenerationIdx();
 			generationList.add(carRepository.selectGenerationByGenerationIdx(generationIdx));
 		}
-
 		searchMap.put("generationList", generationList);
-		System.out.println("searchMap" + searchMap);
+
 		return searchMap;
 	}
 
@@ -115,7 +116,7 @@ public class CarServiceImpl implements CarService{
 				.currentPage(currentPage)
 				.blockCnt(5)
 				.cntPerPage(10)
-				.type("carApplication")
+				.type("car")
 				.total(carRepository.selectApplicationContentCnt(applicationMap))
 				.build();
 		System.out.println(paging.toString());

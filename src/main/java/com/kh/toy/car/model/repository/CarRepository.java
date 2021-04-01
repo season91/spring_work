@@ -9,6 +9,7 @@ import org.apache.ibatis.annotations.Select;
 import org.apache.ibatis.annotations.Update;
 
 import com.kh.toy.car.model.vo.Car;
+import com.kh.toy.generation.model.vo.GenerationWon;
 import com.kh.toy.mgmtfee.model.vo.Generation;
 import com.kh.toy.parking.model.vo.CarApplication;
 
@@ -48,10 +49,10 @@ public interface CarRepository {
 	// 2. 페이징 화면 구현을 위한 list
 	List<Car> selectCarList(Map<String,Object> searchMap);
 	
-	// 3. 페이징에 세대정보 넣어야해서 세대정보 가져온다
+	// 3. 화면에 세대정보 보여줘여야하므로  세대정보 가져온다
 	@Select("select * from tb_generation where generation_idx = #{generationIdx} and is_del = 0")
 	Generation selectGenerationByGenerationIdx(String generationIdx);
-	
+
 	// [차량등록 신청 - 페이징, 글목록]
 	// 1. 페이징 위한 총 개수 확인
 	int selectApplicationContentCnt(Map<String,Object> applicationMap);
@@ -60,7 +61,6 @@ public interface CarRepository {
 	List<CarApplication> selectCarApplicationList(Map<String,Object> applicationMap);
 	
 	// [차량 등록 신청 승인]
-
 	// 1. 차량 승인시 처리상태 바꿔준다.
 	@Update("update tb_car_application set is_process = 1 where application_idx = #{applicationIdx} and is_process = 0")
 	int updateCarApplicationApproval(String applicationIdx);

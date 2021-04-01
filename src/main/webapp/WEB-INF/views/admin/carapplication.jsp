@@ -142,14 +142,12 @@
       
 		
       <div class="content">
-      	 
-           <div class="row">
+        <div class="row">
           <div class="col-md-12">
             <div class="card ">
               <div class="card-header">
                 <h3 class="title">차량 등록 신청 확인</h3>
               </div>
-              
               <div class="col-md-12">
                 <div class="places-buttons">
                   <div class="row col-md-12">
@@ -163,19 +161,25 @@
                   <div class="row ">
                     <div class="col-lg-12 ml-auto mr-auto">
                       <div class="row">
-                        <div class="col-md-3">
+                        <div class="col-md-4">
                          <form action="${context }/admin/car/application">
                            <input type="hidden" name="standard" value="wait">
                            <button type="submit" class="btn btn-success btn-block waitCnt" data-toggle="modal" >대기 상태만 보기</button>
                          </form>
                         </div>
-                        <div class="col-md-3">
+                        <div class="col-md-4">
                          <button type="button" class="btn btn-success btn-block approvalCnt" data-toggle="modal" data-target="#approvalcarModal">차량 등록 신청 승인</button>
                         </div>
-                         <div class="col-md-">
+                         <div class="col-md-4">
                          <button type="button" class="btn btn-success btn-block rejectCnt" data-toggle="modal" data-target="#rejectcarModal">차량 등록 신청 반려</button>
                         </div>
-                         <div class="col-md-3">
+                        <div class="col-md-4">
+                         <button type="button" class="btn btn-success btn-block" data-toggle="modal" data-target="#carNumberModal">차량번호로 검색</button>
+                        </div>
+                        <div class="col-md-4">
+                          <button type="button" class="btn btn-success btn-block" data-toggle="modal" data-target="#geneIdxModal" >세대정보로 검색</button>
+                        </div>
+                         <div class="col-md-4">
                          <form action="${context }/admin/car">
                           <button type="submit" class="btn btn-success btn-block" data-toggle="modal">차량 등록 현황 보기</button>
                          </form>
@@ -201,7 +205,7 @@
                             </label>
                           </div>
                       </th>
-                       <th>관리번호</th>
+                       <th>신청번호</th>
                       <th>세대정보</th>
                       <th>차량번호</th>
                       <th>신청일</th>
@@ -397,7 +401,7 @@
 	  </div>
 	</div>
 	
-	<!-- 차량 삭제 모달 -->
+	
 	<div class="modal fade" id="approvalcarModal" tabindex="-1" role="dialog" aria-labelledby="deletecarModalLabel" aria-hidden="true">
 	  <div class="modal-dialog">
 	    <div class="modal-content" style="background-image: linear-gradient(to bottom left, #344675, #263148, #344675); color:white;">
@@ -433,7 +437,8 @@
             <div class="modal-body">
 	        <form action="${context }/admin/car/application">
 	          <div class="form-group">
-	           <input type="text" class="form-control" id="inlineFormInputGroup" placeholder="차량번호로 검색">
+	           <input type="hidden" name="standard" value="carNumber">
+	           <input type="text" class="form-control" name="keyword" id="inlineFormInputGroup" placeholder="차량번호로 검색">
 	          </div>
 	          <div class="modal-footer">
              <button type="submit" class="btn btn-primary">검색</button>
@@ -455,7 +460,7 @@
 	              </button>
             </div>
             <div class="modal-body">
-	        <form action="${context }/admin/car">
+	        <form action="${context }/admin/car/application">
 	          <div class="form-group">
 	          	<input type="hidden" name="standard" value="generationInfo">
 	           <input type="text" class="form-control"  name="keyword" id="inlineFormInputGroup" placeholder="세대정보로 검색 (103-906)">
@@ -469,8 +474,6 @@
         </div>
       </div>
       
-      
-    
     <!--   Core JS Files   -->
     <script src="../../../resources/js/admin/carapplication.js"></script>
     <script src="../../../resources/js/admin/core/jquery.min.js"></script>

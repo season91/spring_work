@@ -9,6 +9,7 @@ import org.apache.ibatis.annotations.Select;
 import com.kh.toy.mgmtfee.model.vo.Generation;
 import com.kh.toy.mgmtfee.model.vo.Mgmtfee;
 import com.kh.toy.mgmtfee.model.vo.MgmtfeeOverdue;
+import com.kh.toy.mymgmtfee.model.vo.MgmtfeePayment;
 
 @Mapper
 public interface MyMgmtfeeRepository {
@@ -37,5 +38,7 @@ public interface MyMgmtfeeRepository {
 	@Select("select extract(year from mgmt_start_date) year, extract(month from mgmt_start_date) month from tb_mgmtfee where mgmtfee_idx=#{mgmtfeeIdx}")
 	Map<String,Object> selectMyMgmtfeeDate(String mgmtfeeIdx);
 	
+	// 프로시저
+	void procedurePaymentInsert(MgmtfeePayment mgmtfeePayment);
 	
 }

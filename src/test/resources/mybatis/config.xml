@@ -12,7 +12,6 @@
 
 <!-- 2. 경로 별칭 지정-->
 	<typeAliases>
-		<typeAlias type="com.kh.toy.member.model.vo.Member" alias="MEMBER"/>
 		<typeAlias type="com.kh.toy.mgmtfee.model.vo.Mgmtfee" alias="mgmtfee"/>
 		<typeAlias type="com.kh.toy.car.model.vo.Car" alias="car"/>
 		<typeAlias type="com.kh.toy.parking.model.vo.CarApplication" alias="carApplication"/>

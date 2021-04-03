@@ -20,7 +20,7 @@
             <img src="../../../resources/abooimg/logo_w.png">
           </a>
           <a href="/admin/index" class="simple-text logo-normal">
-            ADMIN
+            BDMIN
           </a>
         </div>
         <ul class="nav">

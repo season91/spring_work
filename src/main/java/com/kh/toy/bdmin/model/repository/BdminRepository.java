@@ -36,9 +36,7 @@ public interface BdminRepository {
 	// 4. 아파트 수정
 	@Update("update tb_apartment set apartment_name = #{apartmentName}, apartment_address = #{apartmentAddress}, apartment_parking = #{apartmentParking} where apartment_idx = #{apartmentIdx}")
 	int updateApartment(Apartment apartment);
-	
-	// 5. 삭제는...? 선영이한테 물어보고 하기
-	
+
 	
 	// [서비스신청문의 목록]
 	// 1. 페이징 위한 개수 확인

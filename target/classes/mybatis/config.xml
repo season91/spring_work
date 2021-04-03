@@ -12,13 +12,13 @@
 
 <!-- 2. 경로 별칭 지정-->
 	<typeAliases>
-		<typeAlias type="com.kh.toy.member.model.vo.Member" alias="MEMBER"/>
 		<typeAlias type="com.kh.toy.mgmtfee.model.vo.Mgmtfee" alias="mgmtfee"/>
 		<typeAlias type="com.kh.toy.car.model.vo.Car" alias="car"/>
 		<typeAlias type="com.kh.toy.parking.model.vo.CarApplication" alias="carApplication"/>
 		<typeAlias type="com.kh.toy.generation.model.vo.Generation" alias="generation"/>
 		<typeAlias type="com.kh.toy.generation.model.vo.GenerationWon" alias="generationWon"/>
 		<typeAlias type="com.kh.toy.generation.model.vo.Apartment" alias="apartment"/>
+		<typeAlias type="com.kh.toy.generation.model.vo.Admin" alias="admin"/>
 		<typeAlias type="com.kh.toy.bdmin.model.vo.Bdmin" alias="bdmin"/>
 		<typeAlias type="com.kh.toy.bdmin.model.vo.ApartApplication" alias="apartApplication"/>
 
@@ -31,6 +31,7 @@
 		<mapper resource="mybatis/mapper/mycar/mycarMapper.xml"/>
 		<mapper resource="mybatis/mapper/generation/generationMapper.xml"/>
 		<mapper resource="mybatis/mapper/bdmin/bdminMapper.xml"/>
+		<mapper resource="mybatis/mapper/bdmin/managementMapper.xml"/>
 	</mappers>
 
 

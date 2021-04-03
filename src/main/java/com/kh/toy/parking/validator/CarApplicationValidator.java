@@ -6,8 +6,6 @@ import org.springframework.stereotype.Component;
 import org.springframework.validation.Errors;
 import org.springframework.validation.Validator;
 
-import com.kh.toy.member.model.repository.MemberRepository;
-import com.kh.toy.member.model.vo.Member;
 import com.kh.toy.parking.model.vo.CarApplication;
 
 @Component

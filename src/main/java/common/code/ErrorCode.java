@@ -24,6 +24,7 @@ public enum ErrorCode {
 	DAC01("삭제 처리 중 에러 발생","/admin/car/application"),
 	UAC01("처리 상태 업데이트 중 에러 발생","/admin/car/application"),
 	SAC01("이미 처리된 신청건 입니다.", "/admin/car/application"),
+	IDCHECK01("중복아이디 입니다","/bdmin/management/adminauthority"),
 	SVEH01("등록여부를 확인하세요.", "/admin/car"),
 	CD_404("존재하지 않는 경로입니다.");
 	

@@ -319,9 +319,9 @@
 
 	                //사용자가 선택한 주소 타입에 따라 해당 주소 값을 가져온다.
 	                if (data.userSelectedType === 'R') { // 사용자가 도로명 주소를 선택했을 경우
-	                    addr = data.roadAddress;
+	                    addr = data.roadname;
 	                } else { // 사용자가 지번 주소를 선택했을 경우(J)
-	                    addr = data.jibunAddress;
+	                    addr = data.bname;
 	                }
 
 	                // 사용자가 선택한 주소가 도로명 타입일때 참고항목을 조합한다.
@@ -341,14 +341,19 @@
 	                    }
 	                    // 조합된 참고항목을 해당 필드에 넣는다.
 	                    document.getElementById("address").value = extraAddr;
+	                    console.dir("1"+extraAddr);
 	                
 	                } else {
 	                    document.getElementById("address").value = '';
 	                }
 
+	                
 	                // 우편번호와 주소 정보를 해당 필드에 넣는다.
 	                document.getElementById('address').value = data.zonecode;
 	                document.getElementById("address").value = addr;
+	                
+	                console.dir("2"+data.zonecode);
+	                console.dir("3"+addr);
 	                // 커서를 상세주소 필드로 이동한다.
 	                document.getElementById("address").focus();
 		        }

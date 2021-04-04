@@ -30,6 +30,11 @@ public class BdminController {
 		this.bdminService = bdminService;
 	}
 	
+	@GetMapping("/admin/chattest")
+	public void chatTest() {
+		
+	}
+	
 	@GetMapping("/admin/index")
 	public void adminIndex() {
 		

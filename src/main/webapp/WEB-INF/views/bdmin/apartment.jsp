@@ -61,7 +61,7 @@
             </a>
           </li>
           <li>
-            <a href="/admin/chat">
+            <a href="/admin/chattest">
               <i class="tim-icons icon-chat-33"></i>
               <p>Chat</p>
             </a>

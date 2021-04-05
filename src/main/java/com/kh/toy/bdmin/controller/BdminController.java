@@ -35,6 +35,11 @@ public class BdminController {
 		
 	}
 	
+	@GetMapping("/myapt/chattest")
+	public void chatGenerationTest() {
+		
+	}
+	
 	@GetMapping("/admin/index")
 	public void adminIndex() {
 		

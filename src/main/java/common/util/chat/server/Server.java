@@ -53,13 +53,13 @@ public class Server {
 							BufferedReader br = new BufferedReader(new InputStreamReader(client.getInputStream()));
 							nameList.add(br.readLine());
 							socketList.add(client);
-							textArea.append("입장인원 : " + socketList.size()+"\n");
-							textArea.append("현재 입장자 리스트 : " + nameList+"\n");
-							textArea.setCaretPosition(textArea.getDocument().getLength());
+							//textArea.append("입장인원 : " + socketList.size()+"\n");
+							//textArea.append("현재 입장자 리스트 : " + nameList+"\n");
+							//textArea.setCaretPosition(textArea.getDocument().getLength());
 							read(client);
 						}
 				} catch (SocketException e1) {
-					textArea.append("[서버 종료]\n");
+					//textArea.append("[서버 종료]\n");
 					flg=false;
 				} catch (IOException e) {
 					// TODO Auto-generated catch block
@@ -96,14 +96,14 @@ public class Server {
 								 //귓속말 대상의 닉네임 인덱스를 찾고 메시지를 넘겨줘야함.대상자를 찾아주기
 								 int toIdx = nameList.indexOf(msg.substring(3, msg.indexOf(':')-1));
 								 whisper(msg.substring(msg.indexOf(":")+1, msg.length()),nameList.get(toIdx),socket);
-								 textArea.append("<귓속말>"+nameList.get(toIdx)+msg.substring(msg.indexOf(":")+1)+"\n");
-								 textArea.setCaretPosition(textArea.getDocument().getLength());
+								 //textArea.append("<귓속말>"+nameList.get(toIdx)+msg.substring(msg.indexOf(":")+1)+"\n");
+								 //textArea.setCaretPosition(textArea.getDocument().getLength());
 							 } else {
 								 int idx = socketList.indexOf(socket);
 								 String sendMsg = nameList.get(idx) + " : "+ msg;
 								 allClientWrite(sendMsg); 
-								 textArea.append(sendMsg+"\n");
-								 textArea.setCaretPosition(textArea.getDocument().getLength());
+								 //textArea.append(sendMsg+"\n");
+								 //textArea.setCaretPosition(textArea.getDocument().getLength());
 							 }
 							
 						} else {
@@ -176,14 +176,14 @@ public class Server {
 	//5. 예외처리 : 클라이언트 접속 종료시 삭제
 	// 클라이언트 소켓리스트와 유저 닉네임리스트에서 삭제.
 	public void removeSocket(Socket socket) {
-		textArea.append("client socket이 닫혔습니다.\n");
+		//textArea.append("client socket이 닫혔습니다.\n");
 		for (int i = 0; i < socketList.size(); i++) {
 			//매개변수소켓이랑 소켓리스트랑 비교해서 지운다.
 			if(socketList.get(i) == socket) {
 				try {
 					socketList.get(i).close();
 					socketList.remove(i);
-					textArea.append(nameList.get(i)+"님 퇴장했습니다.\n");
+					//textArea.append(nameList.get(i)+"님 퇴장했습니다.\n");
 					
 					nameList.remove(i);
 				} catch (IOException e) {
@@ -193,8 +193,8 @@ public class Server {
 				
 			} 
 		}
-		textArea.append("접속인원 : " + socketList.size()+"\n");
-		textArea.setCaretPosition(textArea.getDocument().getLength());
+		//textArea.append("접속인원 : " + socketList.size()+"\n");
+		//textArea.setCaretPosition(textArea.getDocument().getLength());
 	}
 	
 	//6. 서버종료 : GUI 프로그램 종료 눌렀을 때

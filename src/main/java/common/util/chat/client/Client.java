@@ -74,8 +74,8 @@ public class Client {
 						String message = br.readLine();
 						
 						if(message!=null) {
-							textArea.append(message + "\n");
-							textArea.setCaretPosition(textArea.getDocument().getLength());
+							//textArea.append(message + "\n");
+							//textArea.setCaretPosition(textArea.getDocument().getLength());
 						} else {
 							break;
 						}

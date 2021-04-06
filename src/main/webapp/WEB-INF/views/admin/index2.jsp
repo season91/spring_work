@@ -193,17 +193,20 @@
               <div class="card-header ">
                 <div class="row">
                   <div class="col-sm-6 text-left">
-                    <h5 class="card-category">Total Management Fee</h5>
-                    <h2 class="card-title">  
-                    <script>
-		              document.write(new Date().getFullYear())
-		            </script>년 월별 관리비 고지서 발행 금액 </h2>
+                    <h5 class="card-category">Total Shipments</h5>
+                    <h2 class="card-title">Performance</h2>
                   </div>
                   <div class="col-sm-6">
                     <div class="btn-group btn-group-toggle float-right" data-toggle="buttons">
-                      <label class="btn btn-sm btn-primary btn-simple active" id="0"> (단위 : 만원)
+                      <label class="btn btn-sm btn-primary btn-simple active" id="0">
+                        <input type="radio" name="options" autocomplete="off" checked> Accounts
                       </label>
-                     
+                      <label class="btn btn-sm btn-primary btn-simple " id="1">
+                        <input type="radio" name="options" autocomplete="off"> Purchases
+                      </label>
+                      <label class="btn btn-sm btn-primary btn-simple " id="2">
+                        <input type="radio" name="options" autocomplete="off"> Sessions
+                      </label>
                     </div>
                   </div>
                 </div>
@@ -743,6 +746,5 @@
 
       });
     </script>
-    
 </body>
 </html>

@@ -182,8 +182,8 @@ demo = {
             zeroLineColor: "transparent",
           },
           ticks: {
-            suggestedMin: 60,
-            suggestedMax: 125,
+            suggestedMin: 1000,
+            suggestedMax: 5000,
             padding: 20,
             fontColor: "#9a9a9a"
           }
@@ -421,11 +421,32 @@ demo = {
 
     });
 
-
-
-    var chart_labels = ['JAN', 'FEB', 'MAR', 'APR', 'MAY', 'JUN', 'JUL', 'AUG', 'SEP', 'OCT', 'NOV', 'DEC'];
-    var chart_data = [100, 70, 90, 70, 85, 60, 75, 60, 90, 80, 110, 100];
-
+  /* 아영 그래프 부분 */
+	
+	let headerObj = new Headers();
+		headerObj.append('content-type', "application/x-www-form-urlencoded");
+	let test = [];
+	fetch("/admin/monthmgmtfee",{
+		method:"GET",
+		header : headerObj
+		}).then(response => response.text())
+		.then(text => {
+			console.dir(text);
+			test.push(text);
+			
+			test.forEach(e=>{
+				chart_data.push(e);
+			});
+			
+		})
+		.catch(error =>{
+			error.alertMessage();
+		});
+		
+	var chart_labels = ['JAN', 'FEB', 'MAR', 'APR', 'MAY', 'JUN', 'JUL', 'AUG', 'SEP', 'OCT', 'NOV', 'DEC'];
+	var chart_data = [];		
+	console.dir(chart_data);
+	console.dir(test);
 
     var ctx = document.getElementById("chartBig1").getContext('2d');
 

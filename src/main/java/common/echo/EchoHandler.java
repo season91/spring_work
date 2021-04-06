@@ -11,6 +11,7 @@ import org.springframework.web.socket.WebSocketSession;
 import org.springframework.web.socket.handler.TextWebSocketHandler;
 
 import com.kh.toy.bdmin.model.vo.Bdmin;
+import com.kh.toy.generation.model.vo.Admin;
 import com.kh.toy.generation.model.vo.Generation;
 
 
@@ -29,15 +30,15 @@ public class EchoHandler extends TextWebSocketHandler{
 	@Override
 	public void afterConnectionEstablished(WebSocketSession session) throws Exception {
 		String id = "";
-		if(session.getAttributes().get("bdmin") == null) {
+		if(session.getAttributes().get("admin") == null) {
 			Generation generation = (Generation) session.getAttributes().get("generation");
 			id = generation.getId();
 			//접속시에 접속자 정보 보여준다.
 			//대신 접속자가 관리자라면 안내하지않는다. 어차피 받는 칸은 관리자에만 있음.
 			connectList(session);
 		} else if (session.getAttributes().get("generation") == null){
-			Bdmin bdmin  =  (Bdmin) session.getAttributes().get("bdmin");
-			id = bdmin.getId();
+			Admin admin  =  (Admin) session.getAttributes().get("admin");
+			id = admin.getId();
 		}
 		sessionList.add(session);
 		nameList.add(id);
@@ -48,8 +49,10 @@ public class EchoHandler extends TextWebSocketHandler{
 	}
 	
 	public void connectList(WebSocketSession session) throws IOException {
+		int res = nameList.indexOf("admin1");
+		System.out.println("포함도보나?"+res);
 		for (int i = 0; i < nameList.size(); i++) {
-			if(nameList.get(i).equals("choayoung91")) {
+			if(nameList.get(i).equals("admin1")) {
 				//관리자라면 입장자 정보 받는다.
 				sessionList.get(i).sendMessage(new TextMessage("[안내] 101동101호 세대가 입장하셨습니다."));
 			}

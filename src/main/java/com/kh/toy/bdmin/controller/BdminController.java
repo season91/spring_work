@@ -1,6 +1,5 @@
 package com.kh.toy.bdmin.controller;
 
-import java.util.HashMap;
 import java.util.Map;
 
 import javax.servlet.http.HttpSession;
@@ -12,37 +11,57 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
-import org.springframework.web.bind.annotation.SessionAttribute;
 
+import com.kh.toy.bdmin.model.service.AdminService;
 import com.kh.toy.bdmin.model.service.BdminService;
 import com.kh.toy.bdmin.model.vo.ApartApplication;
 import com.kh.toy.bdmin.model.vo.Bdmin;
+import com.kh.toy.generation.model.vo.Admin;
 import com.kh.toy.generation.model.vo.Apartment;
-
-import oracle.jdbc.proxy.annotation.Post;
 
 @Controller
 public class BdminController {
 	
 	private final BdminService bdminService;
+	private final AdminService adminService;
 	
-	public BdminController(BdminService bdminService) {
+	public BdminController(BdminService bdminService,AdminService adminService) {
 		this.bdminService = bdminService;
+		this.adminService = adminService;
 	}
 	
-	@GetMapping("/admin/chattest")
+	@GetMapping("/admin/chat")
 	public void chatTest() {
 		
 	}
 	
-	@GetMapping("/myapt/chattest")
+	@GetMapping("/myapt/chat")
 	public void chatGenerationTest() {
 		
 	}
 	
-	@GetMapping("/admin/index")
-	public void adminIndex() {
-		
+	
+	// 선영
+	@GetMapping("/admin/login")
+	public String adminlogin() {
+		return "admin/login";
+	}
+	
+	// 선영
+	@PostMapping("/admin/loginimpl")
+	@ResponseBody
+	public String loginimpl(@RequestBody Admin adminInfo, HttpSession session) {
+
+		// adminInfo : 받아와서 맵핑 해주는 객체 이름
+		// admin : 진짜 admin 정보가 담긴 객체 이름
+
+		Admin admin = adminService.selectAdminForAuth(adminInfo);
+		if (admin == null) {
+			return "fail";
+		}
+		session.setAttribute("admin", admin);
+		return "sussece";
+
 	}
 	
 	@GetMapping("/bdmin/login")

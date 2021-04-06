@@ -201,17 +201,7 @@
                 <div class="alert alert-info">
                   <span>관리자 화면입니다.</span>
                 </div>
-                <div class="alert alert-info">
-                  <button type="button" aria-hidden="true" class="close" data-dismiss="alert" aria-label="Close">
-                    <i class="tim-icons icon-simple-remove"></i>
-                  </button>
-                  <span>[21-04-04 13:00:00] 101동 101호님이 입장하셨습니다.</span>
-                </div>
-                <div class="alert alert-info">
-                  <span >[21-04-04 13:10:00] 101동 101호님이 문의하셨습니다.</span>
-                </div>
-                <div class="alert alert-info " >
-                  <span >[21-04-04 13:20:00] 101동 101호님이 퇴장하셨습니다. </span>
+                <div class="alert alert-info " id="infoArea">
                 </div>
               </div>
             </div>
@@ -223,28 +213,7 @@
                 <h4 class="card-title">채팅내용</h4>
               </div>
               <div class="card-body">
-                <div class="alert alert-primary">
-                  <span>
-                    <b> 101동 101호 - </b> [21-04-04 13:00:00] 안녕하세요. 차량등록을 하려고하는데요 2대이상등록하였는데 추가금액내고 사용하고싶어요 방법 안내부탁드립니다.</span>
-                </div>
-                <div class="alert alert-info">
-                  <span>
-                    <b> 관리자 - </b> [21-04-04 13:00:00] 안녕하세요. 차량정보 알려주시면 등록하도록 하겠습니다. 추가금액은 3만원이고 관리비에 매달 청구될 예정인데 괜찮으시겠어요?</span>
-                </div>
-                <div class="alert alert-success">
-                  <span>
-                    <b> 101동 101호 - </b> [21-04-04 13:00:00]  네 그럼요~ 차량정보는 333가3333 입니다.</span>
-                </div>
-                <div class="alert alert-warning">
-                  <button type="button" aria-hidden="true" class="close" data-dismiss="alert" aria-label="Close">
-                    <i class="tim-icons icon-simple-remove"></i>
-                  </button>
-                  <span>
-                    <b> 관리자 - </b> [21-04-04 13:00:00] 알겠습니다. 처리까지는 3~4일 소요되며, 등록시 마이페이지에서 확인가능하십니다~^^.</span>
-                </div>
-                <div class="alert alert-danger">
-                  <span>
-                    <b> 101동 101호 - </b> [21-04-04 13:00:00] 네. 감사합니다수고하세요~</span>
+                <div class="alert alert-primary" id="messageArea">
                 </div>
               </div>
             </div>
@@ -266,8 +235,9 @@
                       <div class="row" style="display: flex; justify-content: space-around;">
                        <div class="col-md-12">
 	                      <div class="form-group" style="display: flex; justify-content: space-around;">
-	                        <input type="text" class="form-control " placeholder="채팅내용을 입력하세요.">
-	                         <button type="submit" class="btn btn-fill btn-primary ">보내기</button>
+	                        <input type="text" class="form-control " id="name" placeholder="세대아이디 입력">
+	                        <input type="text" class="form-control " id="message" placeholder="채팅내용을 입력하세요.">
+	                         <button type="submit" class="btn btn-fill btn-primary " id="sendBtn">보내기</button>
 	                      </div>
 	                    </div>
                       </div>
@@ -367,6 +337,44 @@
     <script src="../assets/js/black-dashboard.min.js?v=1.0.0" type="text/javascript"></script>
     <!-- Black Dashboard DEMO methods, don't include it in your project! -->
     <script src="../assets/demo/demo.js"></script>
+    <script src="http://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.js"></script>
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/sockjs-client/1.1.5/sockjs.min.js"></script>
+	<script type="text/javascript">
+		$("#sendBtn").click(function() {
+			sendMessage();
+			$('#message').val('')
+		});
+	
+		let sock = new SockJS("http://localhost:8888/echo/");
+		sock.onmessage = onMessage;
+		sock.onclose = onClose;
+		
+		// 메시지 전송
+		function sendMessage() {
+			let msg = {
+					target : $("#name").val(),
+					messeage : $("#message").val()
+			}
+			sock.send(JSON.stringify(msg));
+		}
+		// 서버로부터 메시지를 받았을 때
+		function onMessage(msg) {
+			let data = msg.data;
+			console.dir(data);
+			if(data.includes("[안내]")){
+				$("#infoArea").append(data + "<br/>");
+			} else {
+				$("#messageArea").append(data + "<br/>");
+			}
+			
+		}
+		// 서버와 연결을 끊었을 때
+		function onClose(evt) {
+			$("#messageArea").append("연결 끊김");
+		
+		}
+	
+	</script>
     <script>
       $(document).ready(function() {
         $().ready(function() {

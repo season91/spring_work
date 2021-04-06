@@ -150,7 +150,7 @@
 		// 메시지 전송
 		function sendMessage() {
 			let msg = {
-					target : "choayoung91",
+					target : "admin1",
 					messeage : $("#message").val()
 			}
 			sock.send(JSON.stringify(msg));

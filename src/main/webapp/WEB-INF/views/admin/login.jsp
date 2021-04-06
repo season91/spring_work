@@ -14,18 +14,18 @@
       <!--
         Tip 1: You can change the color of the sidebar using: data-color="blue | green | orange | red | yellow"
     -->
-       <div class="sidebar-wrapper">
+     <div class="sidebar-wrapper">
         <div class="logo">
           <a href="/admin/index" class="simple-text logo-mini">
             <img src="../../../resources/abooimg/logo_w.png">
           </a>
           <a href="/admin/index" class="simple-text logo-normal">
-            BDMIN
+            ADMIN
           </a>
         </div>
         <ul class="nav">
           <li >
-            <a href="/admin/mypage/modifyinfos">
+            <a href="/admin/mypage/modifyinfo">
               <i class="tim-icons icon-badge"></i>
               <p>Mypage</p>
             </a>
@@ -42,14 +42,14 @@
               <p>Authority</p>
             </a>
           </li>
-          <li class="active ">
+          <li>
             <a href="/admin/mgmtfee">
               <i class="tim-icons icon-chart-bar-32"></i>
               <p>Management Fee</p>
             </a>
           </li>
           <li>
-            <a href="/admin/vehicle">
+            <a href="/admin/car">
               <i class="tim-icons icon-bus-front-12"></i>
               <p>Car</p>
             </a>
@@ -67,15 +67,9 @@
             </a>
           </li>
           <li>
-           <a href="/admin/notice">
-              <i class="tim-icons icon-volume-98"></i>
-              <p>notice</p>
-            </a>
-          </li>
-          <li>
-            <a href="/bdmin/login">
+            <a href="/admin/bdin">
               <i class="tim-icons icon-key-25"></i>
-              <p>BDMIN</p>
+              <p>BDIN</p>
             </a>
           </li>
         </ul>
@@ -93,20 +87,24 @@
                 <span class="navbar-toggler-bar bar3"></span>
               </button>
             </div>
-            <a class="navbar-brand" href="#pablo">BDMIN - manager authority</a>
+            <a class="navbar-brand" href="#pablo">Table List</a>
           </div>
           <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navigation" aria-controls="navigation-index" aria-expanded="false" aria-label="Toggle navigation">
             <span class="navbar-toggler-bar navbar-kebab"></span>
             <span class="navbar-toggler-bar navbar-kebab"></span>
             <span class="navbar-toggler-bar navbar-kebab"></span>
           </button>
-          <div class="collapse navbar-collapse" id="navigation">
+            <div class="collapse navbar-collapse" id="navigation">
             <ul class="navbar-nav ml-auto ">
               <li class="dropdown nav-item">
                 <a href="#" class="dropdown-toggle nav-link" data-toggle="dropdown">
                   <div class="photo">
                     <img src="../../resources/img/anime3.png">
                   </div>
+                  <b class="caret d-none d-lg-block d-xl-block"></b>
+                  <p class="d-lg-none">
+                    Log out / Login
+                  </p>
                 </a>
                 <ul class="dropdown-menu dropdown-navbar">
                   <li class="nav-link">
@@ -118,11 +116,11 @@
                   <div class="dropdown-divider"></div>
                   <li class="nav-link">
                   <c:choose>
-                  	<c:when test="${sessionScope.bdmin == null}">
-                    	<a href="/bdmin/logout" class="nav-item dropdown-item">Log in</a>
+                  	<c:when test="${sessionScope.admin == null}">
+                    	<a href="/admin/login" class="nav-item dropdown-item">Log in</a>
                   	</c:when>
-                  	<c:when test="${sessionScope.bdmin != null}">
-                    	<a href="/bdmin/logout" class="nav-item dropdown-item">Log out</a>
+                  	<c:when test="${sessionScope.admin != null}">
+                    	<a href="/admin/logout" class="nav-item dropdown-item">Log out</a>
                   	</c:when>
                   </c:choose>
                   </li>
@@ -133,113 +131,50 @@
           </div>
         </div>
       </nav>
-      
-
-      <div class="content">
-           <div class="row">
-          <div class="col-md-12">
-            <div class="card ">
-              <div class="card-header">
-                <h3 class="title">Apart 현황</h3>
-              </div>
-              <div class="col-md-12">
-                <div class="places-buttons">
-                  <div class="row">
-                    <div class="col-md-6 ml-auto mr-auto text-center">
-                      <h4 class="card-title">
-                       	Apart 검색
-                        <p class="category">조회 조건을 선택하세요.
-                      </h4>
-                    </div>
-                  </div>
-                  <div class="row">
-                    <div class="col-lg-12 ml-auto mr-auto">
-                      <div class="row ">
-                        <div class="col-md-3">
-                          <button type="button" class="btn btn-warning btn-block" id="search-button" data-toggle="modal" data-target="#nameModal">아파트 명으로 검색</button>
-                        </div>
-                        <div class="col-md-3">
-                        <form action="${context }/bdmin/apartment/contactlist">
-                          <button type="submit" class="btn btn-warning btn-block" id="search-button" data-toggle="modal" data-target="#apartmentModal">입점 문의건 보기</button>
-                        </form>
-                        </div>
-                      </div>
-                    </div>
-                  </div>
-                </div>
-          </div>
-          
-       	 <div class="card-body">
-             <div class="table-responsive">
-               <table class="table tablesorter " id="">
-                 <thead class=" text-primary">
-                   <th>관리번호</th>
-                   <th>아파트명</th>
-                   <th>아파트 주소</th>
-                   <th>주차가능 대수</th>
-                   <th>상세보기</th>
-                 </thead>
-                 <tbody>
-                  
-            	<c:forEach items="${apartList}" var="apart" varStatus="status">
-                   <tr>
-                       <td> ${apart.apartmentIdx}</td>
-                       <td> ${apart.apartmentName } </td>
-                       <td> ${apart.apartmentAddress }</td>
-                       <td> ${apart.apartmentParking} </td>
-                       <td> <a href="${context }/bdmin/apartment/detail?apartmentIdx=${apart.apartmentIdx}">상세정보</a></td>
-                      </tr>
-                   </c:forEach>
-              		
-                    </tbody>
-                  </table>
-                </div>
-              </div>
+      <div class="modal fade" id="searchModal" tabindex="-1" role="dialog" aria-labelledby="searchModal" aria-hidden="true">
+        <div class="modal-dialog" role="document">
+          <div class="modal-content">
+            <div class="modal-header">
+              <input type="text" class="form-control" id="inlineFormInputGroup" placeholder="SEARCH">
+              <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                <i class="tim-icons icon-simple-remove"></i>
+              </button>
+            </div>
+            <div class="modal-footer">
             </div>
           </div>
-          <div class="row d-flex card-body ">
-	          <div class="col text-center">
-	            <div class="block-27">
-	              <ul>
-	                <li><a href="/bdmin/${paging.type }">&lt;&lt;</a></li>
-	                <li><a href="/bdmin/${paging.type }?page=${paging.prev}">&lt;</a></li>
-	                <c:choose>
-	                	<c:when test="${paging.lastPage eq 0 }">
-	                		<li><a href="/bdmin/${paging.type }">1</a></li>
-	                	</c:when>
-	                	<c:otherwise>
-	                		<c:forEach begin="${paging.blockStart}" end="${paging.blockEnd}" var="page">
-		                      <c:choose>
-		                         <c:when test="${paging.currentPage eq page}">
-		                            <li class="active"><a href="/bdmin/${paging.type }?page=${page}">${page}</a></li>
-		                         </c:when>
-		                         <c:otherwise>
-		                            <li><a href="/bdmin/${paging.type }?page=${page}">${page}</a></li>
-		                         </c:otherwise>
-		                      </c:choose>
-		                 	 </c:forEach> 
-	                	</c:otherwise>
-	                </c:choose>
-	                 
-	                <li><a href="/bdmin/${paging.type }?page=${paging.next}">&gt;</a></li>
-	                <li><a href="/bdmin/${paging.type }?page=${paging.lastPage }">&gt;&gt;</a></li>
-	              </ul>
-	            </div>
-	          </div>
-	        </div>
-    	</div>
-    	</div>
         </div>
       </div>
-
+      <!-- End Navbar -->
+		<div class="content d-flex align-items-center">
+		        <div class="container">
+		          <div class="row block-9 justify-content-center">
+		            <div class="col-md-6 pr-md-5 ">
+          			<h4 class = "text-center">로그인</h4>
+		                <div class="form-group">
+		                  <input type="text" id = "id" name = "id" class="form-control" placeholder="아이디를 입력해주세요.">
+		                </div>
+		                <div class="form-group">
+		                  <input type="text" id ="password" name = "password"class="form-control" placeholder="비밀번호를 입력해주세요.">
+		                </div>
+		                <div class="form-group">
+		                  <input type="submit" value="로그인" class="btn btn-primary py-3 px-5 col-sm-12" onclick="login()">
+		                </div>
+		              <div class="col-sm-12 d-flex justify-content-center">
+		                <div><a href="/admin/findid">아이디 찾기</a> | <a href="/admin/findpassword">비밀번호 찾기</a></div>
+		              </div>
+		            </div>
+		          </div>
+		        </div>
+		      </div>
 
      <footer class="footer">
         <div class="container-fluid">
           <nav>
             <ul>
               <li>
-                <a href="/about">
-                  About
+                <a href="/aboutus">
+                  About Us
                 </a>
               </li>
               <li>
@@ -259,35 +194,7 @@
       </footer>
       </div>
     </div>
-    
-     
-    <div class="modal fade" id="nameModal" tabindex="-1" role="dialog" aria-labelledby="nameModalLabel" aria-hidden="true">
-       <div class="modal-dialog" role="document">
-         <div class="modal-content" style="background-image: linear-gradient(to bottom left, #344675, #263148, #344675); color:white;">
-           <div class="modal-header">
-           	<h4 class="modal-title" id="nameModalLabel">아파트 명으로 검색 검색</h4>
-            	 <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                <i class="tim-icons icon-simple-remove"></i>
-              </button>
-           </div>
-           <div class="modal-body">
-        <form action="${context }/bdmin/apartment">
-          <div class="form-group">
-          <input type="hidden" name="standard" value="apartmentName">
-           <input type="text" class="form-control mgmtfee-keyword" id="inlineFormInputGroup" name="keyword" placeholder="아파트 이름으로 검색하세요.">
-          </div>
-          <div class="modal-footer">
-           <button type="submit" class="btn btn-warning">검색</button>
-           </div>
-        </form>
-      </div>
-         </div>
-       </div>
-     </div>
-     
 
-    
-    
     <!--   Core JS Files   -->
     <script src="../../../resources/js/admin/core/jquery.min.js"></script>
     <script src="../../../resources/js/admin/core/popper.min.js"></script>
@@ -303,6 +210,42 @@
     <script src="../../../resources/js/admin/black-dashboard.min.js?v=1.0.0" type="text/javascript"></script>
     <!-- Black Dashboard DEMO methods, don't include it in your project! -->
     <script src="../../../resources/demo/demo.js"></script>
+	   
+	   <script type="text/javascript">
+	      let login = () => {
+	         const url = '/admin/loginimpl';
+	         let paramObj = new Object();
+	         paramObj.id = id.value;
+	         paramObj.password = password.value;
+	         
+	         let headerObj = new Headers();
+	         headerObj.append("content-type","application/json");
+	         fetch(url,{
+	            method:"post",
+	            headers:headerObj,
+	            //body:urlEncodeForm(paramObj)
+	            body:JSON.stringify(paramObj)
+	         }).then(response => {
+	            //response.ok : 상태코드 200~299사이라면 ok = true            
+	            if(response.ok){
+	               return response.text();   
+	            }
+	            //200번대 코드가 아니라면 에러를 발생시켜서 catch블록으로 이동
+	            throw new AsyncPageError(response.text());
+	         }).then((text) => {
+	            if(text == 'fail'){
+	          		alert("아이디와 비밀번호를 확인하세요")
+	            }else{
+	               <%-- 로그인에 성공하면 index페이지로 브라우저가 재요청 --%>
+	               location.href="/admin/index";
+	            }
+	         }).catch(error => {
+	            error.alertMessage();
+	         });
+	      }
+	   </script>
+    
+    
     <script>
       $(document).ready(function() {
         $().ready(function() {
@@ -413,11 +356,6 @@
           });
         });
       });
-      
-     $('.modal').on('hidden.bs.modal', function (e) {
- 	    $(this).find('form')[0].reset()
-		});
-  
     </script>
     <script>
       $(document).ready(function() {

@@ -1,6 +1,7 @@
 package com.kh.toy.admin.index.controller;
 
 
+import java.util.ArrayList;
 import java.util.List;
 
 import org.springframework.stereotype.Controller;
@@ -22,16 +23,17 @@ public class AdminIndexController {
 	}
 	
 	@GetMapping("admin/index")
-	public void admin() {
-		
+	public void admin(Model model) {
+		List<Integer> list = indexManagementService.selectMgmtfeeMonthFee();
+		model.addAttribute("list", list);
 	}
 	
 	// 비동기통신
-	@GetMapping("admin/monthmgmtfee")
-	@ResponseBody
-	public List<Integer> adminMgmtfee(@SessionAttribute("admin")Admin admin) {
-		List<Integer> list = indexManagementService.selectMgmtfeeMonthFee();
-		return list;
-	}
+//	@GetMapping("admin/monthmgmtfee")
+//	@ResponseBody
+//	public List<Integer> adminMgmtfee(@SessionAttribute("admin")Admin admin) {
+//		List<Integer> list = indexManagementService.selectMgmtfeeMonthFee();
+//		return list;
+//	}
 	
 }

@@ -135,7 +135,7 @@ demo = {
           },
           ticks: {
             suggestedMin: 60,
-            suggestedMax: 125,
+            suggestedMax: 300,
             padding: 20,
             fontColor: "#2380f7"
           }
@@ -156,6 +156,7 @@ demo = {
       }
     };
 
+	/*아영 관리비 그래프 틀*/
     gradientChartOptionsConfigurationWithTooltipPurple = {
       maintainAspectRatio: false,
       legend: {
@@ -300,7 +301,7 @@ demo = {
       }
     };
 
-
+/* 아영 차량 그래프 틀*/
     gradientBarChartConfiguration = {
       maintainAspectRatio: false,
       legend: {
@@ -328,7 +329,7 @@ demo = {
           },
           ticks: {
             suggestedMin: 60,
-            suggestedMax: 120,
+            suggestedMax: 100,
             padding: 20,
             fontColor: "#9e9e9e"
           }
@@ -422,32 +423,18 @@ demo = {
     });
 
   /* 아영 그래프 부분 */
-	
-	let headerObj = new Headers();
-		headerObj.append('content-type', "application/x-www-form-urlencoded");
-	let test = [];
-	fetch("/admin/monthmgmtfee",{
-		method:"GET",
-		header : headerObj
-		}).then(response => response.text())
-		.then(text => {
-			console.dir(text);
-			test.push(text);
-			
-			test.forEach(e=>{
-				chart_data.push(e);
-			});
-			
-		})
-		.catch(error =>{
-			error.alertMessage();
-		});
-		
-	var chart_labels = ['JAN', 'FEB', 'MAR', 'APR', 'MAY', 'JUN', 'JUL', 'AUG', 'SEP', 'OCT', 'NOV', 'DEC'];
-	var chart_data = [];		
-	console.dir(chart_data);
-	console.dir(test);
 
+	let list = document.querySelector('#list').value;
+	console.dir(list);
+	list = list.replace('[','');
+	list = list.replace(']','');
+	list = list.replace(' ','');
+	list = list.split(',');
+
+	var chart_data = list;
+
+	var chart_labels = ['JAN', 'FEB', 'MAR', 'APR', 'MAY', 'JUN', 'JUL', 'AUG', 'SEP', 'OCT', 'NOV', 'DEC'];
+			
     var ctx = document.getElementById("chartBig1").getContext('2d');
 
     var gradientStroke = ctx.createLinearGradient(0, 230, 0, 50);
@@ -479,6 +466,8 @@ demo = {
       },
       options: gradientChartOptionsConfigurationWithTooltipPurple
     };
+
+
     var myChartData = new Chart(ctx, config);
     $("#0").click(function() {
       var data = myChartData.config.data;
@@ -512,6 +501,14 @@ demo = {
     gradientStroke.addColorStop(0, 'rgba(29,140,248,0)'); //blue colors
 
 
+	/* 아영 차량 그래프 */
+	let date = new Date();
+	let dateStr = '';
+	for(let i = 0; i < 10; i++){
+		dateStr = (date.getMonth()+1) + (date.getDate()-i);
+	}
+	console.dir(dateStr);
+	
     var myChart = new Chart(ctx, {
       type: 'bar',
       responsive: true,
@@ -519,7 +516,7 @@ demo = {
         display: false
       },
       data: {
-        labels: ['USA', 'GER', 'AUS', 'UK', 'RO', 'BR'],
+        labels: ['입차중인 차량','4/6'],
         datasets: [{
           label: "Countries",
           fill: true,

@@ -211,6 +211,7 @@
               <div class="card-body">
                 <div class="chart-area">
                   <canvas id="chartBig1"></canvas>
+                  <input type="hidden" id="list" value="${list}">
                 </div>
               </div>
             </div>
@@ -233,8 +234,8 @@
           <div class="col-lg-4">
             <div class="card card-chart">
               <div class="card-header ">
-                <h5 class="card-category">Daily Sales</h5>
-                <h3 class="card-title"><i class="tim-icons icon-delivery-fast text-info "></i> 3,500€</h3>
+                <h5 class="card-category">이번주 등록 차량 수</h5>
+                <h3 class="card-title"><i class="tim-icons icon-delivery-fast text-info "></i> 등록 가능 대수 230</h3>
               </div>
               <div class="card-body ">
                 <div class="chart-area">

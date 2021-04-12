@@ -48,6 +48,11 @@ public class GenerationController {
 		webDataBinder.addValidators(generationValidator);
 	}
 
+	@GetMapping("index")
+	public String index() {
+		return "generation/index";
+	}
+	
 
 	@GetMapping("login")
 	public String login() {

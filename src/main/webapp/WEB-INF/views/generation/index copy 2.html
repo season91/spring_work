@@ -10,7 +10,7 @@
         height: 100%;
         display: block;
         background: url(../../../resources/abooimg/인덱스_건물.png) no-repeat center center;
-        background-size: 50%;
+        background-size: contain;
     }
     </style>
 
@@ -60,9 +60,8 @@
 	    </div>
 	  </nav>
     <!-- END nav -->
-    <div style="background: linear-gradient(45deg, #fb83b5 0%, #9a51ff 100%);">
-      <canvas id="c" class="home-slider owl-carousel" style="height: 750px;"></canvas>
-      </div>
+     <canvas class="home-slider owl-carousel" id="c">
+    </canvas> 
   
     
     <section class="ftco-domain">
@@ -759,16 +758,13 @@
         scene.add(light);
       }
 
-      const boxWidth = 0.1;
-      const boxHeight = 0.1;
+      const boxWidth = 1;
+      const boxHeight = 1;
       const boxDepth = 1;
-      const geometry = new THREE.PlaneGeometry(boxWidth, boxHeight, boxDepth);
-     
-       // 자동차들 
-      function makeInstance(geometry, color, x) {
-        const textureLoader = new THREE.TextureLoader();
+      const geometry = new THREE.BoxGeometry(boxWidth, boxHeight, boxDepth);
 
-        const material = new THREE.MeshPhongMaterial({ map : textureLoader.load(color) });
+      function makeInstance(geometry, color, x) {
+        const material = new THREE.MeshPhongMaterial({ color });
 
         const cube = new THREE.Mesh(geometry, material);
         scene.add(cube);
@@ -777,10 +773,11 @@
 
         return cube;
       }
+
       const cubes = [
-        makeInstance(geometry, '../../../resources/abooimg/자동차_빨강.png', 0.5),
-        makeInstance(geometry, '../../../resources/abooimg/자동차_노랑.png', 0.1),
-        makeInstance(geometry, '../../../resources/abooimg/자동차_파랑.png', 1.2),
+        makeInstance(geometry, 0x44aa88, 0),
+        makeInstance(geometry, 0x8844aa, -2),
+        makeInstance(geometry, 0xaa8844, 2),
       ];
 
       function resizeRendererToDisplaySize(renderer) {
@@ -803,13 +800,12 @@
           camera.updateProjectionMatrix();
         }
 
-        // 얘가 움직이는 애..
-        // cubes.forEach((cube, ndx) => {
-        //   const speed = 1 + ndx * .1;
-        //   const rot = time * speed;
-        //   cube.rotation.x = rot;
-        //   cube.rotation.y = rot;
-        // });
+        cubes.forEach((cube, ndx) => {
+          const speed = 1 + ndx * .1;
+          const rot = time * speed;
+          cube.rotation.x = rot;
+          cube.rotation.y = rot;
+        });
 
         renderer.render(scene, camera);
 

@@ -4,29 +4,31 @@
 <!DOCTYPE html>
 <html>
 <body>
-	  <nav class="navbar navbar-expand-lg navbar-dark ftco_navbar bg-dark ftco-navbar-light" id="ftco-navbar">
-	    <div class="container">
-	      <a class="navbar-brand" href="index.html">WebHost</a>
-	      <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#ftco-nav" aria-controls="ftco-nav" aria-expanded="false" aria-label="Toggle navigation">
-	        <span class="oi oi-menu"></span> Menu
-	      </button>
+     <nav class="navbar navbar-expand-lg navbar-dark ftco_navbar bg-dark ftco-navbar-light" id="ftco-navbar">
+       <div class="container">
+         <a class="navbar-brand" href="index.html">WebHost</a>
+         <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#ftco-nav" aria-controls="ftco-nav" aria-expanded="false" aria-label="Toggle navigation">
+           <span class="oi oi-menu"></span> Menu
+         </button>
 
-	      <div class="collapse navbar-collapse" id="ftco-nav">
-	        <ul class="navbar-nav ml-auto">
-	          <li class="nav-item active"><a href="index.html" class="nav-link">Home</a></li>
-	          <li class="nav-item"><a href="about.html" class="nav-link">About</a></li>
-	          <li class="nav-item"><a href="domain.html" class="nav-link">Domain</a></li>
-	          <li class="nav-item"><a class="nav-link" href="hosting.html">Hosting</a></li>
-	          <li class="nav-item"><a href="blog.html" class="nav-link">Blog</a></li>
-	          <li class="nav-item"><a href="contact.html" class="nav-link">Contact</a></li>
-	          <li class="nav-item cta"><a href="contact.html" class="nav-link"><span>Get started</span></a></li>
-	        </ul>
-	      </div>
-	    </div>
-	  </nav>
+         <div class="collapse navbar-collapse" id="ftco-nav">
+           <ul class="navbar-nav ml-auto">
+             <li class="nav-item active"><a href="index.html" class="nav-link">Home</a></li>
+             <li class="nav-item"><a href="about.html" class="nav-link">About</a></li>
+             <li class="nav-item"><a href="domain.html" class="nav-link">Domain</a></li>
+             <li class="nav-item"><a class="nav-link" href="hosting.html">Hosting</a></li>
+             <li class="nav-item"><a href="blog.html" class="nav-link">Blog</a></li>
+             <li class="nav-item"><a href="contact.html" class="nav-link">Contact</a></li>
+             <li class="nav-item cta"><a href="contact.html" class="nav-link"><span>Get started</span></a></li>
+           </ul>
+         </div>
+       </div>
+     </nav>
     <!-- END nav -->
+    
+    <section class="owl-carousel home-slider" id="middle" style="height: 750px;"></section>
 
-    <section class="home-slider owl-carousel">
+   <!--  <section class="home-slider owl-carousel">
       <div class="slider-item" style="background-image: url(../../../resources/images/bg_1.jpg);">
         <div class="overlay"></div>
         <div class="container-fluid">
@@ -38,49 +40,32 @@
               <p><a href="#" class="btn btn-primary p-3 px-xl-5 py-xl-3">Get started</a> <a href="#" class="btn btn-primary btn-primary-2 p-3 px-xl-5 py-xl-3">Read more</a></p>
             </div>
             <div class="col-md-7 ftco-animate">
-            	<img src="../../../resources/images/dashboard_full_1.png" class="img-fluid" alt="">
+               <img src="../../../resources/abooimg/인덱스_건물.png" class="img-fluid" alt="">
             </div>
 
           </div>
         </div>
       </div>
 
-      <div class="slider-item" style="background-image: url(../../../resources/images/bg_2.jpg);">
-        <div class="overlay"></div>
-        <div class="container-fluid">
-          <div class="row slider-text align-items-center" data-scrollax-parent="true">
-
-            <div class="col-md-5 wrap col-sm-12 ftco-animate" data-scrollax=" properties: { translateY: '70%' }">
-              <h1 class="mb-4 mt-5" data-scrollax="properties: { translateY: '30%', opacity: 1.6 }">The Web Hosting Platform Made for You</h1>
-              <p class="mb-4 mb-md-5">A small river named Duden flows by their place and supplies it with the necessary regelialia.</p>
-              <p><a href="#" class="btn btn-primary p-3 px-xl-5 py-xl-3">Get started</a> <a href="#" class="btn btn-primary btn-primary-2 p-3 px-xl-5 py-xl-3">Read more</a></p>
-            </div>
-            <div class="col-md-7 ftco-animate">
-            	<img src="../../../resources/images/dashboard_full_3.png" class="img-fluid" alt="">
-            </div>
-
-          </div>
-        </div>
-      </div>
-    </section>
+    </section> -->
     
     <section class="ftco-domain">
-    	<div class="container">
-    		<div class="row d-flex">
-    			<div class="col-lg-5 heading-white mb-4 mb-sm-4 mb-lg-0 ftco-animate">
-    				<h2>Search You Domain Name</h2>
-    				<p>A small river named Duden flows by their place</p>
-    			</div>
-    			<div class="col-lg-7 ftco-wrap ftco-animate">
-    				<form action="#" class="domain-form d-flex">
+       <div class="container">
+          <div class="row d-flex">
+             <div class="col-lg-5 heading-white mb-4 mb-sm-4 mb-lg-0 ftco-animate">
+                <h2>Search You Domain Name</h2>
+                <p>A small river named Duden flows by their place</p>
+             </div>
+             <div class="col-lg-7 ftco-wrap ftco-animate">
+                <form action="#" class="domain-form d-flex">
               <div class="form-group domain-name">
                 <input type="text" class="form-control name px-4" placeholder="Enter your domain name...">
               </div>
               <div class="form-group domain-select d-flex">
-	              <div class="select-wrap">
+                 <div class="select-wrap">
                   <div class="icon"><span class="ion-ios-arrow-down"></span></div>
                   <select name="" id="" class="form-control">
-                  	<option value="">.com</option>
+                     <option value="">.com</option>
                     <option value="">.net</option>
                     <option value="">.biz</option>
                     <option value="">.co</option>
@@ -88,17 +73,17 @@
                   </select>
                 </div>
                 <input type="submit" class="search-domain btn btn-primary text-center" value="Search">
-	            </div>
+               </div>
             </form>
             <p class="domain-price mt-2"><span><small>.com</small> $9.75</span> <span><small>.net</small> $9.50</span> <span><small>.biz</small> $8.95</span> <span><small>.co</small> $7.80</span><span><small>.me</small> $7.95</span></p>
-    			</div>
-    		</div>
-    	</div>
+             </div>
+          </div>
+       </div>
     </section>
   
     <section class="ftco-section services-section bg-light">
       <div class="container">
-      	<div class="row justify-content-center mb-5 pb-3">
+         <div class="row justify-content-center mb-5 pb-3">
           <div class="col-md-7 text-center heading-section ftco-animate">
             <h2 class="mb-4">The WebHost Guarantee</h2>
             <p>Even the all-powerful Pointing has no control about the blind texts it is an almost unorthographic.</p>
@@ -108,9 +93,9 @@
           <div class="col-md-4 d-flex align-self-stretch ftco-animate">
             <div class="media block-6 services d-block text-center">
               <div class="d-flex justify-content-center">
-              	<div class="icon d-flex align-items-center justify-content-center">
-              		<span class="flaticon-guarantee"></span>
-              	</div>
+                 <div class="icon d-flex align-items-center justify-content-center">
+                    <span class="flaticon-guarantee"></span>
+                 </div>
               </div>
               <div class="media-body p-2 mt-3">
                 <h3 class="heading">100% Uptime Guarantee</h3>
@@ -121,9 +106,9 @@
           <div class="col-md-4 d-flex align-self-stretch ftco-animate">
             <div class="media block-6 services d-block text-center">
               <div class="d-flex justify-content-center">
-              	<div class="icon d-flex align-items-center justify-content-center">
-              		<span class="flaticon-shield"></span>
-              	</div>
+                 <div class="icon d-flex align-items-center justify-content-center">
+                    <span class="flaticon-shield"></span>
+                 </div>
               </div>
               <div class="media-body p-2 mt-3">
                 <h3 class="heading">Safe and Secured</h3>
@@ -134,9 +119,9 @@
           <div class="col-md-4 d-flex align-self-stretch ftco-animate">
             <div class="media block-6 services d-block text-center">
               <div class="d-flex justify-content-center">
-              	<div class="icon d-flex align-items-center justify-content-center">
-              		<span class="flaticon-support"></span>
-              	</div>
+                 <div class="icon d-flex align-items-center justify-content-center">
+                    <span class="flaticon-support"></span>
+                 </div>
               </div>
               <div class="media-body p-2 mt-3">
                 <h3 class="heading">Our Dedicated Support</h3>
@@ -144,12 +129,12 @@
               </div>
             </div>      
           </div>
-					<div class="col-md-4 d-flex align-self-stretch ftco-animate">
+               <div class="col-md-4 d-flex align-self-stretch ftco-animate">
             <div class="media block-6 services d-block text-center">
               <div class="d-flex justify-content-center">
-              	<div class="icon d-flex align-items-center justify-content-center">
-              		<span class="flaticon-cloud-computing"></span>
-              	</div>
+                 <div class="icon d-flex align-items-center justify-content-center">
+                    <span class="flaticon-cloud-computing"></span>
+                 </div>
               </div>
               <div class="media-body p-2 mt-3">
                 <h3 class="heading">Domain Transfer</h3>
@@ -160,9 +145,9 @@
           <div class="col-md-4 d-flex align-self-stretch ftco-animate">
             <div class="media block-6 services d-block text-center">
               <div class="d-flex justify-content-center">
-              	<div class="icon d-flex align-items-center justify-content-center">
-              		<span class="flaticon-settings"></span>
-              	</div>
+                 <div class="icon d-flex align-items-center justify-content-center">
+                    <span class="flaticon-settings"></span>
+                 </div>
               </div>
               <div class="media-body p-2 mt-3">
                 <h3 class="heading">DNS Control</h3>
@@ -173,9 +158,9 @@
           <div class="col-md-4 d-flex align-self-stretch ftco-animate">
             <div class="media block-6 services d-block text-center">
               <div class="d-flex justify-content-center">
-              	<div class="icon d-flex align-items-center justify-content-center">
-              		<span class="flaticon-loading"></span>
-              	</div>
+                 <div class="icon d-flex align-items-center justify-content-center">
+                    <span class="flaticon-loading"></span>
+                 </div>
               </div>
               <div class="media-body p-2 mt-3">
                 <h3 class="heading">Fast Loaded</h3>
@@ -188,218 +173,218 @@
     </section>
 
     <section class="ftco-section ftco-counter img" id="section-counter" style="background-image: url(../../../resources/images/bg_1.jpg);" data-stellar-background-ratio="0.5">
-    	<div class="container">
-    		<div class="row justify-content-center mb-5">
+       <div class="container">
+          <div class="row justify-content-center mb-5">
           <div class="col-md-7 text-center heading-section heading-section-white ftco-animate">
             <span class="subheading">More than 100,000 websites hosted</span>
           </div>
         </div>
-    		<div class="row justify-content-center">
-    			<div class="col-md-10">
-		    		<div class="row">
-		          <div class="col-md-3 d-flex justify-content-center counter-wrap ftco-animate">
-		            <div class="block-18 text-center">
-		              <div class="text">
-		                <strong class="number" data-number="2000">0</strong>
-		                <span>CMS Installation</span>
-		              </div>
-		            </div>
-		          </div>
-		          <div class="col-md-3 d-flex justify-content-center counter-wrap ftco-animate">
-		            <div class="block-18 text-center">
-		              <div class="text">
-		                <strong class="number" data-number="100">0</strong>
-		                <span>Awards Won</span>
-		              </div>
-		            </div>
-		          </div>
-		          <div class="col-md-3 d-flex justify-content-center counter-wrap ftco-animate">
-		            <div class="block-18 text-center">
-		              <div class="text">
-		                <strong class="number" data-number="32000">0</strong>
-		                <span>Registered Domains</span>
-		              </div>
-		            </div>
-		          </div>
-		          <div class="col-md-3 d-flex justify-content-center counter-wrap ftco-animate">
-		            <div class="block-18 text-center">
-		              <div class="text">
-		                <strong class="number" data-number="31998">0</strong>
-		                <span>Satisfied Customers</span>
-		              </div>
-		            </div>
-		          </div>
-		        </div>
-	        </div>
+          <div class="row justify-content-center">
+             <div class="col-md-10">
+                <div class="row">
+                <div class="col-md-3 d-flex justify-content-center counter-wrap ftco-animate">
+                  <div class="block-18 text-center">
+                    <div class="text">
+                      <strong class="number" data-number="2000">0</strong>
+                      <span>CMS Installation</span>
+                    </div>
+                  </div>
+                </div>
+                <div class="col-md-3 d-flex justify-content-center counter-wrap ftco-animate">
+                  <div class="block-18 text-center">
+                    <div class="text">
+                      <strong class="number" data-number="100">0</strong>
+                      <span>Awards Won</span>
+                    </div>
+                  </div>
+                </div>
+                <div class="col-md-3 d-flex justify-content-center counter-wrap ftco-animate">
+                  <div class="block-18 text-center">
+                    <div class="text">
+                      <strong class="number" data-number="32000">0</strong>
+                      <span>Registered Domains</span>
+                    </div>
+                  </div>
+                </div>
+                <div class="col-md-3 d-flex justify-content-center counter-wrap ftco-animate">
+                  <div class="block-18 text-center">
+                    <div class="text">
+                      <strong class="number" data-number="31998">0</strong>
+                      <span>Satisfied Customers</span>
+                    </div>
+                  </div>
+                </div>
+              </div>
+           </div>
         </div>
-    	</div>
+       </div>
     </section>
 
     <section class="ftco-section bg-light">
-    	<div class="container">
-    		<div class="row justify-content-center mb-5 pb-3">
+       <div class="container">
+          <div class="row justify-content-center mb-5 pb-3">
           <div class="col-md-7 text-center heading-section ftco-animate">
             <span class="subheading">Pricing Plans</span>
             <h2 class="mb-4">Our Best Pricing</h2>
           </div>
         </div>
-    		<div class="row d-flex">
-	        <div class="col-lg-3 col-md-6 ftco-animate">
-	          <div class="block-7">
-	            <div class="text-center">
-		            <h2 class="heading">Free</h2>
-		            <span class="price"><sup>$</sup> <span class="number">0</span></span>
-		            <span class="excerpt d-block">100% free. Forever</span>
-		            <h3 class="heading-2 mb-3">Enjoy All The Features</h3>
-		            
-		            <ul class="pricing-text mb-4">
-		              <li><strong>150 GB</strong> Bandwidth</li>
-		              <li><strong>100 GB</strong> Storage</li>
-		              <li><strong>$1.00 / GB</strong> Overages</li>
-		              <li>All features</li>
-		            </ul>
-		            <a href="#" class="btn btn-primary d-block px-3 py-3 mb-4">Choose Plan</a>
-	            </div>
-	          </div>
-	        </div>
-	        <div class="col-lg-3 col-md-6 ftco-animate">
-	          <div class="block-7">
-	            <div class="text-center">
-		            <h2 class="heading">Startup</h2>
-		            <span class="price"><sup>$</sup> <span class="number">19</span></span>
-		            <span class="excerpt d-block">All features are included</span>
-		            <h3 class="heading-2 mb-3">Enjoy All The Features</h3>
-		            
-		            <ul class="pricing-text mb-4">
-		              <li><strong>450 GB</strong> Bandwidth</li>
-		              <li><strong>400 GB</strong> Storage</li>
-		              <li><strong>$2.00 / GB</strong> Overages</li>
-		              <li>All features</li>
-		            </ul>
-		            <a href="#" class="btn btn-primary d-block px-3 py-3 mb-4">Choose Plan</a>
-	            </div>
-	          </div>
-	        </div>
-	        <div class="col-lg-3 col-md-6 ftco-animate">
-	          <div class="block-7">
-	            <div class="text-center">
-		            <h2 class="heading">Premium</h2>
-		            <span class="price"><sup>$</sup> <span class="number">49</span></span>
-		            <span class="excerpt d-block">All features are included</span>
-		            <h3 class="heading-2 mb-3">Enjoy All The Features</h3>
-		            
-		            <ul class="pricing-text mb-4">
-		              <li><strong>250 GB</strong> Bandwidth</li>
-		              <li><strong>200 GB</strong> Storage</li>
-		              <li><strong>$5.00 / GB</strong> Overages</li>
-		              <li>All features</li>
-		            </ul>
-		            <a href="#" class="btn btn-primary d-block px-3 py-3 mb-4">Choose Plan</a>
-	            </div>
-	          </div>
-	        </div>
-	        <div class="col-lg-3 col-md-6 ftco-animate">
-	          <div class="block-7">
-	            <div class="text-center">
-		            <h2 class="heading">Pro</h2>
-		            <span class="price"><sup>$</sup> <span class="number">99</span></span>
-		            <span class="excerpt d-block">All features are included</span>
-		            <h3 class="heading-2 mb-3">Enjoy All The Features</h3>
-		            
-		            <ul class="pricing-text mb-4">
-		              <li><strong>450 GB</strong> Bandwidth</li>
-		              <li><strong>400 GB</strong> Storage</li>
-		              <li><strong>$20.00 / GB</strong> Overages</li>
-		              <li>All features</li>
-		            </ul>
-			          <a href="#" class="btn btn-primary d-block px-3 py-3 mb-4">Choose Plan</a>
-	            </div>
-	          </div>
-	        </div>
-	      </div>
-    	</div>
+          <div class="row d-flex">
+           <div class="col-lg-3 col-md-6 ftco-animate">
+             <div class="block-7">
+               <div class="text-center">
+                  <h2 class="heading">Free</h2>
+                  <span class="price"><sup>$</sup> <span class="number">0</span></span>
+                  <span class="excerpt d-block">100% free. Forever</span>
+                  <h3 class="heading-2 mb-3">Enjoy All The Features</h3>
+                  
+                  <ul class="pricing-text mb-4">
+                    <li><strong>150 GB</strong> Bandwidth</li>
+                    <li><strong>100 GB</strong> Storage</li>
+                    <li><strong>$1.00 / GB</strong> Overages</li>
+                    <li>All features</li>
+                  </ul>
+                  <a href="#" class="btn btn-primary d-block px-3 py-3 mb-4">Choose Plan</a>
+               </div>
+             </div>
+           </div>
+           <div class="col-lg-3 col-md-6 ftco-animate">
+             <div class="block-7">
+               <div class="text-center">
+                  <h2 class="heading">Startup</h2>
+                  <span class="price"><sup>$</sup> <span class="number">19</span></span>
+                  <span class="excerpt d-block">All features are included</span>
+                  <h3 class="heading-2 mb-3">Enjoy All The Features</h3>
+                  
+                  <ul class="pricing-text mb-4">
+                    <li><strong>450 GB</strong> Bandwidth</li>
+                    <li><strong>400 GB</strong> Storage</li>
+                    <li><strong>$2.00 / GB</strong> Overages</li>
+                    <li>All features</li>
+                  </ul>
+                  <a href="#" class="btn btn-primary d-block px-3 py-3 mb-4">Choose Plan</a>
+               </div>
+             </div>
+           </div>
+           <div class="col-lg-3 col-md-6 ftco-animate">
+             <div class="block-7">
+               <div class="text-center">
+                  <h2 class="heading">Premium</h2>
+                  <span class="price"><sup>$</sup> <span class="number">49</span></span>
+                  <span class="excerpt d-block">All features are included</span>
+                  <h3 class="heading-2 mb-3">Enjoy All The Features</h3>
+                  
+                  <ul class="pricing-text mb-4">
+                    <li><strong>250 GB</strong> Bandwidth</li>
+                    <li><strong>200 GB</strong> Storage</li>
+                    <li><strong>$5.00 / GB</strong> Overages</li>
+                    <li>All features</li>
+                  </ul>
+                  <a href="#" class="btn btn-primary d-block px-3 py-3 mb-4">Choose Plan</a>
+               </div>
+             </div>
+           </div>
+           <div class="col-lg-3 col-md-6 ftco-animate">
+             <div class="block-7">
+               <div class="text-center">
+                  <h2 class="heading">Pro</h2>
+                  <span class="price"><sup>$</sup> <span class="number">99</span></span>
+                  <span class="excerpt d-block">All features are included</span>
+                  <h3 class="heading-2 mb-3">Enjoy All The Features</h3>
+                  
+                  <ul class="pricing-text mb-4">
+                    <li><strong>450 GB</strong> Bandwidth</li>
+                    <li><strong>400 GB</strong> Storage</li>
+                    <li><strong>$20.00 / GB</strong> Overages</li>
+                    <li>All features</li>
+                  </ul>
+                   <a href="#" class="btn btn-primary d-block px-3 py-3 mb-4">Choose Plan</a>
+               </div>
+             </div>
+           </div>
+         </div>
+       </div>
     </section>
-		
-		<section class="ftco-services">
-			<div class="container-wrap">
-				<div class="row no-gutters">
-					<div class="col-lg-5 img services-img" style="background-image: url(../../../resources/images/bg_1.jpg);" data-stellar-background-ratio="0.5">
-        		<a href="https://vimeo.com/45830194" class="icon popup-vimeo d-flex justify-content-center align-items-center">
-	        		<span class="icon-play"></a>
-	        	</a>
-					</div>
-					<div class="col-lg-7">
-						<div class="services-wrap p-4 p-md-5">
-      				<div class="heading-section mb-5 ftco-animate">
-		            <h2 class="mb-2">Why Choose Us?</h2>
-		            <span class="subheading">Peoples Choice WebHost The Best Web Hosting</span>
-		          </div>
-      				<div class="d-md-flex">
-      					<div class="one-half mr-4">
-      						<div class="list-services d-flex ftco-animate">
-		      					<div class="icon d-flex order-md-last justify-content-center align-items-center">
-		      						<span class="flaticon-cloud-computing"></span>
-		      					</div>
-		      					<div class="text pl-4 pl-sm-0 pr-md-4 text-md-right">
-			      					<h3>Free Domain Transfer</h3>
-			      					<p>Far far away, behind the word mountains, far from the countries Vokalia</p>
-		      					</div>
-		      				</div>
-		      				<div class="list-services d-flex ftco-animate">
-		      					<div class="icon d-flex order-md-last justify-content-center align-items-center">
-		      						<span class="flaticon-bandwidth"></span>
-		      					</div>
-		      					<div class="text pl-4 pl-sm-0 pr-md-4 text-md-right">
-			      					<h3>Unlimited BandWidth</h3>
-			      					<p>Far far away, behind the word mountains, far from the countries Vokalia</p>
-		      					</div>
-		      				</div>
-		      				<div class="list-services d-flex ftco-animate">
-		      					<div class="icon d-flex order-md-last justify-content-center align-items-center">
-		      						<span class="flaticon-shield"></span>
-		      					</div>
-		      					<div class="text pl-4 pl-sm-0 pr-md-4 text-md-right">
-			      					<h3>Security</h3>
-			      					<p>Far far away, behind the word mountains, far from the countries Vokalia</p>
-		      					</div>
-		      				</div>
-      					</div>
+      
+      <section class="ftco-services">
+         <div class="container-wrap">
+            <div class="row no-gutters">
+               <div class="col-lg-5 img services-img" style="background-image: url(../../../resources/images/bg_1.jpg);" data-stellar-background-ratio="0.5">
+              <a href="https://vimeo.com/45830194" class="icon popup-vimeo d-flex justify-content-center align-items-center">
+                 <span class="icon-play"></a>
+              </a>
+               </div>
+               <div class="col-lg-7">
+                  <div class="services-wrap p-4 p-md-5">
+                  <div class="heading-section mb-5 ftco-animate">
+                  <h2 class="mb-2">Why Choose Us?</h2>
+                  <span class="subheading">Peoples Choice WebHost The Best Web Hosting</span>
+                </div>
+                  <div class="d-md-flex">
+                     <div class="one-half mr-4">
+                        <div class="list-services d-flex ftco-animate">
+                           <div class="icon d-flex order-md-last justify-content-center align-items-center">
+                              <span class="flaticon-cloud-computing"></span>
+                           </div>
+                           <div class="text pl-4 pl-sm-0 pr-md-4 text-md-right">
+                              <h3>Free Domain Transfer</h3>
+                              <p>Far far away, behind the word mountains, far from the countries Vokalia</p>
+                           </div>
+                        </div>
+                        <div class="list-services d-flex ftco-animate">
+                           <div class="icon d-flex order-md-last justify-content-center align-items-center">
+                              <span class="flaticon-bandwidth"></span>
+                           </div>
+                           <div class="text pl-4 pl-sm-0 pr-md-4 text-md-right">
+                              <h3>Unlimited BandWidth</h3>
+                              <p>Far far away, behind the word mountains, far from the countries Vokalia</p>
+                           </div>
+                        </div>
+                        <div class="list-services d-flex ftco-animate">
+                           <div class="icon d-flex order-md-last justify-content-center align-items-center">
+                              <span class="flaticon-shield"></span>
+                           </div>
+                           <div class="text pl-4 pl-sm-0 pr-md-4 text-md-right">
+                              <h3>Security</h3>
+                              <p>Far far away, behind the word mountains, far from the countries Vokalia</p>
+                           </div>
+                        </div>
+                     </div>
 
-      					<div class="one-half">
-      						<div class="list-services d-flex ftco-animate">
-		      					<div class="icon d-flex justify-content-center align-items-center">
-		      						<span class="flaticon-guarantee"></span>
-		      					</div>
-		      					<div class="text pl-4 pl-sm-0 pl-md-4">
-			      					<h3>99% Uptime</h3>
-			      					<p>Far far away, behind the word mountains, far from the countries Vokalia</p>
-		      					</div>
-		      				</div>
-		      				<div class="list-services d-flex ftco-animate">
-		      					<div class="icon d-flex justify-content-center align-items-center">
-		      						<span class="flaticon-settings"></span>
-		      					</div>
-		      					<div class="text pl-4 pl-sm-0 pl-md-4">
-			      					<h3>Free Website Optimization</h3>
-			      					<p>Far far away, behind the word mountains, far from the countries Vokalia</p>
-		      					</div>
-		      				</div>
-		      				<div class="list-services d-flex ftco-animate">
-		      					<div class="icon d-flex justify-content-center align-items-center">
-		      						<span class="flaticon-support"></span>
-		      					</div>
-		      					<div class="text pl-4 pl-sm-0 pl-md-4">
-			      					<h3>24/7 Tech Support</h3>
-			      					<p>Far far away, behind the word mountains, far from the countries Vokalia</p>
-		      					</div>
-		      				</div>
-      					</div>
-      				</div>
-      			</div>
-					</div>
-				</div>
-			</div>
-		</section>
+                     <div class="one-half">
+                        <div class="list-services d-flex ftco-animate">
+                           <div class="icon d-flex justify-content-center align-items-center">
+                              <span class="flaticon-guarantee"></span>
+                           </div>
+                           <div class="text pl-4 pl-sm-0 pl-md-4">
+                              <h3>99% Uptime</h3>
+                              <p>Far far away, behind the word mountains, far from the countries Vokalia</p>
+                           </div>
+                        </div>
+                        <div class="list-services d-flex ftco-animate">
+                           <div class="icon d-flex justify-content-center align-items-center">
+                              <span class="flaticon-settings"></span>
+                           </div>
+                           <div class="text pl-4 pl-sm-0 pl-md-4">
+                              <h3>Free Website Optimization</h3>
+                              <p>Far far away, behind the word mountains, far from the countries Vokalia</p>
+                           </div>
+                        </div>
+                        <div class="list-services d-flex ftco-animate">
+                           <div class="icon d-flex justify-content-center align-items-center">
+                              <span class="flaticon-support"></span>
+                           </div>
+                           <div class="text pl-4 pl-sm-0 pl-md-4">
+                              <h3>24/7 Tech Support</h3>
+                              <p>Far far away, behind the word mountains, far from the countries Vokalia</p>
+                           </div>
+                        </div>
+                     </div>
+                  </div>
+               </div>
+               </div>
+            </div>
+         </div>
+      </section>
 
     <section class="ftco-section testimony-section">
       <div class="container">
@@ -490,14 +475,14 @@
     </section>
 
     <section class="ftco-section">
-    	<div class="container">
-    		<div class="row justify-content-center mb-5 pb-5">
-    			<div class="col-md-7 text-center heading-section ftco-animate">
+       <div class="container">
+          <div class="row justify-content-center mb-5 pb-5">
+             <div class="col-md-7 text-center heading-section ftco-animate">
             <span class="subheading">Services</span>
             <h2 class="mb-4">How it works</h2>
           </div>
-    		</div>
-    		<div class="row">
+          </div>
+          <div class="row">
           <div class="col-md-12 nav-link-wrap mb-5 pb-md-5 pb-sm-1 ftco-animate">
             <div class="nav ftco-animate nav-pills justify-content-center text-center" id="v-pills-tab" role="tablist" aria-orientation="vertical">
               <a class="nav-link active" id="v-pills-nextgen-tab" data-toggle="pill" href="#v-pills-nextgen" role="tab" aria-controls="v-pills-nextgen" aria-selected="true">Next gen VPS</a>
@@ -512,75 +497,75 @@
             <div class="tab-content ftco-animate" id="v-pills-tabContent">
 
               <div class="tab-pane fade show active" id="v-pills-nextgen" role="tabpanel" aria-labelledby="v-pills-nextgen-tab">
-              	<div class="d-md-flex">
-	              	<div class="one-forth align-self-center">
-	              		<img src="../../../resources/images/dashboard_full_1.jpg" class="img-fluid border" alt="">
-	              	</div>
-	              	<div class="one-half ml-md-5 align-self-center">
-		                <h2 class="mb-4">Next gen VPS hosting</h2>
-		              	<p>Far far away, behind the word mountains, far from the countries Vokalia and Consonantia, there live the blind texts. Separated they live in Bookmarksgrove right at the coast of the Semantics, a large language ocean.</p>
-		                <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Nesciunt voluptate, quibusdam sunt iste dolores consequatur</p>
-		              </div>
-	              </div>
+                 <div class="d-md-flex">
+                    <div class="one-forth align-self-center">
+                       <img src="../../../resources/images/dashboard_full_1.jpg" class="img-fluid border" alt="">
+                    </div>
+                    <div class="one-half ml-md-5 align-self-center">
+                      <h2 class="mb-4">Next gen VPS hosting</h2>
+                       <p>Far far away, behind the word mountains, far from the countries Vokalia and Consonantia, there live the blind texts. Separated they live in Bookmarksgrove right at the coast of the Semantics, a large language ocean.</p>
+                      <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Nesciunt voluptate, quibusdam sunt iste dolores consequatur</p>
+                    </div>
+                 </div>
               </div>
 
               <div class="tab-pane fade" id="v-pills-performance" role="tabpanel" aria-labelledby="v-pills-performance-tab">
                 <div class="d-md-flex">
-	              	<div class="one-forth order-last align-self-center">
-	              		<img src="../../../resources/images/dashboard_full_2.jpg" class="img-fluid border" alt="">
-	              	</div>
-	              	<div class="one-half order-first mr-md-5 align-self-center">
-		                <h2 class="mb-4">Performance VPS hosting</h2>
-		              	<p>Far far away, behind the word mountains, far from the countries Vokalia and Consonantia, there live the blind texts. Separated they live in Bookmarksgrove right at the coast of the Semantics, a large language ocean.</p>
-		                <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Nesciunt voluptate, quibusdam sunt iste dolores consequatur</p>
-		              </div>
-	              </div>
+                    <div class="one-forth order-last align-self-center">
+                       <img src="../../../resources/images/dashboard_full_2.jpg" class="img-fluid border" alt="">
+                    </div>
+                    <div class="one-half order-first mr-md-5 align-self-center">
+                      <h2 class="mb-4">Performance VPS hosting</h2>
+                       <p>Far far away, behind the word mountains, far from the countries Vokalia and Consonantia, there live the blind texts. Separated they live in Bookmarksgrove right at the coast of the Semantics, a large language ocean.</p>
+                      <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Nesciunt voluptate, quibusdam sunt iste dolores consequatur</p>
+                    </div>
+                 </div>
               </div>
 
               <div class="tab-pane fade" id="v-pills-effect" role="tabpanel" aria-labelledby="v-pills-effect-tab">
                 <div class="d-md-flex">
-	              	<div class="one-forth align-self-center">
-	              		<img src="../../../resources/images/dashboard_full_1.jpg" class="img-fluid border" alt="">
-	              	</div>
-	              	<div class="one-half ml-md-5 align-self-center">
-		                <h2 class="mb-4">Effective VPS hosting</h2>
-		              	<p>Far far away, behind the word mountains, far from the countries Vokalia and Consonantia, there live the blind texts. Separated they live in Bookmarksgrove right at the coast of the Semantics, a large language ocean.</p>
-		                <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Nesciunt voluptate, quibusdam sunt iste dolores consequatur</p>
-		              </div>
-	              </div>
+                    <div class="one-forth align-self-center">
+                       <img src="../../../resources/images/dashboard_full_1.jpg" class="img-fluid border" alt="">
+                    </div>
+                    <div class="one-half ml-md-5 align-self-center">
+                      <h2 class="mb-4">Effective VPS hosting</h2>
+                       <p>Far far away, behind the word mountains, far from the countries Vokalia and Consonantia, there live the blind texts. Separated they live in Bookmarksgrove right at the coast of the Semantics, a large language ocean.</p>
+                      <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Nesciunt voluptate, quibusdam sunt iste dolores consequatur</p>
+                    </div>
+                 </div>
               </div>
             </div>
           </div>
         </div>
-    	</div>
+       </div>
     </section>
 
     <section class="ftco-section ftco-partner">
-    	<div class="container">
-    		<div class="row justify-content-center mb-5 pb-3">
+       <div class="container">
+          <div class="row justify-content-center mb-5 pb-3">
           <div class="col-md-7 text-center heading-section heading-section-white ftco-animate">
             <h2 class="mb-4">Our Clients</h2>
             <p>Far far away, behind the word mountains, far from the countries Vokalia and Consonantia, there live the blind texts. Separated they live in</p>
           </div>
         </div>
-    		<div class="row">
-    			<div class="col-sm ftco-animate">
-    				<a href="#" class="partner"><img src="../../../resources/images/partner-1.png" class="img-fluid" alt="Colorlib Template"></a>
-    			</div>
-    			<div class="col-sm ftco-animate">
-    				<a href="#" class="partner"><img src="../../../resources/images/partner-2.png" class="img-fluid" alt="Colorlib Template"></a>
-    			</div>
-    			<div class="col-sm ftco-animate">
-    				<a href="#" class="partner"><img src="../../../resources/images/partner-3.png" class="img-fluid" alt="Colorlib Template"></a>
-    			</div>
-    			<div class="col-sm ftco-animate">
-    				<a href="#" class="partner"><img src="../../../resources/images/partner-4.png" class="img-fluid" alt="Colorlib Template"></a>
-    			</div>
-    			<div class="col-sm ftco-animate">
-    				<a href="#" class="partner"><img src="../../../resources/images/partner-5.png" class="img-fluid" alt="Colorlib Template"></a>
-    			</div>
-    		</div>
-    	</div>
+          <div class="row">
+             <div class="col-sm ftco-animate">
+                <a href="#" class="partner"><img src="../../../resources/images/partner-1.png" class="img-fluid" alt="Colorlib Template"></a>
+             </div>
+             <div class="col-sm ftco-animate">
+                <a href="#" class="partner"><img src="../../../resources/images/partner-2.png" class="img-fluid" alt="Colorlib Template"></a>
+             </div>
+             <div class="col-sm ftco-animate">
+                <a href="#" class="partner"><img src="../../../resources/images/partner-3.png" class="img-fluid" alt="Colorlib Template"></a>
+             </div>
+             <div class="col-sm ftco-animate">
+                <a href="#" class="partner"><img src="../../../resources/images/partner-4.png" class="img-fluid" alt="Colorlib Template"></a>
+             </div>
+             <div class="col-sm ftco-animate">
+                <a href="#" class="partner"><img src="../../../resources/images/partner-5.png" class="img-fluid" alt="Colorlib Template"></a>
+             </div>
+          </div>
+       </div>
     </section>
 
     <section class="ftco-section bg-light">
@@ -603,8 +588,8 @@
                   <div><a href="#" class="meta-chat"><span class="icon-chat"></span> 3</a></div>
                 </div>
                 <div class="desc pl-3">
-	                <h3 class="heading"><a href="#">Even the all-powerful Pointing has no control about the blind texts</a></h3>
-	              </div>
+                   <h3 class="heading"><a href="#">Even the all-powerful Pointing has no control about the blind texts</a></h3>
+                 </div>
               </div>
             </div>
           </div>
@@ -619,8 +604,8 @@
                   <div><a href="#" class="meta-chat"><span class="icon-chat"></span> 3</a></div>
                 </div>
                 <div class="desc pl-3">
-	                <h3 class="heading"><a href="#">Even the all-powerful Pointing has no control about the blind texts</a></h3>
-	              </div>
+                   <h3 class="heading"><a href="#">Even the all-powerful Pointing has no control about the blind texts</a></h3>
+                 </div>
               </div>
             </div>
           </div>
@@ -635,8 +620,8 @@
                   <div><a href="#" class="meta-chat"><span class="icon-chat"></span> 3</a></div>
                 </div>
                 <div class="desc pl-3">
-	                <h3 class="heading"><a href="#">Even the all-powerful Pointing has no control about the blind texts</a></h3>
-	              </div>
+                   <h3 class="heading"><a href="#">Even the all-powerful Pointing has no control about the blind texts</a></h3>
+                 </div>
               </div>
             </div>
           </div>
@@ -686,14 +671,14 @@
           </div>
           <div class="col-md">
             <div class="ftco-footer-widget mb-4">
-            	<h2 class="ftco-heading-2">Office</h2>
-            	<div class="block-23 mb-3">
-	              <ul>
-	                <li><span class="icon icon-map-marker"></span><span class="text">203 Fake St. Mountain View, San Francisco, California, USA</span></li>
-	                <li><a href="#"><span class="icon icon-phone"></span><span class="text">+2 392 3929 210</span></a></li>
-	                <li><a href="#"><span class="icon icon-envelope"></span><span class="text">info@yourdomain.com</span></a></li>
-	              </ul>
-	            </div>
+               <h2 class="ftco-heading-2">Office</h2>
+               <div class="block-23 mb-3">
+                 <ul>
+                   <li><span class="icon icon-map-marker"></span><span class="text">203 Fake St. Mountain View, San Francisco, California, USA</span></li>
+                   <li><a href="#"><span class="icon icon-phone"></span><span class="text">+2 392 3929 210</span></a></li>
+                   <li><a href="#"><span class="icon icon-envelope"></span><span class="text">info@yourdomain.com</span></a></li>
+                 </ul>
+               </div>
             </div>
           </div>
         </div>
@@ -731,6 +716,38 @@
   <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBVWaKrjvy3MaE7SQ74_uJiULgl1JY0H2s&sensor=false"></script>
   <script src="../../../resources/js/generation/google-map.js"></script>
   <script src="../../../resources/js/generation/main.js"></script>
-    
+  
+  <script type="text/javascript">
+  
+  let middle = document.querySelector('#middle');
+   //scene 객체 생성
+   const scene = new THREE.Scene();
+   scene.background = new THREE.Color('skyblue');
+   //camera 세팅
+   //시야각 , 종횡비, near, far
+   // near : 해당 값보다 가까이 있는 오브젝트는 렌더링하지 않음
+   const camera = new THREE.PerspectiveCamera( 75, middle.clientWidth / middle.clientHeight, 0.1, 1000 );
+   const renderer = new THREE.WebGLRenderer();
+   renderer.setSize(middle.clientWidth, middle.clientHeight );
+   middle.appendChild( renderer.domElement );
+   
+   
+   const geometry = new THREE.BoxGeometry(); //기하학 도형 오브젝트 생성
+   const material = new THREE.MeshBasicMaterial( { color: "yellow" } ); //오브젝트에 적용할 재질
+   const cube = new THREE.Mesh( geometry, material ); //도형과 재질을 합쳐서 새로운 object 생성
+   scene.add( cube ); //무대에 추가
+   camera.position.z = 5; 
+   
+   //화면 렌더링
+   function animate() {
+      requestAnimationFrame( animate );
+      cube.rotation.x += 0.01;
+      cube.rotation.y += 0.01;
+      renderer.render( scene, camera );
+   }
+   animate();
+
+  </script>
+  
 </body>
 </html>

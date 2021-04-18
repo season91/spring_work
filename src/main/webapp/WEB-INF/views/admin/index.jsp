@@ -193,20 +193,17 @@
               <div class="card-header ">
                 <div class="row">
                   <div class="col-sm-6 text-left">
-                    <h5 class="card-category">Total Shipments</h5>
-                    <h2 class="card-title">Performance</h2>
+                    <h5 class="card-category">Total Management Fee</h5>
+                    <h2 class="card-title">  
+                    <script>
+		              document.write(new Date().getFullYear())
+		            </script>년 월별 관리비 고지서 발행 금액 </h2>
                   </div>
                   <div class="col-sm-6">
                     <div class="btn-group btn-group-toggle float-right" data-toggle="buttons">
-                      <label class="btn btn-sm btn-primary btn-simple active" id="0">
-                        <input type="radio" name="options" autocomplete="off" checked> Accounts
+                      <label class="btn btn-sm btn-primary btn-simple active" id="0"> (단위 : 만원)
                       </label>
-                      <label class="btn btn-sm btn-primary btn-simple " id="1">
-                        <input type="radio" name="options" autocomplete="off"> Purchases
-                      </label>
-                      <label class="btn btn-sm btn-primary btn-simple " id="2">
-                        <input type="radio" name="options" autocomplete="off"> Sessions
-                      </label>
+                     
                     </div>
                   </div>
                 </div>
@@ -214,6 +211,7 @@
               <div class="card-body">
                 <div class="chart-area">
                   <canvas id="chartBig1"></canvas>
+                  <input type="hidden" id="list" value="${list}">
                 </div>
               </div>
             </div>
@@ -236,8 +234,8 @@
           <div class="col-lg-4">
             <div class="card card-chart">
               <div class="card-header ">
-                <h5 class="card-category">Daily Sales</h5>
-                <h3 class="card-title"><i class="tim-icons icon-delivery-fast text-info "></i> 3,500€</h3>
+                <h5 class="card-category">이번주 등록 차량 수</h5>
+                <h3 class="card-title"><i class="tim-icons icon-delivery-fast text-info "></i> 등록 가능 대수 230</h3>
               </div>
               <div class="card-body ">
                 <div class="chart-area">
@@ -746,5 +744,6 @@
 
       });
     </script>
+    
 </body>
 </html>

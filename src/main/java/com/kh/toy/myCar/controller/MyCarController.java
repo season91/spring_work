@@ -39,7 +39,6 @@ public class MyCarController {
 	@GetMapping("/mypage/mycarqrdownload")
 	public ResponseEntity<FileSystemResource> myQRDownload(String path) {
 		String fileName = path.replace("/resources/vehicle/", "");
-		// 일단 여기로 한다.. 
 		String originPath = "C:\\CODE\\06_Spring\\.metadata\\.plugins\\org.eclipse.wst.server.core\\tmp2\\wtpwebapps\\Spring_abooTest\\resources\\vehicle\\";
 		
 		HttpHeaders headers = new HttpHeaders();

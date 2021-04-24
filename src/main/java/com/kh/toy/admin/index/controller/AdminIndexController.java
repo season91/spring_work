@@ -28,12 +28,4 @@ public class AdminIndexController {
 		model.addAttribute("list", list);
 	}
 	
-	// 비동기통신
-//	@GetMapping("admin/monthmgmtfee")
-//	@ResponseBody
-//	public List<Integer> adminMgmtfee(@SessionAttribute("admin")Admin admin) {
-//		List<Integer> list = indexManagementService.selectMgmtfeeMonthFee();
-//		return list;
-//	}
-	
 }

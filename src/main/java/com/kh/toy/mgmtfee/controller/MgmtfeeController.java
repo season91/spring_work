@@ -102,10 +102,7 @@ public class MgmtfeeController {
 		
 		model.addAllAttributes(mgmtfeeService.selectMgmtfeeList(page, searchMap));
 		return "admin/mgmtfee"+link;
-		// 관리자의 아파트정보 기준으로 관리비 리스트 가져오기
-		// 페이징 처리 해주기
-		//System.out.println(mgmtfeeService.selectMgmtfeeList(page, apartmentIdx));
-		
+
 	};
 	
 	
@@ -144,7 +141,7 @@ public class MgmtfeeController {
 		FileUtil fileUtil = new FileUtil();
 		// mgmtfeeFormExcel 엑셀 양식 호출.
 		System.out.println("양식만들기시작");
-		File file = fileUtil.mfmtgeeFormExcel(generationList);
+		File file = fileUtil.mfmtgeeFormExcel(generationList,apartmentIdx+"관리비양식");
 		
 		// 내보내기
 		HttpHeaders headers= new HttpHeaders();

@@ -115,16 +115,16 @@ public class FileUtil {
 	}
 	
 	//셋팅된 양식 excel file로 구성하기.
-	public File mfmtgeeFormExcel(Map<String, Object> generationList) {
+	public File mfmtgeeFormExcel(Map<String, Object> generationList, String fileName) {
 		// excel 양식 셋팅하기
 		System.out.println("양식셋팅시작");
 		XSSFWorkbook workbook = mgmtfeeFormSetting(generationList);
 		
 		// 파일 내보내기
 		// 파일 명
-		String fileName = "test4.xlsx";
+		//String fileName = "test4.xlsx";
 		
-		File file = new File(fileName);
+		File file = new File(fileName+".xlsx");
 		FileOutputStream fos = null;
 		if(!file.exists()) {
 			try {
